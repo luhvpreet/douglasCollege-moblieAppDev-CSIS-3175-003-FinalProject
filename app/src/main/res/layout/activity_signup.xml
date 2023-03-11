@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignupActivity">
+
+    <TextView
+        android:id="@+id/registerPrompt2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Already have an account? "
+        android:textSize="16sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnLogin3"
+        app:layout_constraintEnd_toStartOf="@+id/btnLogin3" />
+
+    <Button
+        android:id="@+id/btnLogin3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="83dp"
+        android:layout_marginBottom="3dp"
+        android:text="Login"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/txtViewSignupHere"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Signup Here"
+        android:textSize="48sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/etxtUsername2"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="Enter username"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtViewSignupHere" />
+
+    <EditText
+        android:id="@+id/etxtEmailID"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:hint="Enter eamil ID"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/etxtUsername2"
+        app:layout_constraintTop_toBottomOf="@+id/etxtUsername2" />
+
+    <EditText
+        android:id="@+id/etxtName"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:hint="Enter Name"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/etxtPhone"
+        app:layout_constraintTop_toBottomOf="@+id/etxtPhone" />
+
+    <EditText
+        android:id="@+id/etxtPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginTop="18dp"
+        android:ems="10"
+        android:hint="Enter phone number"
+        android:inputType="phone"
+        app:layout_constraintStart_toStartOf="@+id/etxtEmailID"
+        app:layout_constraintTop_toBottomOf="@+id/etxtEmailID" />
+
+    <EditText
+        android:id="@+id/etxtPassword2"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:hint="Enter password"
+        android:inputType="textPassword"
+        app:layout_constraintStart_toStartOf="@+id/etxtName"
+        app:layout_constraintTop_toBottomOf="@+id/etxtName" />
+
+    <EditText
+        android:id="@+id/etxtPassword2Confirm"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:hint="Confirm password"
+        android:inputType="textPassword"
+        app:layout_constraintStart_toStartOf="@+id/etxtPassword2"
+        app:layout_constraintTop_toBottomOf="@+id/etxtPassword2" />
+
+    <EditText
+        android:id="@+id/etxtAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginBottom="33dp"
+        android:ems="10"
+        android:hint="Enter address"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/btnSignup3"
+        app:layout_constraintStart_toStartOf="@+id/etxtPassword2Confirm" />
+
+    <EditText
+        android:id="@+id/etxtPostalCode"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:hint="Postal code"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/etxtAddress"
+        app:layout_constraintTop_toBottomOf="@+id/etxtAddress" />
+
+    <Button
+        android:id="@+id/btnSignup3"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="27dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="28dp"
+        android:text="Signup"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnLogin3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/etxtAddress"
+        app:layout_constraintTop_toBottomOf="@+id/etxtPassword2Confirm" />
+</androidx.constraintlayout.widget.ConstraintLayout>

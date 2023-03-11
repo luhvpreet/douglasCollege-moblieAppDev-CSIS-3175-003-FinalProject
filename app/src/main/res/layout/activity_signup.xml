@@ -12,11 +12,11 @@
         android:layout_height="wrap_content"
         android:text="Already have an account? "
         android:textSize="16sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/btnLogin3"
-        app:layout_constraintEnd_toStartOf="@+id/btnLogin3" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnSLogin"
+        app:layout_constraintEnd_toStartOf="@+id/btnSLogin" />
 
     <Button
-        android:id="@+id/btnLogin3"
+        android:id="@+id/btnSLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="83dp"
@@ -38,7 +38,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/etxtUsername2"
+        android:id="@+id/etxtSUsername"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_marginStart="31dp"
@@ -50,80 +50,80 @@
         app:layout_constraintTop_toBottomOf="@+id/txtViewSignupHere" />
 
     <EditText
-        android:id="@+id/etxtEmailID"
+        android:id="@+id/etxtSEmailID"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:ems="10"
         android:hint="Enter eamil ID"
         android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="@+id/etxtUsername2"
-        app:layout_constraintTop_toBottomOf="@+id/etxtUsername2" />
+        app:layout_constraintStart_toStartOf="@+id/etxtSUsername"
+        app:layout_constraintTop_toBottomOf="@+id/etxtSUsername" />
 
     <EditText
-        android:id="@+id/etxtName"
+        android:id="@+id/etxtSName"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:ems="10"
         android:hint="Enter Name"
         android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="@+id/etxtPhone"
-        app:layout_constraintTop_toBottomOf="@+id/etxtPhone" />
+        app:layout_constraintStart_toStartOf="@+id/etxtSPhone"
+        app:layout_constraintTop_toBottomOf="@+id/etxtSPhone" />
 
     <EditText
-        android:id="@+id/etxtPhone"
+        android:id="@+id/etxtSPhone"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_marginTop="18dp"
         android:ems="10"
         android:hint="Enter phone number"
         android:inputType="phone"
-        app:layout_constraintStart_toStartOf="@+id/etxtEmailID"
-        app:layout_constraintTop_toBottomOf="@+id/etxtEmailID" />
+        app:layout_constraintStart_toStartOf="@+id/etxtSEmailID"
+        app:layout_constraintTop_toBottomOf="@+id/etxtSEmailID" />
 
     <EditText
-        android:id="@+id/etxtPassword2"
+        android:id="@+id/etxtSPassword"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_marginTop="15dp"
         android:ems="10"
         android:hint="Enter password"
         android:inputType="textPassword"
-        app:layout_constraintStart_toStartOf="@+id/etxtName"
-        app:layout_constraintTop_toBottomOf="@+id/etxtName" />
+        app:layout_constraintStart_toStartOf="@+id/etxtSName"
+        app:layout_constraintTop_toBottomOf="@+id/etxtSName" />
 
     <EditText
-        android:id="@+id/etxtPassword2Confirm"
+        android:id="@+id/etxtSPasswordConfirm"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:ems="10"
         android:hint="Confirm password"
         android:inputType="textPassword"
-        app:layout_constraintStart_toStartOf="@+id/etxtPassword2"
-        app:layout_constraintTop_toBottomOf="@+id/etxtPassword2" />
+        app:layout_constraintStart_toStartOf="@+id/etxtSPassword"
+        app:layout_constraintTop_toBottomOf="@+id/etxtSPassword" />
 
     <EditText
-        android:id="@+id/etxtAddress"
+        android:id="@+id/etxtSAddress"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_marginBottom="33dp"
         android:ems="10"
         android:hint="Enter address"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="@+id/btnSignup3"
-        app:layout_constraintStart_toStartOf="@+id/etxtPassword2Confirm" />
+        app:layout_constraintBottom_toBottomOf="@+id/btnSSignup"
+        app:layout_constraintStart_toStartOf="@+id/etxtSPasswordConfirm" />
 
     <EditText
-        android:id="@+id/etxtPostalCode"
+        android:id="@+id/etxtSPostalCode"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:ems="10"
         android:hint="Postal code"
         android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="@+id/etxtAddress"
-        app:layout_constraintTop_toBottomOf="@+id/etxtAddress" />
+        app:layout_constraintStart_toStartOf="@+id/etxtSAddress"
+        app:layout_constraintTop_toBottomOf="@+id/etxtSAddress" />
 
     <Button
-        android:id="@+id/btnSignup3"
+        android:id="@+id/btnSSignup"
         android:layout_width="0dp"
         android:layout_height="70dp"
         android:layout_marginStart="4dp"
@@ -132,8 +132,8 @@
         android:layout_marginBottom="28dp"
         android:text="Signup"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/btnLogin3"
+        app:layout_constraintBottom_toTopOf="@+id/btnSLogin"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/etxtAddress"
-        app:layout_constraintTop_toBottomOf="@+id/etxtPassword2Confirm" />
+        app:layout_constraintStart_toEndOf="@+id/etxtSAddress"
+        app:layout_constraintTop_toBottomOf="@+id/etxtSPasswordConfirm" />
 </androidx.constraintlayout.widget.ConstraintLayout>

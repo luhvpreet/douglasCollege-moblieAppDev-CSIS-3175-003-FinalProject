@@ -76,7 +76,7 @@
         android:layout_marginBottom="34dp"
         android:text="\?"
         android:textSize="34sp"
-        app:layout_constraintBottom_toTopOf="@+id/btnNext"
+        app:layout_constraintBottom_toTopOf="@+id/btnSANext"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/radbtnProvider"
         app:layout_constraintTop_toBottomOf="@+id/imgViewProvider" />
@@ -95,7 +95,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imgViewCustomer" />
 
     <Button
-        android:id="@+id/btnNext"
+        android:id="@+id/btnSANext"
         android:layout_width="175dp"
         android:layout_height="70dp"
         android:layout_marginBottom="42dp"

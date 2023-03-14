@@ -7,34 +7,40 @@
     tools:context=".LoginSignupActivity">
 
     <ImageView
+        android:foreground="@drawable/foreground_design"
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/abc" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/background"
+        tools:layout_editor_absoluteX="53dp"
+        tools:layout_editor_absoluteY="16dp" />
 
     <Button
         android:id="@+id/btnLSLogin"
-        android:layout_width="175dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="388dp"
-        android:layout_marginBottom="13dp"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:background="@drawable/btn_bg_design"
         android:text="Login"
         android:textSize="34sp"
-        app:layout_constraintBottom_toTopOf="@+id/btnLSSignup"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.714" />
 
     <Button
         android:id="@+id/btnLSSignup"
-        android:layout_width="175dp"
-        android:layout_height="70dp"
-        android:layout_marginBottom="73dp"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:background="@drawable/btn_bg_design"
         android:text="Signup"
         android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="@+id/btnLSLogin"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/btnLSLogin"
-        app:layout_constraintTop_toBottomOf="@+id/btnLSLogin" />
+        app:layout_constraintTop_toBottomOf="@+id/btnLSLogin"
+        app:layout_constraintVertical_bias="0.237" />
 </androidx.constraintlayout.widget.ConstraintLayout>

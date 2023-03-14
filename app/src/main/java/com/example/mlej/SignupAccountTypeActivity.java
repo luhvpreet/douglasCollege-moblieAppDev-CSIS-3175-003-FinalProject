@@ -16,18 +16,16 @@ public class SignupAccountTypeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_signup_account_type);
 
         Button btnSANext = findViewById(R.id.btnSANext);
-        RadioButton radbtnProvider = findViewById(R.id.radbtnTaker);
+        RadioButton radbtnProvider = findViewById(R.id.radbtnProvider);
         RadioButton radbtnTaker = findViewById(R.id.radbtnTaker);
 
         //Clicking to the Next button will go to either the Taker or Provider signup page depending on the radio button choice
         btnSANext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (radbtnProvider.isChecked()){
+                if (radbtnProvider.isChecked() || radbtnTaker.isChecked()){
                     Intent intent = new Intent(SignupAccountTypeActivity.this, SignupActivity.class);
                     startActivity(intent);
-                } else if(radbtnTaker.isChecked()){
-                    //go to the provider signup activity, not yet created
                 }
             }
         });

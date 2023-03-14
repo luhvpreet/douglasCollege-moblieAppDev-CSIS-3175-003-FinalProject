@@ -11,13 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:foreground="@drawable/foreground_design"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         android:scaleType="centerCrop"
-        android:background="@drawable/service"
-        app:srcCompat="@drawable/btn_bg_design" />
+        android:background="@drawable/service" />
 
     <TextView
         android:id="@+id/textView6"

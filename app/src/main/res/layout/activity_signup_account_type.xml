@@ -12,10 +12,7 @@
         android:layout_height="match_parent"
         android:background="@drawable/service"
         android:foreground="@drawable/foreground_design"
-        android:scaleType="centerCrop"
-        app:srcCompat="@drawable/btn_bg_design"
-        tools:layout_editor_absoluteX="-42dp"
-        tools:layout_editor_absoluteY="87dp" />
+        android:scaleType="centerCrop" />
 
     <TextView
         android:id="@+id/textView4"

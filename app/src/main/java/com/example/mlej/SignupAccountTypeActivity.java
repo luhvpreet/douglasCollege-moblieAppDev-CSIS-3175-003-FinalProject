@@ -24,7 +24,9 @@ public class SignupAccountTypeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (radbtnProvider.isChecked() || radbtnTaker.isChecked()){
+                    // pass the account type to the next activity
                     Intent intent = new Intent(SignupAccountTypeActivity.this, SignupActivity.class);
+                    intent.putExtra("accountType", radbtnProvider.isChecked() ? "provider" : "taker");
                     startActivity(intent);
                 }
             }

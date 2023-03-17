@@ -66,107 +66,107 @@
 
     <CheckBox
         android:id="@+id/cboxService1"
-        android:layout_width="wrap_content"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="26dp"
         android:layout_marginTop="34dp"
-        android:text="Wheel Change"
+        android:text="Electronic System Check"
         android:textColor="@color/white"
-        android:textSize="18sp"
+        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtServices" />
 
     <CheckBox
         android:id="@+id/cboxService3"
-        android:layout_width="wrap_content"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
-        android:text="Wheel Change"
+        android:text="AC and Heating Repair"
         android:textColor="@color/white"
-        android:textSize="18sp"
+        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@+id/cboxService2"
         app:layout_constraintTop_toBottomOf="@+id/cboxService2" />
 
     <CheckBox
         android:id="@+id/cboxService4"
-        android:layout_width="wrap_content"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
-        android:text="Wheel Change"
+        android:text="Brakes or Break Repair"
         android:textColor="@color/white"
-        android:textSize="18sp"
+        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@+id/cboxService3"
         app:layout_constraintTop_toBottomOf="@+id/cboxService3" />
 
     <CheckBox
         android:id="@+id/cboxService5"
-        android:layout_width="wrap_content"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
-        android:text="Wheel Change"
+        android:text="Lights, Wipers and Accessories"
         android:textColor="@color/white"
-        android:textSize="18sp"
+        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@+id/cboxService4"
         app:layout_constraintTop_toBottomOf="@+id/cboxService4" />
 
     <CheckBox
-        android:id="@+id/cboxService6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="34dp"
-        android:layout_marginEnd="24dp"
-        android:text="Wheel Change"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtServices" />
-
-    <CheckBox
         android:id="@+id/cboxService2"
-        android:layout_width="wrap_content"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
-        android:text="Wheel Change"
+        android:text="New Tires or Changing Tires"
         android:textColor="@color/white"
-        android:textSize="18sp"
+        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@+id/cboxService1"
         app:layout_constraintTop_toBottomOf="@+id/cboxService1" />
 
     <CheckBox
         android:id="@+id/cboxService7"
-        android:layout_width="wrap_content"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
-        android:text="Wheel Change"
+        android:text="Fluid Changes"
         android:textColor="@color/white"
-        android:textSize="18sp"
+        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@+id/cboxService6"
         app:layout_constraintTop_toBottomOf="@+id/cboxService6" />
 
     <CheckBox
         android:id="@+id/cboxService8"
-        android:layout_width="wrap_content"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
-        android:text="Wheel Change"
+        android:text="Exhaust System Services"
         android:textColor="@color/white"
-        android:textSize="18sp"
+        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@+id/cboxService7"
         app:layout_constraintTop_toBottomOf="@+id/cboxService7" />
 
     <CheckBox
         android:id="@+id/cboxService10"
-        android:layout_width="wrap_content"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
-        android:text="Wheel Change"
+        android:text="Batteries and Charging"
         android:textColor="@color/white"
-        android:textSize="18sp"
+        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@+id/cboxService9"
         app:layout_constraintTop_toBottomOf="@+id/cboxService9" />
 
     <CheckBox
         android:id="@+id/cboxService9"
-        android:layout_width="wrap_content"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
-        android:text="Wheel Change"
+        android:text="Steering and Suspension"
         android:textColor="@color/white"
-        android:textSize="18sp"
+        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@+id/cboxService8"
         app:layout_constraintTop_toBottomOf="@+id/cboxService8" />
+
+    <CheckBox
+        android:id="@+id/cboxService6"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="34dp"
+        android:layout_marginEnd="24dp"
+        android:text="Belts and Hoses"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtServices" />
 
     <Button
         android:id="@+id/btnSSSignup"

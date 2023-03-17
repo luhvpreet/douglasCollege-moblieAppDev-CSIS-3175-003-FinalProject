@@ -7,7 +7,7 @@
     tools:context=".SignupAccountTypeActivity">
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/imgView3"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/service"
@@ -15,7 +15,7 @@
         android:scaleType="centerCrop" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/txtAppName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -23,7 +23,7 @@
         android:textColor="@color/white"
         android:textSize="60sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        app:layout_constraintBottom_toBottomOf="@+id/imgView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,7 +35,7 @@
         android:layout_width="173dp"
         android:layout_height="234dp"
         android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/RadGpServiceType"
+        app:layout_constraintBottom_toTopOf="@+id/radgrpAccountType"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.067"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,7 +47,7 @@
         android:layout_width="173dp"
         android:layout_height="234dp"
         android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/RadGpServiceType"
+        app:layout_constraintBottom_toTopOf="@+id/radgrpAccountType"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.932"
         app:layout_constraintStart_toStartOf="parent"
@@ -61,11 +61,11 @@
         android:text="Are you a Service"
         android:textColor="#FFFFFF"
         android:textSize="48sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        app:layout_constraintBottom_toBottomOf="@+id/imgView3"
         app:layout_constraintEnd_toEndOf="@+id/imgViewProvider"
         app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="@+id/imgViewCustomer"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/txtAppName"
         app:layout_constraintVertical_bias="0.054" />
 
     <Button
@@ -76,15 +76,15 @@
         android:background="@drawable/btn_bg_design"
         android:text="Next"
         android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        app:layout_constraintBottom_toBottomOf="@+id/imgView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/RadGpServiceType"
+        app:layout_constraintTop_toBottomOf="@+id/radgrpAccountType"
         app:layout_constraintVertical_bias="0.071" />
 
     <RadioGroup
-        android:id="@+id/RadGpServiceType"
+        android:id="@+id/radgrpAccountType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -92,7 +92,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView3"
+        app:layout_constraintTop_toTopOf="@+id/imgView3"
         app:layout_constraintVertical_bias="0.814">
 
         <RadioButton

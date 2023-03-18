@@ -9,6 +9,7 @@
 - [ ] Service history view
 - [ ] Reports generation
 - [ ] Send reminders
+- [-] Creating Service tables and adding some related database methods
 
 ## When you start working on a new part
 

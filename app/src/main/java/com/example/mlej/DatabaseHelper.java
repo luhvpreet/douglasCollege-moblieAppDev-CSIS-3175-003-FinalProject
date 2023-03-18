@@ -144,12 +144,4 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 " ORDER BY AppointmentId";
         return sqLiteDatabase.rawQuery(query, null);
     }
-
-    public Cursor getUserType(String email){
-        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
-        String query = "SELECT Id, Type from User_table " +
-                "WHERE email='" + email + "'";
-        return sqLiteDatabase.rawQuery(query, null);
-
-    }
 }

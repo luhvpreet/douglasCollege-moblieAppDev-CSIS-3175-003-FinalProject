@@ -58,11 +58,13 @@ public class LoginActivity extends AppCompatActivity {
                         // if the user is a provider, go to the ProviderHome activity
                         Intent intent = new Intent(LoginActivity.this, ServiceProviderHomeActivity.class);
                         intent.putExtra("username", db.getUserName(email));
+                        intent.putExtra("userId", db.getUserId(email));
                         startActivity(intent);
                     } else {
                         // if the user is a customer, go to the CustomerHome activity
                         Intent intent = new Intent(LoginActivity.this, CustomerHomeActivity.class);
                         intent.putExtra("username", db.getUserName(email));
+                        intent.putExtra("userId", db.getUserId(email));
                         startActivity(intent);
                     }
                 } else {

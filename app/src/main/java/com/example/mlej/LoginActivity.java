@@ -41,6 +41,15 @@ public class LoginActivity extends AppCompatActivity {
                 if (db.verifyLogin(email, password)) {
                     // for now, display a toast message
                     Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
+                    //goes to either ServiceProviderHomeActivity or CustomerHomeActivity
+
+                    Intent intent;
+                    //if(type==0) intent = new Intent(LoginActivity.this, ServiceProviderHomeActivity.class);
+                    //else intent = new Intent(LoginActivity.this, CustomerHomeActivity.class);
+                    if(true) intent = new Intent(LoginActivity.this, ServiceProviderHomeActivity.class);
+                    else intent = new Intent(LoginActivity.this, CustomerHomeActivity.class);
+
+                    startActivity(intent);
                 } else {
                     // for now, display a toast message
                     Toast.makeText(LoginActivity.this, "Login failed", Toast.LENGTH_SHORT).show();

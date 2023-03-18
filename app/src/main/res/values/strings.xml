@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MLEJ</string>
+    <string name="txtUpComingAppointmnet">Upcoming Appointments</string>
 </resources>

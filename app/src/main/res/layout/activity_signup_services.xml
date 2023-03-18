@@ -90,7 +90,7 @@
         android:id="@+id/cboxService4"
         android:layout_width="160dp"
         android:layout_height="wrap_content"
-        android:text="Brakes or Break Repair"
+        android:text="Brakes or Brake Repair"
         android:textColor="@color/white"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@+id/cboxService3"

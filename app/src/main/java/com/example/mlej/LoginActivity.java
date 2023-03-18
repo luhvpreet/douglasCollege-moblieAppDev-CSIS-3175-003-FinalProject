@@ -53,6 +53,8 @@ public class LoginActivity extends AppCompatActivity {
                 if (userId != -1) {
                     editor.putInt("USERID",userId);
                     editor.commit();
+                    txtLEmail.setText("");
+                    txtLPassword.setText("");
                     if (db.getUserType(email) == 0) {
                         // if the user is a provider, go to the ProviderHome activity
                         Intent intent = new Intent(LoginActivity.this, ServiceProviderHomeActivity.class);

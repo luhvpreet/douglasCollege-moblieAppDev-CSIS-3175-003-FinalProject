@@ -18,11 +18,12 @@ public class LoginSignupActivity extends AppCompatActivity {
         Button btnLSLogin = findViewById(R.id.btnLSLogin);
         Button btnLSSignup = findViewById(R.id.btnLSSignup);
 
+        //initData();
+
         //clicking on the Login button will go to the Login activity
         btnLSLogin.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                //initData();
                 Intent intent = new Intent(LoginSignupActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
@@ -40,8 +41,20 @@ public class LoginSignupActivity extends AppCompatActivity {
 
     void initData(){
         db = new DatabaseHelper(LoginSignupActivity.this);
-        // from 0 to 5 is provider, 6 to 35 is taker
 
+        db.addServices(1,"Electronic System Check");
+        db.addServices(2,"New Tires or Changing Tires");
+        db.addServices(3,"AC and Heating Repair");
+        db.addServices(4,"Brakes of Brake Repair");
+        db.addServices(5,"Lights, Wipers and Accessories");
+        db.addServices(6,"Belts and Hoses");
+        db.addServices(7,"Fluid Changes");
+        db.addServices(8,"Exhaust System Services");
+        db.addServices(9,"Steering and Suspension");
+        db.addServices(10,"Batteries and Charging");
+
+
+        // from 0 to 5 is provider, 6 to 35 is taker
         db.addUser(0,"Eric Smith","a@a.com","1234","6153484271","1439 Elmwood Avenue, Brockville, ON","G7V 6K2");
         db.addUser(0,"Lovepreet Johnson","b@b.com","1234","9055257195","720 Pine Street, Port Coquitlam, BC","K8P 3M6");
         db.addUser(0,"Matthew Jackson","lindawilliams251@trashmail.com","1234","1072229767","2084 Oak Lane, Chambly, QC","V2L 3V1");
@@ -77,6 +90,37 @@ public class LoginSignupActivity extends AppCompatActivity {
         db.addUser(1,"Kai Gray","johngonzalez278@trash-me.com","1234","7704311390","1026 Cedar Drive, Renfrew, ON","J0K 3E0");
         db.addUser(1,"Trenton Tipton","michelleclark802@trashmails.com","1234","8865694732","3365 Pine Street, Bathurst, NB","H7A 1H8");
         db.addUser(1,"Louella Moon","justinwright654@inboxbear.com","1234","5854515297","1909 Willow Avenue, Jasper, AB","V9Y 1N9");
+
+        db.addProviderServices(1,1);
+        db.addProviderServices(1,2);
+        db.addProviderServices(1,3);
+        db.addProviderServices(1,4);
+        db.addProviderServices(1,5);
+        db.addProviderServices(1,6);
+        db.addProviderServices(2,2);
+        db.addProviderServices(2,3);
+        db.addProviderServices(2,4);
+        db.addProviderServices(2,5);
+        db.addProviderServices(2,6);
+        db.addProviderServices(2,7);
+        db.addProviderServices(3,3);
+        db.addProviderServices(3,4);
+        db.addProviderServices(3,5);
+        db.addProviderServices(3,6);
+        db.addProviderServices(3,7);
+        db.addProviderServices(3,8);
+        db.addProviderServices(4,4);
+        db.addProviderServices(4,5);
+        db.addProviderServices(4,6);
+        db.addProviderServices(4,7);
+        db.addProviderServices(4,8);
+        db.addProviderServices(4,9);
+        db.addProviderServices(5,5);
+        db.addProviderServices(5,6);
+        db.addProviderServices(5,7);
+        db.addProviderServices(5,8);
+        db.addProviderServices(5,9);
+        db.addProviderServices(5,10);
 
         db.addAppointment(6,0,1,"Mar 22, 10:00am","ok","ok");
         db.addAppointment(7,0,2,"Mar 22, 2:00pm","ok","ok");

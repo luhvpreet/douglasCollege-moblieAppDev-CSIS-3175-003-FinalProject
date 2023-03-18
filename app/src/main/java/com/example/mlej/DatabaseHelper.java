@@ -14,7 +14,7 @@ import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     final static String DATABASE_NAME = "database.db";
-    final static int DATABASE_VERSION = 8;
+    final static int DATABASE_VERSION = 9;
     final static String TABLE1_NAME = "User_table";
     final static String T1COL1 = "Id";
     // user type, 0 for service provider, 1 for customer
@@ -34,6 +34,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     final static String T2COL6 = "DropOffOption";
     final static String T2COL7 = "PickUpOption";
 
+    final static String TABLE3_NAME = "Services_Table";
+    final static String T3COL1 = "ServicesID";
+    final static String T3COL2 = "ServicesName";
+
+    final static String TABLE4_NAME = "Provider_Services_Table";
+    final static String T4COL1 = "ProviderId";
+    final static String T4COL2 = "ServicesID";
+
     public DatabaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -52,6 +60,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + T2COL6 + " TEXT," + T2COL7 + " TEXT)";
         sqLiteDatabase.execSQL(query);
 
+        query = "CREATE TABLE " + TABLE3_NAME +
+                "( " + T3COL1 + " INTEGER PRIMARY KEY, " + T3COL2 + " TEXT)";
+        sqLiteDatabase.execSQL(query);
+
+        query = "CREATE TABLE " + TABLE4_NAME +
+                "( " + T4COL1 + " INTEGER, " + T4COL2 + " INTEGER)";
+        sqLiteDatabase.execSQL(query);
 
     }
 
@@ -164,5 +179,32 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return null;
     }
 
+
+    public boolean addServices(int ID, String servicesName){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(T3COL1,ID);
+        values.put(T3COL2,servicesName);
+
+        long l = sqLiteDatabase.insert(TABLE3_NAME,null,values);
+        if(l>0)
+            return true;
+        else
+            return false;
+    }
+
+
+    public boolean addProviderServices(int ProviderID, int ServicesID){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(T4COL1,ProviderID);
+        values.put(T4COL2,ServicesID);
+
+        long l = sqLiteDatabase.insert(TABLE4_NAME,null,values);
+        if(l>0)
+            return true;
+        else
+            return false;
+    }
 
 }

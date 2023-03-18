@@ -3,7 +3,7 @@
 ## To-do
 
 - [x] User creation and validation
-- [ ] Profile view and edit #6
+- [ ] Profile view and edit https://github.com/luhvpreet/douglasCollege-moblieAppDev-CSIS-3175-003-FinalProject/pull/6
 - [ ] Appointment view and edit
 - [ ] Service view and edit
 - [ ] Service history view

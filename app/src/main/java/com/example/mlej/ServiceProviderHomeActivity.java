@@ -30,5 +30,14 @@ public class ServiceProviderHomeActivity extends AppCompatActivity {
         String username = getIntent().getStringExtra("username");
 
         txtWelcome.setText(username + "!");
+
+        // implement logout
+        Button btnLogout = findViewById(R.id.btnSPHLogout);
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 }

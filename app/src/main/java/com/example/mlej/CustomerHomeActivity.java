@@ -3,6 +3,8 @@ package com.example.mlej;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class CustomerHomeActivity extends AppCompatActivity {
@@ -16,5 +18,14 @@ public class CustomerHomeActivity extends AppCompatActivity {
         String username = getIntent().getStringExtra("username");
 
         txtWelcome.setText("Welcome " + username + "!");
+
+        // implement logout
+        Button btnLogout = findViewById(R.id.btnCHLogout);
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 }

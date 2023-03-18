@@ -18,11 +18,12 @@ public class LoginSignupActivity extends AppCompatActivity {
         Button btnLSLogin = findViewById(R.id.btnLSLogin);
         Button btnLSSignup = findViewById(R.id.btnLSSignup);
 
+        //initData();
+
         //clicking on the Login button will go to the Login activity
         btnLSLogin.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                //initData();
                 Intent intent = new Intent(LoginSignupActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
@@ -40,10 +41,22 @@ public class LoginSignupActivity extends AppCompatActivity {
 
     void initData(){
         db = new DatabaseHelper(LoginSignupActivity.this);
-        // from 0 to 5 is provider, 6 to 35 is taker
 
+        db.addServices(1,"Electronic System Check");
+        db.addServices(2,"New Tires or Changing Tires");
+        db.addServices(3,"AC and Heating Repair");
+        db.addServices(4,"Brakes of Brake Repair");
+        db.addServices(5,"Lights, Wipers and Accessories");
+        db.addServices(6,"Belts and Hoses");
+        db.addServices(7,"Fluid Changes");
+        db.addServices(8,"Exhaust System Services");
+        db.addServices(9,"Steering and Suspension");
+        db.addServices(10,"Batteries and Charging");
+
+
+        // from 0 to 5 is provider, 6 to 35 is taker
         db.addUser(0,"Eric Smith","a@a.com","1234","6153484271","1439 Elmwood Avenue, Brockville, ON","G7V 6K2");
-        db.addUser(0,"Lovepreet Johnson","aspencer837@mailinator.com","1234","9055257195","720 Pine Street, Port Coquitlam, BC","K8P 3M6");
+        db.addUser(0,"Lovepreet Johnson","b@b.com","1234","9055257195","720 Pine Street, Port Coquitlam, BC","K8P 3M6");
         db.addUser(0,"Matthew Jackson","lindawilliams251@trashmail.com","1234","1072229767","2084 Oak Lane, Chambly, QC","V2L 3V1");
         db.addUser(0,"Jichi Davis","pattydavis365@guerillamail.com","1234","7137418268","3613 Maple Street, Canmore, AB","B3H 3R3");
         db.addUser(0,"Helen Wong","aaronrobinson819@getairmail.com","1234","9269245943","905 Cedar Street, Sydney, NS","J5R 4W4");
@@ -78,6 +91,37 @@ public class LoginSignupActivity extends AppCompatActivity {
         db.addUser(1,"Trenton Tipton","michelleclark802@trashmails.com","1234","8865694732","3365 Pine Street, Bathurst, NB","H7A 1H8");
         db.addUser(1,"Louella Moon","justinwright654@inboxbear.com","1234","5854515297","1909 Willow Avenue, Jasper, AB","V9Y 1N9");
 
+        db.addProviderServices(1,1);
+        db.addProviderServices(1,2);
+        db.addProviderServices(1,3);
+        db.addProviderServices(1,4);
+        db.addProviderServices(1,5);
+        db.addProviderServices(1,6);
+        db.addProviderServices(2,2);
+        db.addProviderServices(2,3);
+        db.addProviderServices(2,4);
+        db.addProviderServices(2,5);
+        db.addProviderServices(2,6);
+        db.addProviderServices(2,7);
+        db.addProviderServices(3,3);
+        db.addProviderServices(3,4);
+        db.addProviderServices(3,5);
+        db.addProviderServices(3,6);
+        db.addProviderServices(3,7);
+        db.addProviderServices(3,8);
+        db.addProviderServices(4,4);
+        db.addProviderServices(4,5);
+        db.addProviderServices(4,6);
+        db.addProviderServices(4,7);
+        db.addProviderServices(4,8);
+        db.addProviderServices(4,9);
+        db.addProviderServices(5,5);
+        db.addProviderServices(5,6);
+        db.addProviderServices(5,7);
+        db.addProviderServices(5,8);
+        db.addProviderServices(5,9);
+        db.addProviderServices(5,10);
+
         db.addAppointment(6,0,1,"Mar 22, 10:00am","ok","ok");
         db.addAppointment(7,0,2,"Mar 22, 2:00pm","ok","ok");
         db.addAppointment(8,0,3,"Mar 22, 5:00pm","ok","ok");
@@ -108,13 +152,13 @@ public class LoginSignupActivity extends AppCompatActivity {
         db.addAppointment(33,5,28,"Mar 31, 10:00am","ok","ok");
         db.addAppointment(34,5,29,"Mar 31, 2:00pm","ok","ok");
         db.addAppointment(35,5,30,"Mar 31, 5:00pm","ok","ok");
-        db.addAppointment(35,0,31,"Apr 1, 5:00pm","ok","ok");
-        db.addAppointment(34,0,32,"Apr 2, 5:00pm","ok","ok");
-        db.addAppointment(33,0,33,"Apr 3, 5:00pm","ok","ok");
-        db.addAppointment(32,0,34,"Apr 4, 5:00pm","ok","ok");
-        db.addAppointment(31,0,35,"Apr 5, 5:00pm","ok","ok");
-        db.addAppointment(30,0,36,"Apr 6, 5:00pm","ok","ok");
-        db.addAppointment(29,0,37,"Apr 7, 5:00pm","ok","ok");
+        db.addAppointment(35,1,31,"Apr 1, 5:00pm","ok","ok");
+        db.addAppointment(34,1,32,"Apr 2, 5:00pm","ok","ok");
+        db.addAppointment(33,1,33,"Apr 3, 5:00pm","ok","ok");
+        db.addAppointment(32,1,34,"Apr 4, 5:00pm","ok","ok");
+        db.addAppointment(31,1,35,"Apr 5, 5:00pm","ok","ok");
+        db.addAppointment(30,1,36,"Apr 6, 5:00pm","ok","ok");
+        db.addAppointment(29,1,37,"Apr 7, 5:00pm","ok","ok");
 
     }
 }

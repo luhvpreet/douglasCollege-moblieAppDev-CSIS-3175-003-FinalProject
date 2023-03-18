@@ -29,7 +29,6 @@ public class LoginActivity extends AppCompatActivity {
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
         editor = preferences.edit();
 
-
         //clicking on the signup button will go to the SignupAccountType activity
         btnLSignup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,11 +46,13 @@ public class LoginActivity extends AppCompatActivity {
                 String email = txtLEmail.getText().toString();
                 String password = txtLPassword.getText().toString();
 
-                int type=0;
-                int userId=0;
+                // check if the email and password are valid, -1 means no such user, 0 or up means userId
+                int userId = db.verifyLogin(email, password);
+                System.out.println("loginActivity: "+userId);
 
-                // check if the email and password are valid
-                if (db.verifyLogin(email, password)) {
+                if (userId != -1) {
+                    editor.putInt("USERID",userId);
+                    editor.commit();
                     txtLEmail.setText("");
                     txtLPassword.setText("");
                     if (db.getUserType(email) == 0) {

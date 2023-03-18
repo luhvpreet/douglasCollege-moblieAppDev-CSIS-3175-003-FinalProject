@@ -39,10 +39,18 @@ public class LoginActivity extends AppCompatActivity {
                 String password = txtLPassword.getText().toString();
                 // check if the email and password are valid
                 if (db.verifyLogin(email, password)) {
-                    // for now, display a toast message
-                    Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
+                    if (db.getUserType(email) == 0) {
+                        // if the user is a provider, go to the ProviderHome activity
+                        Intent intent = new Intent(LoginActivity.this, ServiceProviderHomeActivity.class);
+                        intent.putExtra("username", db.getUserName(email));
+                        startActivity(intent);
+                    } else {
+                        // if the user is a customer, go to the CustomerHome activity
+                        Intent intent = new Intent(LoginActivity.this, CustomerHomeActivity.class);
+                        intent.putExtra("username", db.getUserName(email));
+                        startActivity(intent);
+                    }
                 } else {
-                    // for now, display a toast message
                     Toast.makeText(LoginActivity.this, "Login failed", Toast.LENGTH_SHORT).show();
                 }
             }

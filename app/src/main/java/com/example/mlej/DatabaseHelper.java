@@ -14,7 +14,7 @@ import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     final static String DATABASE_NAME = "database.db";
-    final static int DATABASE_VERSION = 9;
+    final static int DATABASE_VERSION = 13;
     final static String TABLE1_NAME = "User_table";
     final static String T1COL1 = "Id";
     // user type, 0 for service provider, 1 for customer
@@ -25,6 +25,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     final static String T1COL6 = "Phone";
     final static String T1COL7 = "Address";
     final static String T1COL8 = "PostalCode";
+    final static String T1COL9 = "CompanyName";
     final static String TABLE2_NAME = "Appointment_table";
     final static String T2COL1 = "AppointmentId";
     final static String T2COL2 = "CustomerId";
@@ -51,7 +52,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String query = "CREATE TABLE " + TABLE1_NAME +
                 "( " + T1COL1 + " INTEGER PRIMARY KEY, " + T1COL2 + " INTEGER,"
                 + T1COL3 + " TEXT," + T1COL4 + " TEXT," + T1COL5 + " TEXT,"
-                + T1COL6 + " TEXT," + T1COL7 + " TEXT," + T1COL8 + " TEXT)";
+                + T1COL6 + " TEXT," + T1COL7 + " TEXT," + T1COL8 + " TEXT,"
+                + T1COL9 +  " TEXT)";
         sqLiteDatabase.execSQL(query);
 
         query = "CREATE TABLE " + TABLE2_NAME +
@@ -74,12 +76,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE1_NAME);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE2_NAME);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE3_NAME);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE4_NAME);
         onCreate(sqLiteDatabase);
     }
 
     // method to add user to database
     // not secure, not suitable for production
-    public boolean addUser(int type, String name, String email, String password, String phone, String address, String postalCode){
+    public boolean addUser(int type, String name, String email, String password, String phone, String address, String postalCode, String companyName){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(T1COL2,type);
@@ -89,6 +93,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(T1COL6,phone);
         values.put(T1COL7,address);
         values.put(T1COL8,postalCode);
+        values.put(T1COL9,companyName);
 
         long l = sqLiteDatabase.insert(TABLE1_NAME,null,values);
         if(l>0)

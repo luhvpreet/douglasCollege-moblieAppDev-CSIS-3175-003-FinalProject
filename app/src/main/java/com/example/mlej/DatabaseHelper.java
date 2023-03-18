@@ -135,18 +135,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return false;
     }
 
-    public int getUserId(String email){
-        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
-        String query = "SELECT " + T1COL1 + " FROM " + TABLE1_NAME + " WHERE " + T1COL4 + " = '" + email + "'";
-        Cursor cursor = sqLiteDatabase.rawQuery(query,null);
-        if(cursor.getCount() > 0){
-            cursor.moveToFirst();
-            return cursor.getInt(0);
-        }
-        else
-            return -1;
-    }
-
     public Cursor viewAppointment(int UserId){
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
         String query = "SELECT AppointmentId, Name, DateTime from Appointment_table " +

@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 public class ServiceProviderHomeActivity extends AppCompatActivity {
 
-    DatabaseHelper db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,8 +25,6 @@ public class ServiceProviderHomeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        db = new DatabaseHelper(this);
         
         TextView txtWelcome = findViewById(R.id.txtSPHServiceProviderName);
         String username = getIntent().getStringExtra("username");

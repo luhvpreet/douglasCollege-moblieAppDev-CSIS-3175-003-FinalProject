@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AppointmentList">
+    tools:context=".AppointmentListActivity">
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="300dp"
-        android:layout_height="240dp"
+        android:layout_height="wrap_content"
+        android:minHeight="180dp"
         android:layout_marginTop="13dp"
         android:text="@string/txtUpComingAppointmnet"
         android:textSize="40sp"

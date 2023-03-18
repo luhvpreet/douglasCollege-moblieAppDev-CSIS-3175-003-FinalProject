@@ -30,7 +30,8 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentViewHold
     @Override
     public void onBindViewHolder(@NonNull AppointmentViewHolder holder, int position) {
         holder.txtAppointItem.setText(
-                position+1+ ". with " +
+//                position+1+ ". with " +
+                position + 1 + ". " +
                 appList.get(position).getCustomerName() + " on " +
                 appList.get(position).getAppointDateTime());
 

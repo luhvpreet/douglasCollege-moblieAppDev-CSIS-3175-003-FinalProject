@@ -3,7 +3,7 @@
 ## To-do
 
 - [x] User creation and validation
-- [ ] Profile view and edit
+- [ ] Profile view and edit #6
 - [ ] Appointment view and edit
 - [ ] Service view and edit
 - [ ] Service history view

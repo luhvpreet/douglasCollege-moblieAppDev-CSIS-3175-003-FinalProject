@@ -52,30 +52,18 @@ public class LoginActivity extends AppCompatActivity {
 
                 // check if the email and password are valid
                 if (db.verifyLogin(email, password)) {
-                    // for now, display a toast message
-                    Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
-                    //goes to either ServiceProviderHomeActivity or CustomerHomeActivity
-
-
-                    Cursor cursor = db.getUserType(email);
-
-                    if(cursor.getCount()>0){
-                        while(cursor.moveToNext()){
-                            userId = cursor.getInt(0);
-                            type = cursor.getInt(1);
-                        }
+                    if (db.getUserType(email) == 0) {
+                        // if the user is a provider, go to the ProviderHome activity
+                        Intent intent = new Intent(LoginActivity.this, ServiceProviderHomeActivity.class);
+                        intent.putExtra("username", db.getUserName(email));
+                        startActivity(intent);
+                    } else {
+                        // if the user is a customer, go to the CustomerHome activity
+                        Intent intent = new Intent(LoginActivity.this, CustomerHomeActivity.class);
+                        intent.putExtra("username", db.getUserName(email));
+                        startActivity(intent);
                     }
-                    editor.putInt("UserType", type);
-                    editor.putInt("UserId", userId);
-                    editor.commit();
-
-                    Intent intent;
-                    if(type==0) intent = new Intent(LoginActivity.this, ServiceProviderHomeActivity.class);
-                    else intent = new Intent(LoginActivity.this, CustomerHomeActivity.class);
-
-                    startActivity(intent);
                 } else {
-                    // for now, display a toast message
                     Toast.makeText(LoginActivity.this, "Login failed", Toast.LENGTH_SHORT).show();
                 }
             }

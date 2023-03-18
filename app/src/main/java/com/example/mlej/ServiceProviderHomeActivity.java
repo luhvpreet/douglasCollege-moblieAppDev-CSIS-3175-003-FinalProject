@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class ServiceProviderHomeActivity extends AppCompatActivity {
 
@@ -24,5 +25,10 @@ public class ServiceProviderHomeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        
+        TextView txtWelcome = findViewById(R.id.txtSPHServiceProviderName);
+        String username = getIntent().getStringExtra("username");
+
+        txtWelcome.setText(username + "!");
     }
 }

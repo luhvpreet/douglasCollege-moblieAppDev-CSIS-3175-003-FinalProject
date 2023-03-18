@@ -14,7 +14,7 @@ import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     final static String DATABASE_NAME = "database.db";
-    final static int DATABASE_VERSION = 13;
+    final static int DATABASE_VERSION = 14;
     final static String TABLE1_NAME = "User_table";
     final static String T1COL1 = "Id";
     // user type, 0 for service provider, 1 for customer
@@ -32,8 +32,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     final static String T2COL3 = "ProviderId";
     final static String T2COL4 = "VehicleId";
     final static String T2COL5 = "DateTime";
-    final static String T2COL6 = "DropOffOption";
-    final static String T2COL7 = "PickUpOption";
+    //0 means drop off and 1 means pickup
+    final static String T2COL6 = "DropOffOrPickUp";
 
     final static String TABLE3_NAME = "Services_Table";
     final static String T3COL1 = "ServicesID";
@@ -59,7 +59,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         query = "CREATE TABLE " + TABLE2_NAME +
                 "( " + T2COL1 + " INTEGER PRIMARY KEY, " + T2COL2 + " INTEGER,"
                 + T2COL3 + " INTEGER," + T2COL4 + " INTEGER," + T2COL5 + " TEXT,"
-                + T2COL6 + " TEXT," + T2COL7 + " TEXT)";
+                + T2COL6 + " INTEGER)";
         sqLiteDatabase.execSQL(query);
 
         query = "CREATE TABLE " + TABLE3_NAME +
@@ -144,15 +144,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // WIP: method to update user information
 
 
-    public boolean addAppointment(int Customer_Id, int Provider_Id, int Vehicle_Id, String DateTime, String DropOffOption, String PickUpOption){
+    public boolean addAppointment(int Customer_Id, int Provider_Id, int Vehicle_Id, String DateTime, int DropOffOrPickUp){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(T2COL2,Customer_Id);
         values.put(T2COL3,Provider_Id);
         values.put(T2COL4,Vehicle_Id);
         values.put(T2COL5,DateTime);
-        values.put(T2COL6,DropOffOption);
-        values.put(T2COL7,PickUpOption);
+        values.put(T2COL6,DropOffOrPickUp); //0 means drop off and 1 means pickup
 
         long l = sqLiteDatabase.insert(TABLE2_NAME,null,values);
         if(l>0)

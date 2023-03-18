@@ -3,7 +3,10 @@ package com.example.mlej;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,6 +14,8 @@ import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
     DatabaseHelper db;
+    SharedPreferences.Editor editor;
+    SharedPreferences preferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +25,10 @@ public class LoginActivity extends AppCompatActivity {
         Button btnLLogin = findViewById(R.id.btnLLogin);
         EditText txtLEmail = findViewById(R.id.etxtUsername);
         EditText txtLPassword = findViewById(R.id.etxtPassword);
+
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        editor = preferences.edit();
+
 
         //clicking on the signup button will go to the SignupAccountType activity
         btnLSignup.setOnClickListener(new View.OnClickListener() {
@@ -37,6 +46,10 @@ public class LoginActivity extends AppCompatActivity {
                 // get the email and password from the text fields
                 String email = txtLEmail.getText().toString();
                 String password = txtLPassword.getText().toString();
+
+                int type=0;
+                int userId=0;
+
                 // check if the email and password are valid
                 if (db.verifyLogin(email, password)) {
                     if (db.getUserType(email) == 0) {

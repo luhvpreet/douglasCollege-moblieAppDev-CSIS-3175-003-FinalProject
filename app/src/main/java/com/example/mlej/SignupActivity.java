@@ -67,6 +67,7 @@ public class SignupActivity extends AppCompatActivity {
                     db = new DatabaseHelper(SignupActivity.this);
                     db.addUser(accountType, txtSName.getText().toString(), txtSEmail.getText().toString(), txtSPassword.getText().toString(), txtSPhone.getText().toString(), txtSAddress.getText().toString(), txtPostalCode.getText().toString());
                     // display toast message
+
                     Toast.makeText(SignupActivity.this, "User created successfully", Toast.LENGTH_SHORT).show();
                     // empty all fields
                     txtSEmail.setText("");

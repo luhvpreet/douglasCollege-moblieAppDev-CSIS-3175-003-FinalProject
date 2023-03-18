@@ -5,12 +5,16 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
     final static String DATABASE_NAME = "database.db";
-    final static int DATABASE_VERSION = 6;
+    final static int DATABASE_VERSION = 8;
     final static String TABLE1_NAME = "User_table";
     final static String T1COL1 = "Id";
     // user type, 0 for service provider, 1 for customer
@@ -80,14 +84,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     // method to verify user login
     // not secure, not suitable for production
-    public boolean verifyLogin(String email, String password){
+    public int verifyLogin(String email, String password) {
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
-        String query = "SELECT * FROM " + TABLE1_NAME + " WHERE " + T1COL4 + " = '" + email + "' AND " + T1COL5 + " = '" + password + "'";
-        Cursor cursor = sqLiteDatabase.rawQuery(query,null);
-        if(cursor.getCount() > 0)
-            return true;
+        String query = "SELECT ID FROM " + TABLE1_NAME + " WHERE " + T1COL4 + " = '" + email + "' AND " + T1COL5 + " = '" + password + "'";
+        Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            return cursor.getInt(0);
+        }
         else
-            return false;
+            return -1;
     }
 
     public int getUserType(String email){
@@ -135,13 +141,28 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return false;
     }
 
-    public Cursor viewAppointment(int UserId){
+    public List<AppointmentItemModel> viewAppointment(int UserId){
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
         String query = "SELECT AppointmentId, Name, DateTime from Appointment_table " +
                 "inner join User_table " +
                 "on Appointment_table.CustomerId = User_table.Id " +
                 "WHERE ProviderId=" + UserId +
                 " ORDER BY AppointmentId";
-        return sqLiteDatabase.rawQuery(query, null);
+        Cursor cursor = sqLiteDatabase.rawQuery(query,null);
+        List<AppointmentItemModel> appList;
+        if(cursor.getCount() > 0){
+            appList = new ArrayList<>();
+            while(cursor.moveToNext()) {
+                appList.add(new AppointmentItemModel(
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getString(2)));
+            }
+            return appList;
+        }
+        else
+            return null;
     }
+
+
 }

@@ -43,7 +43,7 @@ public class LoginSignupActivity extends AppCompatActivity {
         // from 0 to 5 is provider, 6 to 35 is taker
 
         db.addUser(0,"Eric Smith","a@a.com","1234","6153484271","1439 Elmwood Avenue, Brockville, ON","G7V 6K2");
-        db.addUser(0,"Lovepreet Johnson","aspencer837@mailinator.com","1234","9055257195","720 Pine Street, Port Coquitlam, BC","K8P 3M6");
+        db.addUser(0,"Lovepreet Johnson","b@b.com","1234","9055257195","720 Pine Street, Port Coquitlam, BC","K8P 3M6");
         db.addUser(0,"Matthew Jackson","lindawilliams251@trashmail.com","1234","1072229767","2084 Oak Lane, Chambly, QC","V2L 3V1");
         db.addUser(0,"Jichi Davis","pattydavis365@guerillamail.com","1234","7137418268","3613 Maple Street, Canmore, AB","B3H 3R3");
         db.addUser(0,"Helen Wong","aaronrobinson819@getairmail.com","1234","9269245943","905 Cedar Street, Sydney, NS","J5R 4W4");
@@ -108,13 +108,13 @@ public class LoginSignupActivity extends AppCompatActivity {
         db.addAppointment(33,5,28,"Mar 31, 10:00am","ok","ok");
         db.addAppointment(34,5,29,"Mar 31, 2:00pm","ok","ok");
         db.addAppointment(35,5,30,"Mar 31, 5:00pm","ok","ok");
-        db.addAppointment(35,0,31,"Apr 1, 5:00pm","ok","ok");
-        db.addAppointment(34,0,32,"Apr 2, 5:00pm","ok","ok");
-        db.addAppointment(33,0,33,"Apr 3, 5:00pm","ok","ok");
-        db.addAppointment(32,0,34,"Apr 4, 5:00pm","ok","ok");
-        db.addAppointment(31,0,35,"Apr 5, 5:00pm","ok","ok");
-        db.addAppointment(30,0,36,"Apr 6, 5:00pm","ok","ok");
-        db.addAppointment(29,0,37,"Apr 7, 5:00pm","ok","ok");
+        db.addAppointment(35,1,31,"Apr 1, 5:00pm","ok","ok");
+        db.addAppointment(34,1,32,"Apr 2, 5:00pm","ok","ok");
+        db.addAppointment(33,1,33,"Apr 3, 5:00pm","ok","ok");
+        db.addAppointment(32,1,34,"Apr 4, 5:00pm","ok","ok");
+        db.addAppointment(31,1,35,"Apr 5, 5:00pm","ok","ok");
+        db.addAppointment(30,1,36,"Apr 6, 5:00pm","ok","ok");
+        db.addAppointment(29,1,37,"Apr 7, 5:00pm","ok","ok");
 
     }
 }

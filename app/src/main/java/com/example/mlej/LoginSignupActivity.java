@@ -62,7 +62,7 @@ public class LoginSignupActivity extends AppCompatActivity {
         db.addUser(0,"Matthew Jackson","c@c.com","1234","2683691440","2084 Oak Lane, Chambly, QC","V2L 3V1","AutoCruise");
         db.addUser(0,"Jichi Davis","d@d.com","1234","5463466042","3613 Maple Street, Canmore, AB","B3H 3R3","GearUpGo");
         db.addUser(0,"Helen Wong","e@e.com","1234","2395558952","905 Cedar Street, Sydney, NS","J5R 4W4","RideRunners");
-        db.addUser(1,"Meriwether Causey","douglascoleman183@maildrop.cc","1234","8767525010","1865 Birch Avenue, Pembroke, ON","H9R 4R6","");
+        db.addUser(1,"Meriwether Causey","f@f.com","1234","8767525010","1865 Birch Avenue, Pembroke, ON","H9R 4R6","");
         db.addUser(1,"Eldred Hayden","lucasrivera994@inboxalias.com","1234","7072059776","2592 Spruce Street, Hanover, MB","V3S 6K3","");
         db.addUser(1,"Bronwyn Durant","kylejohnson746@tempinbox.com","1234","8659915511","3190 Sycamore Lane, Saint John, NB","R3L 1T8","");
         db.addUser(1,"Chalice Davison","rebeccaallen271@tempmailgen.com","1234","1724616192","1068 Cherry Street, Langford, BC","V1L 6T9","");

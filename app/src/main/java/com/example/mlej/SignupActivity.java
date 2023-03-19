@@ -28,9 +28,9 @@ public class SignupActivity extends AppCompatActivity {
         int accountType;
 
         if (getIntent().getStringExtra("accountType").equals("provider")) {
-            accountType = 0;
+            accountType = 0; //provider=0;
         } else {
-            accountType = 1;
+            accountType = 1; //taker=1;
         }
 
         //clicking on the Login button will go to the Login activity
@@ -63,21 +63,34 @@ public class SignupActivity extends AppCompatActivity {
                 } else if (!txtSPhone.getText().toString().matches("[0-9]+")) {
                     txtSPhone.setError("Please enter a valid phone number");
                 } else {
-                    // add user to database
-                    db = new DatabaseHelper(SignupActivity.this);
-                    // the last empty string in addUser is for Company name, customer does not have company name
-                    db.addUser(accountType, txtSName.getText().toString(), txtSEmail.getText().toString(), txtSPassword.getText().toString(), txtSPhone.getText().toString(), txtSAddress.getText().toString(), txtPostalCode.getText().toString(), "");
-                    // display toast message
+                    if(accountType==1) {
+                        // add user to database
+                        db = new DatabaseHelper(SignupActivity.this);
+                        // the last empty string in addUser is for Company name, customer does not have company name
+                        db.addUser(accountType, txtSName.getText().toString(), txtSEmail.getText().toString(), txtSPassword.getText().toString(), txtSPhone.getText().toString(), txtSAddress.getText().toString(), txtPostalCode.getText().toString(), "");
+                        // display toast message
 
-                    Toast.makeText(SignupActivity.this, "User created successfully", Toast.LENGTH_SHORT).show();
-                    // empty all fields
-                    txtSEmail.setText("");
-                    txtSName.setText("");
-                    txtSPhone.setText("");
-                    txtSAddress.setText("");
-                    txtPostalCode.setText("");
-                    txtSPassword.setText("");
-                    txtSConfirmPassword.setText("");
+                        Toast.makeText(SignupActivity.this, "User created successfully", Toast.LENGTH_SHORT).show();
+                        // empty all fields
+                        txtSEmail.setText("");
+                        txtSName.setText("");
+                        txtSPhone.setText("");
+                        txtSAddress.setText("");
+                        txtPostalCode.setText("");
+                        txtSPassword.setText("");
+                        txtSConfirmPassword.setText("");
+                    }
+                    else{
+                        //accountType = 0 = provider
+                        Intent intent = new Intent(SignupActivity.this, SignupServicesActivity.class);
+                        intent.putExtra("SName", txtSName.getText().toString());
+                        intent.putExtra("SEmail", txtSEmail.getText().toString());
+                        intent.putExtra("SPassword", txtSPassword.getText().toString());
+                        intent.putExtra("SPhone", txtSPhone.getText().toString());
+                        intent.putExtra("SAddress", txtSAddress.getText().toString());
+                        intent.putExtra("PostalCode", txtPostalCode.getText().toString());
+                        startActivity(intent);
+                    }
                 }
             }
         });

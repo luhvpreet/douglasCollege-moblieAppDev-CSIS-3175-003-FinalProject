@@ -18,6 +18,7 @@ public class LoginSignupActivity extends AppCompatActivity {
         Button btnLSLogin = findViewById(R.id.btnLSLogin);
         Button btnLSSignup = findViewById(R.id.btnLSSignup);
 
+        //dummy info for users, appointments, providerservices, etc:
         //initData();
 
         //clicking on the Login button will go to the Login activity
@@ -39,6 +40,7 @@ public class LoginSignupActivity extends AppCompatActivity {
         });
     }
 
+    //dummy info for users, appointments, providerservices, etc:
     void initData(){
         db = new DatabaseHelper(LoginSignupActivity.this);
 

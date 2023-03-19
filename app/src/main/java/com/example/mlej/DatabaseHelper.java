@@ -102,6 +102,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return false;
     }
 
+    //method to add user to database, but this one returns the ID of the inserted row
+    public long addUserLong(int type, String name, String email, String password, String phone, String address, String postalCode, String companyName){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(T1COL2,type);
+        values.put(T1COL3,name);
+        values.put(T1COL4,email);
+        values.put(T1COL5,password);
+        values.put(T1COL6,phone);
+        values.put(T1COL7,address);
+        values.put(T1COL8,postalCode);
+        values.put(T1COL9,companyName);
+
+        return sqLiteDatabase.insert(TABLE1_NAME,null,values);
+    }
+
+
     // method to verify user login
     // not secure, not suitable for production
     public int verifyLogin(String email, String password) {

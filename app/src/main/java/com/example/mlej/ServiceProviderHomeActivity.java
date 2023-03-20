@@ -23,22 +23,30 @@ public class ServiceProviderHomeActivity extends AppCompatActivity {
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
         userId = preferences.getInt("USERID",0);
 
-        //this is not yet done, for testing only
         Button btnSPHViewAppointment = findViewById(R.id.btnSPHViewAppointment);
+        Button btnSPHLogout = findViewById(R.id.btnSPHLogout);
+
+        TextView txtWelcome = findViewById(R.id.txtSPHServiceProviderName);
+        String username = getIntent().getStringExtra("username");
+        txtWelcome.setText(username + "!");
+
+
         btnSPHViewAppointment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //this is not yet done, for testing only
                 Intent intent = new Intent(ServiceProviderHomeActivity.this, AppointmentListActivity.class);
                 startActivity(intent);
             }
         });
-        
-        TextView txtWelcome = findViewById(R.id.txtSPHServiceProviderName);
-        String username = getIntent().getStringExtra("username");
 
-        txtWelcome.setText(username + "!");
+        btnSPHLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ServiceProviderHomeActivity.this, WelcomeScreenActivity.class);
+                intent.putExtra("isLogout", true);
+                startActivity(intent);
+            }
+        });
 
-        System.out.println("AppointmentListActivity: "+userId);
     }
 }

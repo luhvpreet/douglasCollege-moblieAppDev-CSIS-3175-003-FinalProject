@@ -2,6 +2,7 @@ package com.example.mlej;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -24,7 +25,9 @@ public class CustomerHomeActivity extends AppCompatActivity {
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                Intent intent = new Intent(CustomerHomeActivity.this, WelcomeScreenActivity.class);
+                intent.putExtra("isLogout", true);
+                startActivity(intent);
             }
         });
     }

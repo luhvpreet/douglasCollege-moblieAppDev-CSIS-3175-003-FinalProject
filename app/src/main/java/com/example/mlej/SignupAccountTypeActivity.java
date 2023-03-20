@@ -10,14 +10,18 @@ import android.widget.RadioButton;
 
 public class SignupAccountTypeActivity extends AppCompatActivity {
 
+    Button btnSANext;
+    RadioButton radbtnProvider;
+    RadioButton radbtnTaker;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup_account_type);
 
-        Button btnSANext = findViewById(R.id.btnSANext);
-        RadioButton radbtnProvider = findViewById(R.id.radbtnProvider);
-        RadioButton radbtnTaker = findViewById(R.id.radbtnTaker);
+        btnSANext = findViewById(R.id.btnSANext);
+        radbtnProvider = findViewById(R.id.radbtnProvider);
+        radbtnTaker = findViewById(R.id.radbtnTaker);
 
         //Clicking to the Next button will go to either the Taker or Provider signup page depending on the radio button choice
         btnSANext.setOnClickListener(new View.OnClickListener() {
@@ -31,6 +35,16 @@ public class SignupAccountTypeActivity extends AppCompatActivity {
                 }
             }
         });
-
     }
+
+    public void clickProviderImage(View v){
+        radbtnProvider.setChecked(true);
+        radbtnTaker.setChecked(false);
+    }
+
+    public void clickTakerImage(View v){
+        radbtnProvider.setChecked(false);
+        radbtnTaker.setChecked(true);
+    }
+
 }

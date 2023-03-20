@@ -22,6 +22,7 @@ public class ServiceProviderHomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_service_provider_home);
 
+        db = new DatabaseHelper(this);
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
         userId = preferences.getInt("USERID",0);
         editor = preferences.edit();

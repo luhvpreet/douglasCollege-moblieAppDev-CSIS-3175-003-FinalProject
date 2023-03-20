@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">MLEJ</string>
     <string name="txtUpComingAppointmnet">Upcoming Appointments</string>
+    <string name="profileName">Name</string>
+    <string name="profileEmail">Email</string>
+    <string name="profilePhone">Phone</string>
+    <string name="profileAddress">Address</string>
+    <string name="profilePostal">Postal Code</string>
+    <string name="btnSaveProfile">Save</string>
 </resources>

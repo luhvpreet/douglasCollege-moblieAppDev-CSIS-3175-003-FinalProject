@@ -229,9 +229,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return null;
     }
 
-    // WIP: method to get user information
     // WIP: method to update user information
-
+    public boolean updateUser(int userId, String name, String email, String phone, String address, String postalCode) {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(T1COL3, name);
+        values.put(T1COL4, email);
+        values.put(T1COL6, phone);
+        values.put(T1COL7, address);
+        values.put(T1COL8, postalCode);
+        return sqLiteDatabase.update(TABLE1_NAME, values, T1COL1 + " = " + userId, null) > 0;
+    }
 
     public boolean addAppointment(int Customer_Id, int Provider_Id, int Vehicle_Id, String DateTime, int DropOffOrPickUp){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();

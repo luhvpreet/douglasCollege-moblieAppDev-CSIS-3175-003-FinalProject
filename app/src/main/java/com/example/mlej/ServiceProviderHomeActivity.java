@@ -13,6 +13,8 @@ import android.widget.TextView;
 public class ServiceProviderHomeActivity extends AppCompatActivity {
 
     SharedPreferences preferences;
+    SharedPreferences.Editor editor;
+    DatabaseHelper db;
     int userId;
 
     @Override
@@ -20,16 +22,36 @@ public class ServiceProviderHomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_service_provider_home);
 
+        db = new DatabaseHelper(this);
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
         userId = preferences.getInt("USERID",0);
+        editor = preferences.edit();
 
         Button btnSPHViewAppointment = findViewById(R.id.btnSPHViewAppointment);
         Button btnSPHLogout = findViewById(R.id.btnSPHLogout);
 
         TextView txtWelcome = findViewById(R.id.txtSPHServiceProviderName);
-        String username = getIntent().getStringExtra("username");
+        String username = db.getUserNameById(userId);
         txtWelcome.setText(username + "!");
 
+        Button btnEditProfile = findViewById(R.id.btnSPHEditProfile);
+        Button btnViewProfile = findViewById(R.id.btnSPHViewProfile);
+
+        btnEditProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ServiceProviderHomeActivity.this, ProfileEditActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnViewProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ServiceProviderHomeActivity.this, ProfileViewActivity.class);
+                startActivity(intent);
+            }
+        });
 
         btnSPHViewAppointment.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,6 +66,8 @@ public class ServiceProviderHomeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(ServiceProviderHomeActivity.this, WelcomeScreenActivity.class);
                 intent.putExtra("isLogout", true);
+                editor.remove("USERID");
+                editor.commit();
                 startActivity(intent);
             }
         });

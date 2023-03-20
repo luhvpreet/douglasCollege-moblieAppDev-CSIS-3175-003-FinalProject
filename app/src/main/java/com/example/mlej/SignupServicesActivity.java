@@ -54,6 +54,8 @@ public class SignupServicesActivity extends AppCompatActivity {
                     if (cboxServices9.isChecked()) db.addProviderServices((int)l, 9);
                     if (cboxServices10.isChecked()) db.addProviderServices((int)l, 10);
                     Toast.makeText(SignupServicesActivity.this, "Service provider account created successfully", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(SignupServicesActivity.this, LoginActivity.class);
+                    startActivity(intent);
                 }
             }
         });

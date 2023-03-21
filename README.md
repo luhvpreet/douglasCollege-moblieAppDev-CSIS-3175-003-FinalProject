@@ -6,7 +6,7 @@
 - [x] Creating Service tables and adding some related database methods and dummy info at initData() inside LoginSignupActivity.java
 - [x] Profile view and edit https://github.com/luhvpreet/douglasCollege-moblieAppDev-CSIS-3175-003-FinalProject/pull/6
 - [ ] Search providers https://github.com/luhvpreet/douglasCollege-moblieAppDev-CSIS-3175-003-FinalProject/pull/7
-- [ ] Appointment view and edit
+- [ ] Appointment view and edit https://github.com/luhvpreet/douglasCollege-moblieAppDev-CSIS-3175-003-FinalProject/pull/8
 - [ ] Service view and edit
 - [ ] Service history view
 - [ ] Reports generation

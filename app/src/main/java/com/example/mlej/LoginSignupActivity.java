@@ -19,7 +19,7 @@ public class LoginSignupActivity extends AppCompatActivity {
         Button btnLSSignup = findViewById(R.id.btnLSSignup);
 
         //dummy info for users, appointments, providerservices, etc:
-        //initData();
+        initData();
 
         //clicking on the Login button will go to the Login activity
         btnLSLogin.setOnClickListener(new View.OnClickListener(){
@@ -170,5 +170,64 @@ public class LoginSignupActivity extends AppCompatActivity {
         db.addAppointment(41,5,36,"Apr 30, 5:00pm",0);
         db.addAppointment(42,5,37,"May 31, 10:00am",1);
         db.addAppointment(43,5,38,"May 31, 2:00pm",0);
+
+        db.addAppointmentServices(1,1);
+        db.addAppointmentServices(1,2);
+        db.addAppointmentServices(1,3);
+        db.addAppointmentServices(1,4);
+        db.addAppointmentServices(1,5);
+        db.addAppointmentServices(1,6);
+        db.addAppointmentServices(1,7);
+        db.addAppointmentServices(1,8);
+        db.addAppointmentServices(1,9);
+        db.addAppointmentServices(1,10);
+        db.addAppointmentServices(2,2);
+        db.addAppointmentServices(2,3);
+        db.addAppointmentServices(2,4);
+        db.addAppointmentServices(3,3);
+        db.addAppointmentServices(3,4);
+        db.addAppointmentServices(4,7);
+        db.addAppointmentServices(4,2);
+        db.addAppointmentServices(5,4);
+        db.addAppointmentServices(5,2);
+        db.addAppointmentServices(5,8);
+        db.addAppointmentServices(6,4);
+        db.addAppointmentServices(6,2);
+        db.addAppointmentServices(6,1);
+        db.addAppointmentServices(7,6);
+        db.addAppointmentServices(7,8);
+        db.addAppointmentServices(7,10);
+        db.addAppointmentServices(8,7);
+        db.addAppointmentServices(9,5);
+        db.addAppointmentServices(10,7);
+        db.addAppointmentServices(11,6);
+        db.addAppointmentServices(12,2);
+        db.addAppointmentServices(13,1);
+        db.addAppointmentServices(14,9);
+        db.addAppointmentServices(15,2);
+        db.addAppointmentServices(16,9);
+        db.addAppointmentServices(17,8);
+        db.addAppointmentServices(18,6);
+        db.addAppointmentServices(19,5);
+        db.addAppointmentServices(20,10);
+        db.addAppointmentServices(21,7);
+        db.addAppointmentServices(22,1);
+        db.addAppointmentServices(23,7);
+        db.addAppointmentServices(24,6);
+        db.addAppointmentServices(25,6);
+        db.addAppointmentServices(26,10);
+        db.addAppointmentServices(27,4);
+        db.addAppointmentServices(28,5);
+        db.addAppointmentServices(29,1);
+        db.addAppointmentServices(30,10);
+        db.addAppointmentServices(31,7);
+        db.addAppointmentServices(32,8);
+        db.addAppointmentServices(33,5);
+        db.addAppointmentServices(34,10);
+        db.addAppointmentServices(35,1);
+        db.addAppointmentServices(36,7);
+        db.addAppointmentServices(37,8);
+        db.addAppointmentServices(38,1);
+
     }
 }

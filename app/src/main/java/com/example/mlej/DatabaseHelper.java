@@ -77,7 +77,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         query = "CREATE TABLE " + TABLE5_NAME +
                 "( " + T5COL1 + " INTEGER, " + T5COL2 + " INTEGER)";
         sqLiteDatabase.execSQL(query);
-
     }
 
     @Override

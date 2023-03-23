@@ -44,6 +44,11 @@ public class LoginSignupActivity extends AppCompatActivity {
     void initData(){
         db = new DatabaseHelper(LoginSignupActivity.this);
 
+        System.out.println("Start deleting all records...");
+
+        //delete all records in all database (dummy users / appointments, etc)
+        db.deleteALLRecords();
+
         db.addServices(1,"Electronic System Check");
         db.addServices(2,"New Tires or Changing Tires");
         db.addServices(3,"AC and Heating Repair");
@@ -229,5 +234,6 @@ public class LoginSignupActivity extends AppCompatActivity {
         db.addAppointmentServices(37,8);
         db.addAppointmentServices(38,1);
 
+        System.out.println("Finish inserting all the new dummy records.");
     }
 }

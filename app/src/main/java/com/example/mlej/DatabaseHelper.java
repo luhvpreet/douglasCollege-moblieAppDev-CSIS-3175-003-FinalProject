@@ -12,6 +12,8 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
+import kotlin.reflect.KMutableProperty1;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
     final static String DATABASE_NAME = "database.db";
     final static int DATABASE_VERSION = 17;
@@ -406,6 +408,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
 
         return services;
+    }
+
+    //this will delete all records in all of the tables
+    public void deleteALLRecords(){
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        sqLiteDatabase.execSQL("delete from "+ TABLE1_NAME);
+        sqLiteDatabase.execSQL("delete from "+ TABLE2_NAME);
+        sqLiteDatabase.execSQL("delete from "+ TABLE3_NAME);
+        sqLiteDatabase.execSQL("delete from "+ TABLE4_NAME);
+        sqLiteDatabase.execSQL("delete from "+ TABLE5_NAME);
     }
 
 

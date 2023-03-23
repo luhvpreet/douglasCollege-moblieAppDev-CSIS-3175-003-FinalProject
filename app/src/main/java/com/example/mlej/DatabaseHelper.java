@@ -14,7 +14,7 @@ import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     final static String DATABASE_NAME = "database.db";
-    final static int DATABASE_VERSION = 15;
+    final static int DATABASE_VERSION = 17;
     final static String TABLE1_NAME = "User_table";
     final static String T1COL1 = "Id";
     // user type, 0 for service provider, 1 for customer
@@ -351,7 +351,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public String[] getServicesFromAppointment (int appointmentID){
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
 
-        String query = "SELECT " + T3COL2 +
+        String query = "SELECT DISTINCT " + T3COL2 +
                         " FROM " + TABLE3_NAME +
                         " INNER JOIN " + TABLE5_NAME +
                         " ON " + TABLE3_NAME + "." + T3COL1 + "=" + TABLE5_NAME +"." + T3COL1 + " WHERE " +

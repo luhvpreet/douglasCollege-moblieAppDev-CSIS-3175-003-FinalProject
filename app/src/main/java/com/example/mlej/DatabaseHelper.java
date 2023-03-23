@@ -14,7 +14,7 @@ import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     final static String DATABASE_NAME = "database.db";
-    final static int DATABASE_VERSION = 14;
+    final static int DATABASE_VERSION = 16;
     final static String TABLE1_NAME = "User_table";
     final static String T1COL1 = "Id";
     // user type, 0 for service provider, 1 for customer
@@ -43,6 +43,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     final static String T4COL1 = "ProviderId";
     final static String T4COL2 = "ServicesID";
 
+    final static String TABLE5_NAME = "Reminders_table";
+    final static String T5COL1 = "ReminderId";
+    final static String T5COL2 = "senderId";
+    final static String T5COL3 = "recipientId";
+    final static String T5COL4 = "appointmentId";
+
     public DatabaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -70,6 +76,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "( " + T4COL1 + " INTEGER, " + T4COL2 + " INTEGER)";
         sqLiteDatabase.execSQL(query);
 
+        query = "CREATE TABLE " + TABLE5_NAME +
+                "( " + T5COL1 + " INTEGER PRIMARY KEY, " + T5COL2 + " INTEGER,"
+                + T5COL3 + " INTEGER," + T5COL4 + " INTEGER)";
+        sqLiteDatabase.execSQL(query);
     }
 
     @Override
@@ -78,6 +88,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE2_NAME);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE3_NAME);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE4_NAME);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE5_NAME);
         onCreate(sqLiteDatabase);
     }
 
@@ -341,6 +352,38 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return cursor.getString(0);
         }
         else
+            return null;
+    }
+
+    public boolean addReminder(int senderId, int receiverId, int appointmentId) {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(T5COL2, senderId);
+        values.put(T5COL3, receiverId);
+        values.put(T5COL4, appointmentId);
+        long l = sqLiteDatabase.insert(TABLE5_NAME, null, values);
+        if (l > 0)
+            return true;
+        else
+            return false;
+    }
+
+    public List<ReminderItemModel> getReminders(int userId, Context context) {
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        String query = "SELECT ReminderId, senderId, appointmentId from Reminders_table where recipientId = " + userId;
+        Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+        List<ReminderItemModel> reminderList;
+        if (cursor.getCount() > 0) {
+            reminderList = new ArrayList<>();
+            while (cursor.moveToNext()) {
+                reminderList.add(new ReminderItemModel(
+                        cursor.getInt(0),
+                        cursor.getInt(1),
+                        cursor.getInt(2),
+                        context));
+            }
+            return reminderList;
+        } else
             return null;
     }
 

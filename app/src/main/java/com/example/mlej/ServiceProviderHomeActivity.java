@@ -32,6 +32,7 @@ public class ServiceProviderHomeActivity extends AppCompatActivity {
 
         TextView txtWelcome = findViewById(R.id.txtSPHServiceProviderName);
         String username = db.getUserNameById(userId);
+        String companyName = db.getCompanyName(userId);
         txtWelcome.setText(username + "!");
 
         Button btnEditProfile = findViewById(R.id.btnSPHEditProfile);
@@ -49,6 +50,8 @@ public class ServiceProviderHomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ServiceProviderHomeActivity.this, ProfileViewActivity.class);
+                intent.putExtra("id", userId);
+                intent.putExtra("name", companyName);
                 startActivity(intent);
             }
         });

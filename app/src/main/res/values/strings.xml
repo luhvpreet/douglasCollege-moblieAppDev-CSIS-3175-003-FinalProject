@@ -7,4 +7,5 @@
     <string name="profileAddress">Address</string>
     <string name="profilePostal">Postal Code</string>
     <string name="btnSaveProfile">Save</string>
+    <string name="queryHint">Provider Name</string>
 </resources>

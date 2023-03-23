@@ -33,6 +33,15 @@ public class CustomerHomeActivity extends AppCompatActivity {
 
         Button btnEditProfile = findViewById(R.id.btnCHEditProfile);
         Button btnViewProfile = findViewById(R.id.btnCHViewProfile);
+        Button btnSearchProvider = findViewById(R.id.btnCHSearch);
+
+        btnSearchProvider.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CustomerHomeActivity.this, ProviderSearchActivity.class);
+                startActivity(intent);
+            }
+        });
 
         btnEditProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,6 +55,8 @@ public class CustomerHomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(CustomerHomeActivity.this, ProfileViewActivity.class);
+                intent.putExtra("id", userId);
+                intent.putExtra("name", username);
                 startActivity(intent);
             }
         });

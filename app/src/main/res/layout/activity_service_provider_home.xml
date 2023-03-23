@@ -2,7 +2,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/btnSPHReminder"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ServiceProviderHomeActivity">
@@ -148,7 +147,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="28dp"
         android:background="@drawable/btn_bg_design"
-        android:text="Send Reminders"
+        android:text="Test Reminders"
         app:layout_constraintBottom_toBottomOf="@+id/imgView1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.047"

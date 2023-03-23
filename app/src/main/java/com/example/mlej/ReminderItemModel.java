@@ -14,7 +14,7 @@ public class ReminderItemModel {
         this.reminderId = reminderId;
         this.senderId = senderId;
         this.appointmentId = appointmentId;
-        this.title = "Upcoming appointment at " + db.getCompanyName(senderId);
+        this.title = "Upcoming Appointment\n\n" + db.getCompanyName(senderId) + "\n\n" + db.getAppointmentDateTime(appointmentId);
     }
 
     public String getTitle() {

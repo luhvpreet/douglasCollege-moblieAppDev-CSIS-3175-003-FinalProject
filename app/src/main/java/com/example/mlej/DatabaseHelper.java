@@ -387,4 +387,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return null;
     }
 
+    // temporary
+    public String getAppointmentDateTime(int appointmentId) {
+        return "2020-01-01 00:00";
+    }
+
 }

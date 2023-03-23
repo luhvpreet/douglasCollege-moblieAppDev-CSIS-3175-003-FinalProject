@@ -335,6 +335,42 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return false;
     }
 
+    // Providers adapter
+    public List<ProviderItemModel> getProviders(){
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        String query = "SELECT Id, CompanyName, Email, Phone, Address, PostalCode from User_table " +
+                "WHERE Type=0";
+        Cursor cursor = sqLiteDatabase.rawQuery(query,null);
+        List<ProviderItemModel> providerList;
+        if (cursor.getCount() > 0) {
+            providerList = new ArrayList<>();
+            while (cursor.moveToNext()) {
+                providerList.add(new ProviderItemModel(
+                        cursor.getInt(0),
+                        cursor.getString(1),
+                        cursor.getString(2),
+                        cursor.getString(3),
+                        cursor.getString(4),
+                        cursor.getString(5)));
+            }
+            return providerList;
+        }
+        else
+            return null;
+    }
+
+    public String getCompanyName(int providerId){
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        String query = "SELECT " + T1COL9 + " FROM " + TABLE1_NAME + " WHERE " + T1COL1 + " = " + providerId;
+        Cursor cursor = sqLiteDatabase.rawQuery(query,null);
+        if(cursor.getCount() > 0){
+            cursor.moveToFirst();
+            return cursor.getString(0);
+        }
+        else
+            return null;
+    }
+
     public boolean addAppointmentServices(int AppointmentID, int ServicesID){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues values = new ContentValues();

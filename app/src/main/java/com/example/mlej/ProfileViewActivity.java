@@ -9,14 +9,13 @@ import android.widget.TextView;
 
 public class ProfileViewActivity extends AppCompatActivity {
     DatabaseHelper db;
-    SharedPreferences preferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_view);
 
         db = new DatabaseHelper(this);
-        preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        int id = getIntent().getIntExtra("id",0);
 
         TextView txtName = findViewById(R.id.profileName);
         TextView txtEmail = findViewById(R.id.profileEmail);
@@ -24,10 +23,14 @@ public class ProfileViewActivity extends AppCompatActivity {
         TextView txtAddress = findViewById(R.id.profileAddress);
         TextView txtPostal = findViewById(R.id.profilePostal);
 
-        txtName.setText(db.getUserNameById(preferences.getInt("USERID",0)));
-        txtEmail.setText(db.getUserEmail(preferences.getInt("USERID",0)));
-        txtPhone.setText(db.getUserPhone(preferences.getInt("USERID",0)));
-        txtAddress.setText(db.getUserAddress(preferences.getInt("USERID",0)));
-        txtPostal.setText(db.getUserPostalCode(preferences.getInt("USERID",0)));
+        txtName.setText(db.getUserNameById(id));
+        txtEmail.setText(db.getUserEmail(id));
+        txtPhone.setText(db.getUserPhone(id));
+        txtAddress.setText(db.getUserAddress(id));
+        txtPostal.setText(db.getUserPostalCode(id));
+
+        // set title
+        String name = getIntent().getStringExtra("name");
+        setTitle(name + "'s Profile");
     }
 }

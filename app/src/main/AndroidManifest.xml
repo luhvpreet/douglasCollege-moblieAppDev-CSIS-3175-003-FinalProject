@@ -12,6 +12,9 @@
         android:theme="@style/Theme.MLEJ"
         tools:targetApi="31">
         <activity
+            android:name=".ProviderSearchActivity"
+            android:exported="false" />
+        <activity
             android:name=".AppointmentEditActivity"
             android:exported="false" />
         <activity

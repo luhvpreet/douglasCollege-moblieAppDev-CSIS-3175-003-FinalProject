@@ -17,11 +17,11 @@ public class ProfileViewActivity extends AppCompatActivity {
         db = new DatabaseHelper(this);
         int id = getIntent().getIntExtra("id",0);
 
-        TextView txtName = findViewById(R.id.profileName);
-        TextView txtEmail = findViewById(R.id.profileEmail);
-        TextView txtPhone = findViewById(R.id.profilePhone);
-        TextView txtAddress = findViewById(R.id.profileAddress);
-        TextView txtPostal = findViewById(R.id.profilePostal);
+        TextView txtName = findViewById(R.id.txtName);
+        TextView txtEmail = findViewById(R.id.txtEmail);
+        TextView txtPhone = findViewById(R.id.txtPhone);
+        TextView txtAddress = findViewById(R.id.txtAddress);
+        TextView txtPostal = findViewById(R.id.txtPostal);
 
         txtName.setText(db.getUserNameById(id));
         txtEmail.setText(db.getUserEmail(id));

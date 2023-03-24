@@ -461,6 +461,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return services;
     }
 
+    public void cancelAppointment(int appointmentId){
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        sqLiteDatabase.execSQL("DELETE FROM "+ TABLE2_NAME + " WHERE " +
+                T2COL1 + " = " + appointmentId);
+        sqLiteDatabase.execSQL("DELETE FROM "+ TABLE5_NAME + " WHERE " +
+                T2COL1 + " = " + appointmentId);
+    }
+
     //this will delete all records in all of the tables
     public void deleteALLRecords(){
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();

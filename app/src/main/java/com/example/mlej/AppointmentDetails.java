@@ -4,21 +4,28 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class AppointmentDetails extends AppCompatActivity {
 
     DatabaseHelper db;
+    int appointmentId =0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_appointment_details);
         TextView txtAppointmentDetails = findViewById(R.id.txtAppointmentDetails);
+        Button btnCancelAppointment = findViewById(R.id.btnCancelAppointment);
+
         Intent intent = getIntent();
         db = new DatabaseHelper(this);
 
+
         if (intent != null){
-            int appointmentId = intent.getIntExtra("appointmentId", 0);
+            appointmentId = intent.getIntExtra("appointmentId", 0);
             AppointmentItemModel aim = db.getAppointment(appointmentId);
             StringBuilder str = new StringBuilder();
             str.append("Appointment with " + aim.getCustomerName() + "\n");
@@ -46,9 +53,17 @@ public class AppointmentDetails extends AppCompatActivity {
 
             txtAppointmentDetails.setText(str);
 
-
-
         }
 
+        btnCancelAppointment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                db.cancelAppointment(appointmentId);
+                Toast.makeText(AppointmentDetails.this, "Appointment cancelled successfully", Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(AppointmentDetails.this, AppointmentListActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

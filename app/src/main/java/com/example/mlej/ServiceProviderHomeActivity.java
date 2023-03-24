@@ -29,7 +29,6 @@ public class ServiceProviderHomeActivity extends AppCompatActivity {
 
         Button btnSPHViewAppointment = findViewById(R.id.btnSPHViewAppointment);
         Button btnSPHLogout = findViewById(R.id.btnSPHLogout);
-        Button btnSPHReminder = findViewById(R.id.btnSPHReminder);
 
         TextView txtWelcome = findViewById(R.id.txtSPHServiceProviderName);
         String username = db.getUserNameById(userId);
@@ -75,14 +74,5 @@ public class ServiceProviderHomeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        btnSPHReminder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ServiceProviderHomeActivity.this, ReminderSendActivity.class);
-                startActivity(intent);
-            }
-        });
-
     }
 }

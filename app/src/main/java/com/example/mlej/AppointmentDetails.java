@@ -3,12 +3,18 @@ package com.example.mlej;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class AppointmentDetails extends AppCompatActivity {
 
     DatabaseHelper db;
+    SharedPreferences preferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -16,9 +22,18 @@ public class AppointmentDetails extends AppCompatActivity {
         TextView txtAppointmentDetails = findViewById(R.id.txtAppointmentDetails);
         Intent intent = getIntent();
         db = new DatabaseHelper(this);
+        Button btnRemindCustomer = findViewById(R.id.btnRemindCustomer);
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         if (intent != null){
             int appointmentId = intent.getIntExtra("appointmentId", 0);
+            int userId = preferences.getInt("USERID", 0);
+            int customerId = db.getCustomerIdFromAppointment(appointmentId);
+
+            if (userId == customerId) {
+                btnRemindCustomer.setVisibility(View.INVISIBLE);
+            }
+
             AppointmentItemModel aim = db.getAppointment(appointmentId);
             StringBuilder str = new StringBuilder();
             str.append("Appointment with " + aim.getCustomerName() + "\n");
@@ -46,7 +61,17 @@ public class AppointmentDetails extends AppCompatActivity {
 
             txtAppointmentDetails.setText(str);
 
-
+            btnRemindCustomer.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (db.addReminder(userId, customerId, appointmentId)) {
+                        Toast.makeText(AppointmentDetails.this, "Reminder sent!", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        Toast.makeText(AppointmentDetails.this, "Reminder failed!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
 
         }
 

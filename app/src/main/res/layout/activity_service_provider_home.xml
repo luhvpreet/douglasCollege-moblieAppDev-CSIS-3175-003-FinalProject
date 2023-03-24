@@ -71,7 +71,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="104dp"
-        android:text="Appointment"
+        android:text="Appointment List"
         android:textColor="@color/white"
         android:textSize="30sp"
         android:textStyle="normal"
@@ -81,25 +81,14 @@
         app:layout_constraintTop_toBottomOf="@+id/txtSPHServiceProviderName" />
 
     <Button
-        android:id="@+id/btnSPHEditAppointment"
-        android:layout_width="100dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="96dp"
-        android:background="@drawable/btn_bg_design"
-        android:text="Edit"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnSPHViewAppointment"
-        app:layout_constraintTop_toBottomOf="@+id/txtSPHServiceProviderName" />
-
-    <Button
         android:id="@+id/btnSPHViewAppointment"
         android:layout_width="100dp"
         android:layout_height="48dp"
         android:layout_marginTop="96dp"
         android:background="@drawable/btn_bg_design"
         android:text="View"
-        app:layout_constraintEnd_toEndOf="@+id/imgView1"
-        app:layout_constraintHorizontal_bias="0.086"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.89"
         app:layout_constraintStart_toEndOf="@+id/txtSPHAppointment"
         app:layout_constraintTop_toBottomOf="@+id/txtSPHServiceProviderName" />
 

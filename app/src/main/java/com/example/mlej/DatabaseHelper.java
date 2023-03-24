@@ -16,7 +16,7 @@ import kotlin.reflect.KMutableProperty1;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     final static String DATABASE_NAME = "database.db";
-    final static int DATABASE_VERSION = 17;
+    final static int DATABASE_VERSION = 19;
     final static String TABLE1_NAME = "User_table";
     final static String T1COL1 = "Id";
     // user type, 0 for service provider, 1 for customer
@@ -65,7 +65,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         query = "CREATE TABLE " + TABLE2_NAME +
                 "( " + T2COL1 + " INTEGER PRIMARY KEY, " + T2COL2 + " INTEGER,"
                 + T2COL3 + " INTEGER," + T2COL4 + " INTEGER," + T2COL5 + " TEXT,"
-                + T2COL6 + " INTEGER)";
+                + T2COL6 + " INTEGER,"
+                + "FOREIGN KEY(" + T2COL2 + ") REFERENCES " + TABLE1_NAME + "(" + T1COL1 + "),"
+                + "FOREIGN KEY(" + T2COL3 + ") REFERENCES " + TABLE1_NAME + "(" + T1COL1 + "))";
         sqLiteDatabase.execSQL(query);
 
         query = "CREATE TABLE " + TABLE3_NAME +
@@ -76,11 +78,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "( " + T4COL1 + " INTEGER, " + T4COL2 + " INTEGER,"
                 + "FOREIGN KEY(" + T4COL1 + ") REFERENCES " + TABLE1_NAME + "(" + T1COL1 + "),"
                 + "FOREIGN KEY(" + T4COL2 + ") REFERENCES " + TABLE3_NAME + "(" + T3COL1 + "),"
-                + "CONSTRAINT unique_provider_service UNIQUE (" + T4COL1 + "," + T4COL2 + "))";
+                + "CONSTRAINT unique_provider_services UNIQUE (" + T4COL1 + "," + T4COL2 + "))";
         sqLiteDatabase.execSQL(query);
 
         query = "CREATE TABLE " + TABLE5_NAME +
-                "( " + T5COL1 + " INTEGER, " + T5COL2 + " INTEGER)";
+                "( " + T5COL1 + " INTEGER, " + T5COL2 + " INTEGER,"
+                + "FOREIGN KEY(" + T5COL1 + ") REFERENCES " + TABLE2_NAME + "(" + T2COL1 + "),"
+                + "FOREIGN KEY(" + T5COL2 + ") REFERENCES " + TABLE3_NAME + "(" + T3COL1 + "),"
+                + "CONSTRAINT unique_appointment_services UNIQUE (" + T5COL1 + "," + T5COL2 + "))";
         sqLiteDatabase.execSQL(query);
     }
 

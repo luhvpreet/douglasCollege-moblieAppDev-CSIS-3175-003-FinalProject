@@ -47,9 +47,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     final static String TABLE5_NAME = "Reminders_table";
     final static String T5COL1 = "ReminderId";
-    final static String T5COL2 = "senderId";
-    final static String T5COL3 = "recipientId";
-    final static String T5COL4 = "appointmentId";
+    final static String T5COL2 = "SenderId";
+    final static String T5COL3 = "RecipientId";
+    final static String T5COL4 = "AppointmentId";
 
     final static String TABLE6_NAME = "Appointment_Services_Table";
     final static String T6COL1 = "AppointmentId";
@@ -413,7 +413,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public List<ReminderItemModel> getReminders(int userId, Context context) {
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
-        String query = "SELECT ReminderId, senderId, appointmentId from Reminders_table where recipientId = " + userId;
+        String query = "SELECT ReminderId, SenderId, AppointmentId from Reminders_table where RecipientId = " + userId;
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
         List<ReminderItemModel> reminderList;
         if (cursor.getCount() > 0) {

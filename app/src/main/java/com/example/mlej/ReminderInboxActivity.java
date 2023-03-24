@@ -2,6 +2,7 @@ package com.example.mlej;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -23,11 +24,27 @@ public class ReminderInboxActivity extends AppCompatActivity {
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
         ListView lvReminders = findViewById(R.id.reminderList);
         reminders = db.getReminders(preferences.getInt("USERID", 0), this);
-        String[] reminderTitles = new String[reminders.size()];
-        for (int i = 0; i < reminders.size(); i++) {
-            reminderTitles[i] = reminders.get(i).getTitle();
+
+        String[] reminderTitles;
+
+        if (reminders == null) {
+            reminderTitles = new String[]{"No reminders"};
+        }
+        else {
+            reminderTitles = new String[reminders.size()];
+            for (int i = 0; i < reminders.size(); i++) {
+                reminderTitles[i] = reminders.get(i).getTitle();
+            }
         }
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, reminderTitles);
         lvReminders.setAdapter(adapter);
+
+        lvReminders.setOnItemClickListener((parent, view, position, id) -> {
+            if (reminders != null) {
+                ReminderItemModel reminder = reminders.get(position);
+                startActivity(new Intent(ReminderInboxActivity.this, AppointmentDetails.class)
+                        .putExtra("appointmentId", reminder.getId()));
+            }
+        });
     }
 }

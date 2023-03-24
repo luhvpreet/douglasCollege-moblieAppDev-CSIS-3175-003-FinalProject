@@ -12,7 +12,19 @@
         android:theme="@style/Theme.MLEJ"
         tools:targetApi="31">
         <activity
+            android:name=".ReminderInboxActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ReminderSendActivity"
+            android:exported="false" />
+        <activity
             android:name=".ProviderSearchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AppointmentEditActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AppointmentViewActivity"
             android:exported="false" />
         <activity
             android:name=".ProfileEditActivity"

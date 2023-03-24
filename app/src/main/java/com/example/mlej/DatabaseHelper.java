@@ -12,9 +12,11 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
+import kotlin.reflect.KMutableProperty1;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
     final static String DATABASE_NAME = "database.db";
-    final static int DATABASE_VERSION = 14;
+    final static int DATABASE_VERSION = 17;
     final static String TABLE1_NAME = "User_table";
     final static String T1COL1 = "Id";
     // user type, 0 for service provider, 1 for customer
@@ -43,6 +45,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     final static String T4COL1 = "ProviderId";
     final static String T4COL2 = "ServicesID";
 
+    final static String TABLE5_NAME = "Reminders_table";
+    final static String T5COL1 = "ReminderId";
+    final static String T5COL2 = "senderId";
+    final static String T5COL3 = "recipientId";
+    final static String T5COL4 = "appointmentId";
+
+    final static String TABLE6_NAME = "Appointment_Services_Table";
+    final static String T6COL1 = "AppointmentId";
+    final static String T6COL2 = "ServicesId";
+
     public DatabaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -70,6 +82,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "( " + T4COL1 + " INTEGER, " + T4COL2 + " INTEGER)";
         sqLiteDatabase.execSQL(query);
 
+        query = "CREATE TABLE " + TABLE5_NAME +
+                "( " + T5COL1 + " INTEGER PRIMARY KEY, " + T5COL2 + " INTEGER,"
+                + T5COL3 + " INTEGER," + T5COL4 + " INTEGER)";
+        sqLiteDatabase.execSQL(query);
+                
+        query = "CREATE TABLE " + TABLE6_NAME +
+                "( " + T6COL1 + " INTEGER, " + T6COL2 + " INTEGER)";
+        sqLiteDatabase.execSQL(query);
     }
 
     @Override
@@ -78,6 +98,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE2_NAME);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE3_NAME);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE4_NAME);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE5_NAME);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE6_NAME);
         onCreate(sqLiteDatabase);
     }
 
@@ -257,6 +279,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return false;
     }
 
+    public AppointmentItemModel getAppointment(int appointmentId){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        AppointmentItemModel aim = new AppointmentItemModel();
+
+        String query = "SELECT User_table.Name, DateTime, DropOffOrPickup from Appointment_table " +
+                "inner join User_table " +
+                "on Appointment_table.CustomerId = User_table.Id " +
+                "WHERE " + T2COL1 + "=" + appointmentId;
+        Cursor cursor = sqLiteDatabase.rawQuery(query,null);
+        if(cursor.getCount() > 0){
+            cursor.moveToNext();
+            aim.setCustomerName(cursor.getString(0));
+            aim.setAppointDateTime(cursor.getString(1));
+            aim.setDropOffOrPickup(cursor.getInt(2));
+            return aim;
+        }
+        else
+            return null;
+    }
+
     public List<AppointmentItemModel> viewAppointment(int UserId){
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
         String query = "SELECT AppointmentId, Name, DateTime from Appointment_table " +
@@ -279,7 +321,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         else
             return null;
     }
-
 
     public boolean addServices(int ID, String servicesName){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
@@ -344,4 +385,88 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return null;
     }
 
+    public boolean addReminder(int senderId, int receiverId, int appointmentId) {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(T5COL2, senderId);
+        values.put(T5COL3, receiverId);
+        values.put(T5COL4, appointmentId);
+        long l = sqLiteDatabase.insert(TABLE5_NAME, null, values);
+        if (l > 0)
+            return true;
+        else
+            return false;
+    }
+    
+   public boolean addAppointmentServices(int AppointmentID, int ServicesID){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(T6COL1,AppointmentID);
+        values.put(T6COL2,ServicesID);
+
+        long l = sqLiteDatabase.insert(TABLE6_NAME,null,values);
+        if(l>0)
+            return true;
+        else
+            return false;
+    }
+
+    public List<ReminderItemModel> getReminders(int userId, Context context) {
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        String query = "SELECT ReminderId, senderId, appointmentId from Reminders_table where recipientId = " + userId;
+        Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+        List<ReminderItemModel> reminderList;
+        if (cursor.getCount() > 0) {
+            reminderList = new ArrayList<>();
+            while (cursor.moveToNext()) {
+                reminderList.add(new ReminderItemModel(
+                        cursor.getInt(0),
+                        cursor.getInt(1),
+                        cursor.getInt(2),
+                        context));
+            }
+            return reminderList;
+        } else
+            return null;
+    }
+
+    // temporary
+    public String getAppointmentDateTime(int appointmentId) {
+        return "2020-01-01 00:00";
+    }
+
+    public String[] getServicesFromAppointment (int appointmentID){
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+
+        String query = "SELECT DISTINCT " + T3COL2 +
+                        " FROM " + TABLE3_NAME +
+                        " INNER JOIN " + TABLE6_NAME +
+                        " ON " + TABLE3_NAME + "." + T3COL1 + "=" + TABLE6_NAME +"." + T3COL1 + " WHERE " +
+                        TABLE6_NAME + "." + T6COL1 + "=" + appointmentID;
+        System.out.println(query);
+
+        Cursor cursor = sqLiteDatabase.rawQuery(query,null);
+
+        String[] services;
+        services = new String[cursor.getCount()];
+        int i=0;
+
+        while(cursor.moveToNext()) {
+            services[i] = cursor.getString(0);
+            i++;
+        }
+
+        return services;
+    }
+
+    //this will delete all records in all of the tables
+    public void deleteALLRecords(){
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        sqLiteDatabase.execSQL("delete from "+ TABLE1_NAME);
+        sqLiteDatabase.execSQL("delete from "+ TABLE2_NAME);
+        sqLiteDatabase.execSQL("delete from "+ TABLE3_NAME);
+        sqLiteDatabase.execSQL("delete from "+ TABLE4_NAME);
+        sqLiteDatabase.execSQL("delete from "+ TABLE5_NAME);
+        sqLiteDatabase.execSQL("delete from "+ TABLE6_NAME);
+    }
 }

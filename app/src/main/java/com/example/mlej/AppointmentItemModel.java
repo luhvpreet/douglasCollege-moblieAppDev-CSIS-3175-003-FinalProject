@@ -5,6 +5,9 @@ public class AppointmentItemModel {
     private int appointmentId;
     private String customerName;
     private String appointDateTime;
+    private int dropOffOrPickup;
+
+    public AppointmentItemModel() {}
 
     public AppointmentItemModel(int appointmentId, String customerName, String appointDateTime) {
         this.appointmentId = appointmentId;
@@ -23,4 +26,21 @@ public class AppointmentItemModel {
     public String getAppointDateTime() {
         return appointDateTime;
     }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public void setAppointDateTime(String appointDateTime) {
+        this.appointDateTime = appointDateTime;
+    }
+
+    public int getDropOffOrPickup() {
+        return dropOffOrPickup;
+    }
+
+    public void setDropOffOrPickup(int dropOffOrPickup) {
+        this.dropOffOrPickup = dropOffOrPickup;
+    }
+
 }

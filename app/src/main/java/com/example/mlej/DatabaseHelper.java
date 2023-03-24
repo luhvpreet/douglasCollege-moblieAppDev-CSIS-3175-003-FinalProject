@@ -430,9 +430,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return null;
     }
 
-    // temporary
     public String getAppointmentDateTime(int appointmentId) {
-        return "2020-01-01 00:00";
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        String query = "SELECT " + T2COL5 + " FROM " + TABLE2_NAME + " WHERE " + T2COL1 + " = " + appointmentId;
+        Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            return cursor.getString(0);
+        } else
+            return null;
     }
 
     public String[] getServicesFromAppointment (int appointmentID){

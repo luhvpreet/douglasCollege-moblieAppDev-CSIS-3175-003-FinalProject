@@ -73,7 +73,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(query);
 
         query = "CREATE TABLE " + TABLE4_NAME +
-                "( " + T4COL1 + " INTEGER, " + T4COL2 + " INTEGER)";
+                "( " + T4COL1 + " INTEGER, " + T4COL2 + " INTEGER,"
+                + "FOREIGN KEY(" + T4COL1 + ") REFERENCES " + TABLE1_NAME + "(" + T1COL1 + "),"
+                + "FOREIGN KEY(" + T4COL2 + ") REFERENCES " + TABLE3_NAME + "(" + T3COL1 + "),"
+                + "CONSTRAINT unique_provider_service UNIQUE (" + T4COL1 + "," + T4COL2 + "))";
         sqLiteDatabase.execSQL(query);
 
         query = "CREATE TABLE " + TABLE5_NAME +
@@ -323,6 +326,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return false;
     }
 
+    public void removeServices(int providerID, int servicesId){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        sqLiteDatabase.execSQL("DELETE FROM "+ TABLE4_NAME + " WHERE " +
+                        T4COL1 + " = " + providerID + " AND " + T4COL2 + " = " +
+                        servicesId);
+    }
+
+    public boolean hasServices(int providerID, int servicesId){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        String query = "SELECT " + T4COL1 + " FROM " + TABLE4_NAME + " where " +
+                T4COL1 + " = " + providerID + " AND " + T4COL2 + " = " +
+                servicesId;
+        Cursor cursor = sqLiteDatabase.rawQuery(query,null);
+        if(cursor.getCount() > 0){
+            return true;
+        }
+        else
+            return false;
+    }
 
     public boolean addProviderServices(int ProviderID, int ServicesID){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
@@ -394,6 +416,30 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         " INNER JOIN " + TABLE5_NAME +
                         " ON " + TABLE3_NAME + "." + T3COL1 + "=" + TABLE5_NAME +"." + T3COL1 + " WHERE " +
                         TABLE5_NAME + "." + T5COL1 + "=" + appointmentID;
+        System.out.println(query);
+
+        Cursor cursor = sqLiteDatabase.rawQuery(query,null);
+
+        String[] services;
+        services = new String[cursor.getCount()];
+        int i=0;
+
+        while(cursor.moveToNext()) {
+            services[i] = cursor.getString(0);
+            i++;
+        }
+
+        return services;
+    }
+
+    public String[] getServicesFromProviderID (int providerId){
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+
+        String query = "SELECT DISTINCT " + T3COL2 +
+                " FROM " + TABLE4_NAME +
+                " INNER JOIN " + TABLE3_NAME +
+                " ON " + TABLE3_NAME + "." + T3COL1 + "=" + TABLE4_NAME +"." + T4COL2 + " WHERE " +
+                TABLE4_NAME + "." + T4COL1 + "=" + providerId;
         System.out.println(query);
 
         Cursor cursor = sqLiteDatabase.rawQuery(query,null);

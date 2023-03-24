@@ -31,7 +31,7 @@ public class SignupServicesActivity extends AppCompatActivity {
         CheckBox cboxServices8 = findViewById(R.id.cboxService8);
         CheckBox cboxServices9 = findViewById(R.id.cboxService9);
         CheckBox cboxServices10 = findViewById(R.id.cboxService10);
-        Button btnSSSignup = findViewById(R.id.btnSSSignup);
+        Button btnSSSignup = findViewById(R.id.btnUpdateServices);
 
         Intent intent = getIntent();
 

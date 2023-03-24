@@ -15,9 +15,6 @@
             android:name=".ReminderInboxActivity"
             android:exported="false" />
         <activity
-            android:name=".ReminderSendActivity"
-            android:exported="false" />
-        <activity
             android:name=".ProviderSearchActivity"
             android:exported="false" />
         <activity

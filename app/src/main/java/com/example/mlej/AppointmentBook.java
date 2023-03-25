@@ -24,10 +24,10 @@ public class AppointmentBook extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_appointment_book);
         setTitle("Book an Appointment");
+        db = new DatabaseHelper(this);
 
         int cID = getIntent().getIntExtra("cID",0);
 
-        db = new DatabaseHelper(this);
         SearchView searchView = findViewById(R.id.searchViewAB);
         ListView listView = findViewById(R.id.listViewAB);
 

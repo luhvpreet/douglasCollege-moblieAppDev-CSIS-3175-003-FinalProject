@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AppointmentBook3">
+
+    <ImageView
+        android:id="@+id/imgView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:foreground="@drawable/foreground_design"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/background" />
+
+    <ImageView
+        android:id="@+id/imgPickUp"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="44dp"
+        android:background="@drawable/background_design"
+        android:foreground="@drawable/ic_pickup"
+        android:ra="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.936"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/btn_bg_design" />
+
+    <ImageView
+        android:id="@+id/imgDropOff"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="44dp"
+        android:background="@drawable/background_design"
+        android:foreground="@drawable/ic_dropoff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.063"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/btn_bg_design" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Choose one of the following options :"
+        android:textColor="@color/white"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imgView1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/txtDropOffDesc"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:text="You can drop off your car at our location"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/imgDropOff"
+        app:layout_constraintStart_toStartOf="@+id/imgDropOff"
+        app:layout_constraintTop_toBottomOf="@+id/imgDropOff" />
+
+    <TextView
+        android:id="@+id/txtAB3DropoffLocation"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:text="OUR LOCATION:"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/txtDropOffDesc"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/txtDropOffDesc"
+        app:layout_constraintTop_toBottomOf="@+id/txtDropOffDesc" />
+
+    <TextView
+        android:id="@+id/txtAB3PickupLocation"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:text="YOUR LOCATION:"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/imgPickUp"
+        app:layout_constraintStart_toStartOf="@+id/imgPickUp"
+        app:layout_constraintTop_toBottomOf="@+id/txtPickUpDesc" />
+
+    <TextView
+        android:id="@+id/txtPickUpDesc"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:text="Your car is not working, don't worry we will pick it up"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/imgPickUp"
+        app:layout_constraintStart_toStartOf="@+id/imgPickUp"
+        app:layout_constraintTop_toBottomOf="@+id/imgPickUp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

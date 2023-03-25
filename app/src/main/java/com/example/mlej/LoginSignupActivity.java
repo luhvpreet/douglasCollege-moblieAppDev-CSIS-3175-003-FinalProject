@@ -19,7 +19,7 @@ public class LoginSignupActivity extends AppCompatActivity {
         Button btnLSSignup = findViewById(R.id.btnLSSignup);
 
         //dummy info for users, appointments, providerservices, etc:
-        // initData();
+//         initData();
 
         //clicking on the Login button will go to the Login activity
         btnLSLogin.setOnClickListener(new View.OnClickListener(){

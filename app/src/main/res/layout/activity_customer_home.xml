@@ -11,8 +11,8 @@
 
     <ImageView
         android:id="@+id/imgView1"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:foreground="@drawable/foreground_design"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -120,8 +120,8 @@
 
     <Button
         android:id="@+id/btnCHViewServiceHistory"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="96dp"
         android:background="@drawable/btn_bg_design_2"
@@ -136,7 +136,7 @@
     <Button
         android:id="@+id/btnCHLogout"
         android:layout_width="250dp"
-        android:layout_height="0dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="24dp"
         android:background="@drawable/btn_bg_design"
         android:text="Logout"
@@ -165,8 +165,8 @@
 
     <Button
         android:id="@+id/btnCHBookAppointment"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="297dp"
         android:layout_marginEnd="34dp"

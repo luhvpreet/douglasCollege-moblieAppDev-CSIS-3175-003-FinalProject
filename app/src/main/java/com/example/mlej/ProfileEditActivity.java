@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 public class ProfileEditActivity extends AppCompatActivity {
     SharedPreferences preferences;
+    SharedPreferences.Editor editor;
     DatabaseHelper db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,7 @@ public class ProfileEditActivity extends AppCompatActivity {
         EditText txtPostal = findViewById(R.id.profileEditPostal);
 
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        editor = preferences.edit();
         int userId = preferences.getInt("USERID",0);
 
         // txtName.setText(db.getUserNameById(userId));
@@ -51,6 +53,15 @@ public class ProfileEditActivity extends AppCompatActivity {
 
                 db.updateUser(userId, name, email, phone, address, postal);
                 Toast.makeText(ProfileEditActivity.this, "Profile updated!", Toast.LENGTH_SHORT).show();
+
+                //if this profile edit is called from the appointment details activity, then send it back to that appointment details page after it's user info is updated
+                int userId = preferences.getInt("FROMPROVIDERID",0);
+                if(userId!=0){
+                    editor.putInt("USERID",userId);
+                    editor.remove("FROMPROVIDERID");
+                    editor.commit();
+                }
+
                 finish();
             }
         });

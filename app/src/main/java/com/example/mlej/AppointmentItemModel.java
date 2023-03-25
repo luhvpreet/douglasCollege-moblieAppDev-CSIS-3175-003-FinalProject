@@ -3,6 +3,10 @@ package com.example.mlej;
 public class AppointmentItemModel {
 
     private int appointmentId;
+
+
+
+    private int customerId;
     private String customerName;
     private String appointDateTime;
     private int dropOffOrPickup;
@@ -43,4 +47,11 @@ public class AppointmentItemModel {
         this.dropOffOrPickup = dropOffOrPickup;
     }
 
+    public int getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
+    }
 }

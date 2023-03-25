@@ -29,6 +29,8 @@ public class AppointmentListActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_appointment_list);
 
+        setTitle("Upcoming Appointments");
+
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
         userId = preferences.getInt("USERID",0);
 

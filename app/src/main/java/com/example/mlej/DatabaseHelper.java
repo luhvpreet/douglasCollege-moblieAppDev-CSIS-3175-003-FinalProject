@@ -16,7 +16,7 @@ import kotlin.reflect.KMutableProperty1;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     final static String DATABASE_NAME = "database.db";
-    final static int DATABASE_VERSION = 19;
+    final static int DATABASE_VERSION = 29;
     final static String TABLE1_NAME = "User_table";
     final static String T1COL1 = "Id";
     // user type, 0 for service provider, 1 for customer
@@ -279,7 +279,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         AppointmentItemModel aim = new AppointmentItemModel();
 
-        String query = "SELECT User_table.Name, DateTime, DropOffOrPickup from Appointment_table " +
+        String query = "SELECT User_table.Name, DateTime, DropOffOrPickup, Appointment_table.CustomerId from Appointment_table " +
                 "inner join User_table " +
                 "on Appointment_table.CustomerId = User_table.Id " +
                 "WHERE " + T2COL1 + "=" + appointmentId;
@@ -289,6 +289,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             aim.setCustomerName(cursor.getString(0));
             aim.setAppointDateTime(cursor.getString(1));
             aim.setDropOffOrPickup(cursor.getInt(2));
+            aim.setCustomerId(cursor.getInt(3));
             return aim;
         }
         else

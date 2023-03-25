@@ -6,12 +6,12 @@
 - [x] Creating dummy accounts, appointments, random services for provider (at LoginSignUpActivity.java)
 - [x] Profile view and edit https://github.com/luhvpreet/douglasCollege-moblieAppDev-CSIS-3175-003-FinalProject/pull/6
 - [x] Search providers https://github.com/luhvpreet/douglasCollege-moblieAppDev-CSIS-3175-003-FinalProject/pull/7
+- [x] Modify Customer Profile from Provider side
 - [ ] Appointment view and edit https://github.com/luhvpreet/douglasCollege-moblieAppDev-CSIS-3175-003-FinalProject/pull/8
 - [x] Service view and edit
 - [ ] Service history view
 - [ ] Reports generation
 - [ ] Send reminders https://github.com/luhvpreet/douglasCollege-moblieAppDev-CSIS-3175-003-FinalProject/pull/9
-- [ ] Modify Customer Profile from Provider side
 - [ ] Let Provider add a completely new service that is not already on the list
 
 ## When you start working on a new part

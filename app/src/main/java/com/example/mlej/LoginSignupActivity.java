@@ -49,16 +49,16 @@ public class LoginSignupActivity extends AppCompatActivity {
         //delete all records in all database (dummy users / appointments, etc)
         db.deleteALLRecords();
 
-        db.addServices(1,"Electronic System Check");
-        db.addServices(2,"New Tires or Changing Tires");
-        db.addServices(3,"AC and Heating Repair");
-        db.addServices(4,"Brakes of Brake Repair");
-        db.addServices(5,"Lights, Wipers and Accessories");
-        db.addServices(6,"Belts and Hoses");
-        db.addServices(7,"Fluid Changes");
-        db.addServices(8,"Exhaust System Services");
-        db.addServices(9,"Steering and Suspension");
-        db.addServices(10,"Batteries and Charging");
+        db.addServices(1,"Electronic System Check", 150.99);
+        db.addServices(2,"4 x New Tires", 899.99);
+        db.addServices(3,"AC and Heating Repair", 499.99);
+        db.addServices(4,"Brakes Repair", 120.99);
+        db.addServices(5,"Lights, Wipers and Accessories", 79.99);
+        db.addServices(6,"Belts and Hoses", 265.99);
+        db.addServices(7,"Fluid Changes", 69.99);
+        db.addServices(8,"Exhaust System Services", 189.99);
+        db.addServices(9,"Steering and Suspension", 799.99);
+        db.addServices(10,"Batteries and Charging", 99.99);
 
 
         // from 0 to 5 is provider, 6 to 43 is taker

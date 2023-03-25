@@ -180,18 +180,6 @@
         app:layout_constraintStart_toEndOf="@+id/txtSPHServices"
         app:layout_constraintTop_toBottomOf="@+id/txtSPHServiceProviderName" />
 
-    <Button
-        android:id="@+id/btnSPHViewServices"
-        android:layout_width="100dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="164dp"
-        android:background="@drawable/btn_bg_design"
-        android:text="View"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.376"
-        app:layout_constraintStart_toEndOf="@+id/txtSPHServices"
-        app:layout_constraintTop_toBottomOf="@+id/txtSPHServiceProviderName" />
-
     <TextView
         android:id="@+id/txtSPHUserName"
         android:layout_width="match_parent"

@@ -40,6 +40,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     final static String TABLE3_NAME = "Services_Table";
     final static String T3COL1 = "ServicesID";
     final static String T3COL2 = "ServicesName";
+    final static String T3COL3 = "Price";
 
     final static String TABLE4_NAME = "Provider_Services_Table";
     final static String T4COL1 = "ProviderId";
@@ -71,7 +72,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(query);
 
         query = "CREATE TABLE " + TABLE3_NAME +
-                "( " + T3COL1 + " INTEGER PRIMARY KEY, " + T3COL2 + " TEXT)";
+                "( " + T3COL1 + " INTEGER PRIMARY KEY, " + T3COL2 + " TEXT," + T3COL3 + " REAL)";
         sqLiteDatabase.execSQL(query);
 
         query = "CREATE TABLE " + TABLE4_NAME +
@@ -319,11 +320,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return null;
     }
 
-    public boolean addServices(int ID, String servicesName){
+    public boolean addServices(int ID, String servicesName, double price){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(T3COL1,ID);
         values.put(T3COL2,servicesName);
+        values.put(T3COL3,price);
 
         long l = sqLiteDatabase.insert(TABLE3_NAME,null,values);
         if(l>0)

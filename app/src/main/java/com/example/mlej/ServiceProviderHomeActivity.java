@@ -31,7 +31,6 @@ public class ServiceProviderHomeActivity extends AppCompatActivity {
         Button btnSPHLogout = findViewById(R.id.btnSPHLogout);
         Button btnSPHReminder = findViewById(R.id.btnSPHReminder);
         Button btnSPHEditServices = findViewById(R.id.btnSPHEditServices);
-        Button btnSPHViewServices = findViewById(R.id.btnSPHViewServices);
 
         TextView txtWelcome = findViewById(R.id.txtSPHServiceProviderName);
         String username = db.getUserNameById(userId);
@@ -95,12 +94,5 @@ public class ServiceProviderHomeActivity extends AppCompatActivity {
             }
         });
 
-        btnSPHViewServices.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ServiceProviderHomeActivity.this, ViewServicesActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 }

@@ -6,6 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".AppointmentDetails">
 
+    <ImageView
+        android:id="@+id/imgView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:foreground="@drawable/foreground_design"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/background" />
+
     <TextView
         android:id="@+id/txtAppointmentDetails"
         android:layout_width="wrap_content"

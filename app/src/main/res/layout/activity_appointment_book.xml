@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProviderSearchActivity">
+    tools:context=".AppointmentBook">
 
     <ImageView
         android:id="@+id/imgView1"
@@ -15,7 +15,7 @@
         app:srcCompat="@drawable/background" />
 
     <ListView
-        android:id="@+id/listView"
+        android:id="@+id/listViewAB"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:background="@color/white"
@@ -25,10 +25,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchView" />
+        app:layout_constraintTop_toBottomOf="@+id/searchViewAB" />
 
     <SearchView
-        android:id="@+id/searchView"
+        android:id="@+id/searchViewAB"
         android:layout_width="405dp"
         android:layout_height="48dp"
         android:layout_marginStart="1dp"
@@ -40,4 +40,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

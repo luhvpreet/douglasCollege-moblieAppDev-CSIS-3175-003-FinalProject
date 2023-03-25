@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#EB6F53"
     tools:context=".CustomerHomeActivity"
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="40dp">
@@ -22,166 +23,205 @@
 
     <TextView
         android:id="@+id/txtCHProfile"
-        android:layout_width="wrap_content"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
+        android:gravity="center"
         android:text="Profile"
         android:textColor="@color/white"
-        android:textSize="30sp"
-        android:textStyle="normal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.033"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtCHUserName" />
-
-    <Button
-        android:id="@+id/btnCHViewProfile"
-        android:layout_width="100dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="48dp"
-        android:background="@drawable/btn_bg_design"
-        android:text="View"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.107"
-        app:layout_constraintStart_toEndOf="@+id/txtCHProfile"
-        app:layout_constraintTop_toBottomOf="@+id/txtCHUserName" />
+        android:textSize="15sp"
+        android:textStyle="normal|bold"
+        app:layout_constraintEnd_toEndOf="@+id/btnCHEditProfile"
+        app:layout_constraintStart_toStartOf="@+id/btnCHEditProfile"
+        app:layout_constraintTop_toBottomOf="@+id/btnCHEditProfile" />
 
     <Button
         android:id="@+id/btnCHEditProfile"
-        android:layout_width="100dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="48dp"
-        android:background="@drawable/btn_bg_design"
-        android:text="Edit"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/btn_bg_design_2"
+        android:contentDescription="profile"
+        android:foreground="@drawable/ic_profile"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnCHViewProfile"
-        app:layout_constraintTop_toBottomOf="@+id/txtCHUserName" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txtCHAppointment"
-        android:layout_width="wrap_content"
+        android:id="@+id/txtCHSearch"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="136dp"
+        android:gravity="center"
+        android:text="Service Provider"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:textStyle="normal|bold"
+        app:layout_constraintEnd_toEndOf="@+id/btnCHSearch"
+        app:layout_constraintStart_toStartOf="@+id/btnCHSearch"
+        app:layout_constraintTop_toBottomOf="@+id/btnCHSearch" />
+
+    <TextView
+        android:id="@+id/txtCHAppointmentsView"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Appointments"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:textStyle="normal|bold"
+        app:layout_constraintEnd_toEndOf="@+id/btnCHViewAppointment"
+        app:layout_constraintStart_toStartOf="@+id/btnCHViewAppointment"
+        app:layout_constraintTop_toBottomOf="@+id/btnCHViewAppointment" />
+
+    <TextView
+        android:id="@+id/txtCHAppointmentsBook"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:gravity="center"
         android:text="Appointment"
         android:textColor="@color/white"
-        android:textSize="30sp"
-        android:textStyle="normal"
-        app:layout_constraintEnd_toEndOf="@+id/imgView1"
-        app:layout_constraintHorizontal_bias="0.046"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtCHUserName" />
+        android:textSize="15sp"
+        android:textStyle="normal|bold"
+        app:layout_constraintBottom_toTopOf="@+id/btnCHReminder"
+        app:layout_constraintEnd_toEndOf="@+id/btnCHBookAppointment"
+        app:layout_constraintStart_toStartOf="@+id/btnCHBookAppointment"
+        app:layout_constraintTop_toBottomOf="@+id/btnCHBookAppointment" />
 
-    <Button
-        android:id="@+id/btnCHBookAppointment"
-        android:layout_width="100dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="128dp"
-        android:background="@drawable/btn_bg_design"
-        android:text="Book"
-        app:layout_constraintEnd_toEndOf="@+id/imgView1"
-        app:layout_constraintHorizontal_bias="0.086"
-        app:layout_constraintStart_toEndOf="@+id/txtCHAppointment"
-        app:layout_constraintTop_toBottomOf="@+id/txtCHUserName" />
+    <TextView
+        android:id="@+id/txtCHRemindersInbox"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Reminders"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:textStyle="normal|bold"
+        app:layout_constraintEnd_toEndOf="@+id/btnCHReminder"
+        app:layout_constraintStart_toStartOf="@+id/btnCHReminder"
+        app:layout_constraintTop_toBottomOf="@+id/btnCHReminder" />
 
     <Button
         android:id="@+id/btnCHViewAppointment"
         android:layout_width="100dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="128dp"
-        android:background="@drawable/btn_bg_design"
+        android:layout_height="100dp"
+        android:layout_marginTop="297dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="132dp"
+        android:background="@drawable/btn_bg_design_2"
+        android:foreground="@drawable/ic_appointment_view"
         android:text="View"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btnCHLogout"
+        app:layout_constraintEnd_toStartOf="@+id/btnCHSearch"
         app:layout_constraintStart_toEndOf="@+id/btnCHBookAppointment"
-        app:layout_constraintTop_toBottomOf="@+id/txtCHUserName" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnCHViewServiceHistory"
-        android:layout_width="100dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="280dp"
-        android:background="@drawable/btn_bg_design"
-        android:text="View"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="96dp"
+        android:background="@drawable/btn_bg_design_2"
+        android:contentDescription="history"
+        android:text=""
+        app:icon="@drawable/ic_history"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.919"
-        app:layout_constraintStart_toEndOf="@+id/txtCHServiceHistory"
-        app:layout_constraintTop_toBottomOf="@+id/txtCHUserName" />
+        app:layout_constraintStart_toEndOf="@+id/btnCHReminder"
+        app:layout_constraintTop_toBottomOf="@+id/btnCHSearch" />
+
+    <Button
+        android:id="@+id/btnCHLogout"
+        android:layout_width="250dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/btn_bg_design"
+        android:text="Logout"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.906"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnCHViewAppointment" />
+
+    <Button
+        android:id="@+id/btnCHReminder"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="222dp"
+        android:layout_marginBottom="54dp"
+        android:background="@drawable/btn_bg_design_2"
+        android:foreground="@drawable/ic_reminders_inbox"
+        android:text="Inbox"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnCHViewServiceHistory"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtCHAppointmentsBook" />
+
+    <Button
+        android:id="@+id/btnCHBookAppointment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="297dp"
+        android:layout_marginEnd="34dp"
+        android:background="@drawable/btn_bg_design_2"
+        android:foreground="@drawable/ic_appointment_book"
+        android:text="Book"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/txtCHAppointmentsBook"
+        app:layout_constraintEnd_toStartOf="@+id/btnCHViewAppointment"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnCHSearch"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="297dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginBottom="52dp"
+        android:background="@drawable/btn_bg_design_2"
+        android:foreground="@drawable/ic_search_provider"
+        android:text="Find"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btnCHViewServiceHistory"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnCHViewAppointment"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txtCHServiceHistory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="292dp"
-        android:text="Service History"
+        android:layout_marginEnd="8dp"
+        android:text="View Service History"
         android:textColor="@color/white"
-        android:textSize="30sp"
+        android:textSize="20sp"
         android:textStyle="normal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.052"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtCHUserName" />
-
-    <Button
-        android:id="@+id/btnCHLogout"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="28dp"
-        android:background="@drawable/btn_bg_design"
-        android:text="Logout"
-        app:layout_constraintBottom_toBottomOf="@+id/imgView1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.938"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/btnCHReminder"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="28dp"
-        android:background="@drawable/btn_bg_design"
-        android:text="Reminders inbox"
-        app:layout_constraintBottom_toBottomOf="@+id/imgView1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.061"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/txtCHSearch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="216dp"
-        android:text="Service Provider"
-        android:textColor="@color/white"
-        android:textSize="30sp"
-        android:textStyle="normal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.056"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtCHUserName" />
-
-    <Button
-        android:id="@+id/btnCHSearch"
-        android:layout_width="100dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="204dp"
-        android:background="@drawable/btn_bg_design"
-        android:text="Search"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.903"
-        app:layout_constraintStart_toEndOf="@+id/txtCHSearch"
-        app:layout_constraintTop_toBottomOf="@+id/txtCHUserName" />
+        app:layout_constraintBottom_toBottomOf="@+id/btnCHViewServiceHistory"
+        app:layout_constraintEnd_toStartOf="@+id/btnCHViewServiceHistory"
+        app:layout_constraintTop_toTopOf="@+id/btnCHViewServiceHistory"
+        app:layout_constraintVertical_bias="0.483" />
 
     <TextView
         android:id="@+id/txtCHUserName"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:gravity="center"
         android:text="Welcome (username)!"
         android:textColor="@color/white"
-        android:textSize="48sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="35sp"
+        app:layout_constraintEnd_toEndOf="@+id/btnCHEditProfile"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="@+id/btnCHEditProfile"
+        app:layout_constraintTop_toBottomOf="@+id/btnCHEditProfile" />
 </androidx.constraintlayout.widget.ConstraintLayout>

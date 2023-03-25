@@ -15,6 +15,12 @@
             android:name=".ReminderInboxActivity"
             android:exported="false" />
         <activity
+            android:name=".AppointmentBook2"
+            android:exported="false" />
+        <activity
+            android:name=".AppointmentBook"
+            android:exported="false" />
+        <activity
             android:name=".ProviderSearchActivity"
             android:exported="false" />
         <activity

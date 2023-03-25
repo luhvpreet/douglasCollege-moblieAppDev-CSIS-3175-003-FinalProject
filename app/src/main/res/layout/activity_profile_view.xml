@@ -6,6 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".ProfileEditActivity">
 
+    <ImageView
+        android:id="@+id/imgView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:foreground="@drawable/foreground_design"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/background" />
+
     <TextView
         android:id="@+id/txtName"
         android:layout_width="wrap_content"
@@ -68,6 +76,7 @@
         android:layout_marginStart="101dp"
         android:layout_marginTop="96dp"
         android:text="@string/profileName"
+        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -77,6 +86,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="101dp"
         android:text="@string/profileEmail"
+        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtName" />
 
@@ -86,6 +96,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="101dp"
         android:text="@string/profilePhone"
+        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtEmail" />
 
@@ -95,6 +106,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="101dp"
         android:text="@string/profileAddress"
+        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtPhone" />
 
@@ -105,6 +117,7 @@
         android:layout_marginStart="101dp"
         android:text="@string/profilePostal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtAddress" />
+        app:layout_constraintTop_toBottomOf="@+id/txtAddress"
+        android:textColor="@color/white" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

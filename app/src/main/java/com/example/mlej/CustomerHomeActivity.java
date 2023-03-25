@@ -31,8 +31,19 @@ public class CustomerHomeActivity extends AppCompatActivity {
 
         txtWelcome.setText("Welcome " + username + "!");
 
+
+        Button btnBookAppointment = findViewById(R.id.btnCHBookAppointment);
+        btnBookAppointment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(CustomerHomeActivity.this, AppointmentBook.class);
+                intent.putExtra("cID", userId);
+                startActivity(intent);
+            }
+        });
+
         Button btnEditProfile = findViewById(R.id.btnCHEditProfile);
-        Button btnViewProfile = findViewById(R.id.btnCHViewProfile);
+        Button btnViewProfile = findViewById(R.id.btnCHEditProfile);
         Button btnSearchProvider = findViewById(R.id.btnCHSearch);
         Button btnViewReminders = findViewById(R.id.btnCHReminder);
 

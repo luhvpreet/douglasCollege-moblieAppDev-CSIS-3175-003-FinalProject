@@ -12,21 +12,24 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class ProviderSearchActivity extends AppCompatActivity {
+public class AppointmentBook extends AppCompatActivity {
+
     DatabaseHelper db;
     ArrayAdapter<String> adapter;
     List<ProviderItemModel> providers;
     List<ProviderItemModel> filteredProviders;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_provider_search);
+        setContentView(R.layout.activity_appointment_book);
+        setTitle("Book an Appointment");
 
-        setTitle("Search for Service Provider");
-        
+        int cID = getIntent().getIntExtra("cID",0);
+
         db = new DatabaseHelper(this);
-        SearchView searchView = findViewById(R.id.searchView);
-        ListView listView = findViewById(R.id.listView);
+        SearchView searchView = findViewById(R.id.searchViewAB);
+        ListView listView = findViewById(R.id.listViewAB);
 
         // get the list of providers using getProviders()
         providers = db.getProviders();
@@ -50,7 +53,7 @@ public class ProviderSearchActivity extends AppCompatActivity {
                     filteredProviderNames[i] = filteredProviders.get(i).getProviderName();
                 }
                 ArrayList<String> filteredList = new ArrayList<>(Arrays.asList(filteredProviderNames));
-                adapter = new ArrayAdapter<>(ProviderSearchActivity.this, android.R.layout.simple_list_item_1, filteredList);
+                adapter = new ArrayAdapter<>(AppointmentBook.this, android.R.layout.simple_list_item_1, filteredList);
                 listView.setAdapter(adapter);
                 return false;
             }
@@ -64,7 +67,7 @@ public class ProviderSearchActivity extends AppCompatActivity {
                     filteredProviderNames[i] = filteredProviders.get(i).getProviderName();
                 }
                 ArrayList<String> filteredList = new ArrayList<>(Arrays.asList(filteredProviderNames));
-                adapter = new ArrayAdapter<>(ProviderSearchActivity.this, android.R.layout.simple_list_item_1, filteredList);
+                adapter = new ArrayAdapter<>(AppointmentBook.this, android.R.layout.simple_list_item_1, filteredList);
                 listView.setAdapter(adapter);
                 return false;
             }
@@ -73,12 +76,13 @@ public class ProviderSearchActivity extends AppCompatActivity {
         // when a provider is clicked, go to the provider profile page
         listView.setOnItemClickListener((parent, view, position, id) -> {
             // get the user id of the provider that was clicked using its item id
-            int providerId = filteredProviders.get(position).getProviderId();
+            int pID = filteredProviders.get(position).getProviderId();
             // go to the provider profile page
             // pass the provider id to the provider profile page
-            Intent intent = new Intent(ProviderSearchActivity.this, ProfileViewActivity.class);
-            intent.putExtra("id", providerId);
-            intent.putExtra("name", db.getCompanyName(providerId));
+            Intent intent = new Intent(AppointmentBook.this, AppointmentBook2.class);
+            intent.putExtra("cID", cID);
+            intent.putExtra("pID", pID);
+            intent.putExtra("cName", db.getCompanyName(pID));
             startActivity(intent);
         });
     }
@@ -91,4 +95,5 @@ public class ProviderSearchActivity extends AppCompatActivity {
         }
         return filteredList;
     }
+
 }

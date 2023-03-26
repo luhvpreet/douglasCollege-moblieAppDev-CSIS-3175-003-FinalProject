@@ -175,24 +175,23 @@
         app:layout_constraintHorizontal_bias="0.054"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.636" />
+        app:layout_constraintVertical_bias="0.634" />
 
     <Button
         android:id="@+id/btnCHSearch"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginBottom="52dp"
         android:background="@drawable/btn_bg_design_2"
         android:foreground="@drawable/ic_search_provider"
         android:text="Find"
         android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/imgView1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.948"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.705" />
+        app:layout_constraintVertical_bias="0.634" />
 
     <TextView
         android:id="@+id/txtCHServiceHistory"

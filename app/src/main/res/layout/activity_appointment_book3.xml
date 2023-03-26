@@ -12,37 +12,74 @@
         android:layout_height="match_parent"
         android:foreground="@drawable/foreground_design"
         android:scaleType="centerCrop"
-        app:srcCompat="@drawable/background" />
+        app:srcCompat="@drawable/background"
+        tools:layout_editor_absoluteX="-105dp"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <Button
+        android:id="@+id/btnAB3BookAppointment"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/btn_bg_design_2"
+        android:text="Finish"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnAB3PickDate"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="68dp"
+        android:background="@drawable/btn_bg_design_2"
+        android:text="Pick Date"
+        app:layout_constraintBottom_toTopOf="@+id/btnAB3BookAppointment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.061"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnAB3PickTime"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="68dp"
+        android:background="@drawable/btn_bg_design_2"
+        android:text="Pick Time"
+        app:layout_constraintBottom_toTopOf="@+id/btnAB3BookAppointment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.934"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/imgPickUp"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginTop="44dp"
         android:background="@drawable/background_design"
         android:foreground="@drawable/ic_pickup"
-        android:ra="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.936"
+        app:layout_constraintHorizontal_bias="0.871"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.082"
         app:srcCompat="@drawable/btn_bg_design" />
 
     <ImageView
         android:id="@+id/imgDropOff"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginTop="44dp"
         android:background="@drawable/background_design"
         android:foreground="@drawable/ic_dropoff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.063"
+        app:layout_constraintHorizontal_bias="0.122"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.082"
         app:srcCompat="@drawable/btn_bg_design" />
 
     <TextView
@@ -63,9 +100,10 @@
 
     <TextView
         android:id="@+id/txtDropOffDesc"
-        android:layout_width="160dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="You can drop off your car at our location"
+        android:gravity="center"
+        android:text="You can drop off your car at our service location"
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/imgDropOff"
@@ -74,9 +112,10 @@
 
     <TextView
         android:id="@+id/txtAB3DropoffLocation"
-        android:layout_width="160dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="OUR LOCATION:"
+        android:gravity="center"
+        android:text="OUR location :"
         android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -86,10 +125,39 @@
         app:layout_constraintTop_toBottomOf="@+id/txtDropOffDesc" />
 
     <TextView
-        android:id="@+id/txtAB3PickupLocation"
-        android:layout_width="160dp"
+        android:id="@+id/txtAB3Date"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="YOUR LOCATION:"
+        android:gravity="center"
+        android:text="Date : "
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/btnAB3PickDate"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnAB3PickDate" />
+
+    <TextView
+        android:id="@+id/txtAB3Time"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Time :"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/btnAB3PickTime"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/btnAB3PickTime"
+        app:layout_constraintTop_toBottomOf="@+id/btnAB3PickTime" />
+
+    <TextView
+        android:id="@+id/txtAB3PickupLocation"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="YOUR location :"
         android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -99,12 +167,43 @@
 
     <TextView
         android:id="@+id/txtPickUpDesc"
-        android:layout_width="160dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="Your car is not working, don't worry we will pick it up"
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/imgPickUp"
         app:layout_constraintStart_toStartOf="@+id/imgPickUp"
         app:layout_constraintTop_toBottomOf="@+id/imgPickUp" />
+
+    <RadioGroup
+        android:layout_width="380dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/imgPickUp"
+        app:layout_constraintHorizontal_bias="0.517"
+        app:layout_constraintStart_toStartOf="@+id/imgDropOff"
+        app:layout_constraintTop_toBottomOf="@+id/textView4">
+
+        <RadioButton
+            android:id="@+id/radbtnDropOff"
+            android:layout_width="219dp"
+            android:layout_height="wrap_content"
+            android:text="Drop Off"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp" />
+
+        <RadioButton
+            android:id="@+id/radbtnPickUp"
+            android:layout_width="164dp"
+            android:layout_height="wrap_content"
+            android:text="Pick Up"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp" />
+
+    </RadioGroup>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

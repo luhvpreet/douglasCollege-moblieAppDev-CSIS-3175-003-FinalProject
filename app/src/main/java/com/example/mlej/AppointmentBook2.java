@@ -44,6 +44,7 @@ public class AppointmentBook2 extends AppCompatActivity {
                 Intent intent = new Intent(AppointmentBook2.this, AppointmentBook3.class);
                 intent.putExtra("cID", cID);
                 intent.putExtra("pID", pID);
+                // intent add services
                 startActivity(intent);
             }
         });

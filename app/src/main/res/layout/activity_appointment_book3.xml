@@ -56,30 +56,26 @@
         android:id="@+id/imgPickUp"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="60dp"
         android:background="@drawable/background_design"
         android:foreground="@drawable/ic_pickup"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.871"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.082"
         app:srcCompat="@drawable/btn_bg_design" />
 
     <ImageView
         android:id="@+id/imgDropOff"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="60dp"
         android:background="@drawable/background_design"
         android:foreground="@drawable/ic_dropoff"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.122"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.082"
         app:srcCompat="@drawable/btn_bg_design" />
 
     <TextView
@@ -91,12 +87,10 @@
         android:textColor="@color/white"
         android:textSize="48sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/imgView1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txtDropOffDesc"

@@ -13,10 +13,8 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
-import java.sql.Time;
 import java.text.DecimalFormat;
 import java.util.Calendar;
-import java.util.Date;
 
 public class AppointmentBook3 extends AppCompatActivity {
 

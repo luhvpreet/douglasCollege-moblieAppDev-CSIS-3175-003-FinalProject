@@ -120,7 +120,7 @@ public class AppointmentBook3 extends AppCompatActivity {
                 DecimalFormat dfMin = new DecimalFormat("00");
                 int intHour = Integer.parseInt(dfHour.format(hour));
                 int intMin = Integer.parseInt(dfMin.format(min));
-                String appointmentTime = dfHour.format(intHour) + ":" + dfMin.format(intMin);
+                appointmentTime = dfHour.format(intHour) + ":" + dfMin.format(intMin);
                 // appointmentTime = String.valueOf(hour)+":"+String.valueOf(min);
                 TextView txtTime =  findViewById(R.id.txtAB3Time);
                 txtTime.setText(appointmentTime);

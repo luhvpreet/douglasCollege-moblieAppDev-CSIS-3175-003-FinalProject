@@ -12,7 +12,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class ProfileEditActivity extends AppCompatActivity {
-    SharedPreferences preferences;
     DatabaseHelper db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +28,7 @@ public class ProfileEditActivity extends AppCompatActivity {
         EditText txtAddress = findViewById(R.id.profileEditAddress);
         EditText txtPostal = findViewById(R.id.profileEditPostal);
 
-        preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        int userId = preferences.getInt("USERID",0);
+        int userId = getIntent().getIntExtra("userId", 0);
 
         // txtName.setText(db.getUserNameById(userId));
         txtEmail.setText(db.getUserEmail(userId));

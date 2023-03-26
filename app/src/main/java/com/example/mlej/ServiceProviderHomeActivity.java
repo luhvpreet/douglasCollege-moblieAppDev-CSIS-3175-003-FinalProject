@@ -42,6 +42,7 @@ public class ServiceProviderHomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ServiceProviderHomeActivity.this, ProfileEditActivity.class);
+                intent.putExtra("userId", userId);
                 startActivity(intent);
             }
         });

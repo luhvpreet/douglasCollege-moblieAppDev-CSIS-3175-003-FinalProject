@@ -23,6 +23,7 @@ public class AppointmentDetails extends AppCompatActivity {
         Intent intent = getIntent();
         db = new DatabaseHelper(this);
         Button btnRemindCustomer = findViewById(R.id.btnRemindCustomer);
+        Button btnEditCustomerProfile = findViewById(R.id.btnEditCustomerProfile);
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         if (intent != null){
@@ -32,6 +33,7 @@ public class AppointmentDetails extends AppCompatActivity {
 
             if (userId == customerId) {
                 btnRemindCustomer.setVisibility(View.INVISIBLE);
+                btnEditCustomerProfile.setVisibility(View.INVISIBLE);
             }
 
             AppointmentItemModel aim = db.getAppointment(appointmentId);
@@ -70,6 +72,15 @@ public class AppointmentDetails extends AppCompatActivity {
                     else {
                         Toast.makeText(AppointmentDetails.this, "Reminder failed!", Toast.LENGTH_SHORT).show();
                     }
+                }
+            });
+
+            btnEditCustomerProfile.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(AppointmentDetails.this, ProfileEditActivity.class);
+                    intent.putExtra("userId", customerId);
+                    startActivity(intent);
                 }
             });
 

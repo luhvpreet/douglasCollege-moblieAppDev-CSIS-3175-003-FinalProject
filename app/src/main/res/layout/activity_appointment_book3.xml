@@ -180,12 +180,11 @@
     <RadioGroup
         android:layout_width="380dp"
         android:layout_height="60dp"
-        android:layout_marginTop="12dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="@+id/imgPickUp"
         app:layout_constraintHorizontal_bias="0.517"
         app:layout_constraintStart_toStartOf="@+id/imgDropOff"
-        app:layout_constraintTop_toBottomOf="@+id/textView4">
+        app:layout_constraintTop_toBottomOf="@+id/txtAB3DropoffLocation">
 
         <RadioButton
             android:id="@+id/radbtnDropOff"

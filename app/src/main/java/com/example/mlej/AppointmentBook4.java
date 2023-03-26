@@ -24,10 +24,10 @@ public class AppointmentBook4 extends AppCompatActivity {
         String time = getIntent().getStringExtra("time");
         String pickordrop = getIntent().getStringExtra("pickordrop");
         if (pickordrop.equals("0")) {
-            serviceOption = "Drop Off";
+            serviceOption = "Pick Up";
         }
         if (pickordrop.equals("1")){
-            serviceOption = "Pick Up";
+            serviceOption = "Drop Off";
         }
 
         TextView txtDetails = findViewById(R.id.txtAB4Details);

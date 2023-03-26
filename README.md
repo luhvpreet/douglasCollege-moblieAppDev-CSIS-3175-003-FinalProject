@@ -11,7 +11,7 @@
 - [x] Service view and edit
 - [ ] Service history view
 - [ ] Reports generation
-- [ ] Send reminders https://github.com/luhvpreet/douglasCollege-moblieAppDev-CSIS-3175-003-FinalProject/pull/9
+- [x] Send reminders https://github.com/luhvpreet/douglasCollege-moblieAppDev-CSIS-3175-003-FinalProject/pull/9
 - [ ] Let Provider add a completely new service that is not already on the list
 
 ## When you start working on a new part

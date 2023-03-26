@@ -13,7 +13,10 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import java.sql.Time;
 import java.text.DecimalFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class AppointmentBook3 extends AppCompatActivity {
 
@@ -79,20 +82,39 @@ public class AppointmentBook3 extends AppCompatActivity {
                     btnPickTime.setError("Please select a time");
                     valid = false;
                 }
+
                 if (valid){
-                    if (radbtnPickUp.isChecked()){
-                        pickupordropoff = "0";
-                    } else if (radbtnDropOff.isChecked()){
-                        pickupordropoff = "1";
+                    String[] date = appointmentDate.split("-");
+                    int year = Integer.parseInt(date[0]);
+                    int month = Integer.parseInt(date[1]);
+                    int day = Integer.parseInt(date[2]);
+                    String[] time = appointmentTime.split(":");
+                    int hour = Integer.parseInt(time[0]);
+                    int minute = Integer.parseInt(time[1]);
+
+                    // if the date is before today
+                    Calendar appointmentDateTime = Calendar.getInstance();
+                    appointmentDateTime.set(year, month, day, hour, minute);
+                    Calendar now = Calendar.getInstance();
+
+                    if (appointmentDateTime.before(now)){
+                        btnPickDate.setError("Selected date or time is in the past");
+                        btnPickTime.setError("Selected date or time is in the past");
+                    } else {
+                        if (radbtnPickUp.isChecked()){
+                            pickupordropoff = "0";
+                        } else if (radbtnDropOff.isChecked()){
+                            pickupordropoff = "1";
+                        }
+                        Intent intent = new Intent(AppointmentBook3.this, AppointmentBook4.class);
+                        intent.putExtra("cID", cID);
+                        intent.putExtra("pID", pID);
+                        //intent add services
+                        intent.putExtra("pickordrop", pickupordropoff);
+                        intent.putExtra("date", appointmentDate);
+                        intent.putExtra("time", appointmentTime);
+                        startActivity(intent);
                     }
-                    Intent intent = new Intent(AppointmentBook3.this, AppointmentBook4.class);
-                    intent.putExtra("cID", cID);
-                    intent.putExtra("pID", pID);
-                    //intent add services
-                    intent.putExtra("pickordrop", pickupordropoff);
-                    intent.putExtra("date", appointmentDate);
-                    intent.putExtra("time", appointmentTime);
-                    startActivity(intent);
                 }
             }
         });
@@ -104,7 +126,8 @@ public class AppointmentBook3 extends AppCompatActivity {
         DatePickerDialog dialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                appointmentDate = String.valueOf(year)+"-"+String.valueOf(month)+"-"+String.valueOf(day);
+                DecimalFormat df = new DecimalFormat("00");
+                appointmentDate = df.format(year) + "-" + df.format(month+1) + "-" + df.format(day);
                 TextView txtDate =  findViewById(R.id.txtAB3Date);
                 txtDate.setText(appointmentDate);
             }
@@ -116,11 +139,8 @@ public class AppointmentBook3 extends AppCompatActivity {
             @Override
             public void onTimeSet(TimePicker timePicker, int hour, int min) {
                 // format the time to hh:mm
-                DecimalFormat dfHour = new DecimalFormat("00");
-                DecimalFormat dfMin = new DecimalFormat("00");
-                int intHour = Integer.parseInt(dfHour.format(hour));
-                int intMin = Integer.parseInt(dfMin.format(min));
-                appointmentTime = dfHour.format(intHour) + ":" + dfMin.format(intMin);
+                DecimalFormat df = new DecimalFormat("00");
+                appointmentTime = df.format(hour) + ":" + df.format(min);
                 // appointmentTime = String.valueOf(hour)+":"+String.valueOf(min);
                 TextView txtTime =  findViewById(R.id.txtAB3Time);
                 txtTime.setText(appointmentTime);

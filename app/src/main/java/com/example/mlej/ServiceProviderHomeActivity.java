@@ -37,6 +37,7 @@ public class ServiceProviderHomeActivity extends AppCompatActivity {
 
         Button btnEditProfile = findViewById(R.id.btnSPHEditProfile);
         Button btnViewProfile = findViewById(R.id.btnSPHViewProfile);
+        Button btnSPHEditServices = findViewById(R.id.btnSPHEditServices);
 
         btnEditProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,6 +74,13 @@ public class ServiceProviderHomeActivity extends AppCompatActivity {
                 editor.remove("USERID");
                 editor.commit();
                 startActivity(intent);
+            }
+        });
+
+        btnSPHEditServices.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
     }

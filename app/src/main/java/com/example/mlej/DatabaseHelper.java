@@ -40,6 +40,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     final static String TABLE3_NAME = "Services_Table";
     final static String T3COL1 = "ServicesID";
     final static String T3COL2 = "ServicesName";
+    final static String T3COL3 = "Price";
 
     final static String TABLE4_NAME = "Provider_Services_Table";
     final static String T4COL1 = "ProviderId";
@@ -477,9 +478,33 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return -1;
     }
 
+    public boolean hasServices(int userId, int i) {
+        //db.hasServices(userId, 1)
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        String query = "SELECT DISTINCT " + T3COL2 +
+                " FROM " + TABLE3_NAME +
+                " INNER JOIN " + TABLE4_NAME +
+                " ON " + TABLE3_NAME + "." + T3COL1 + "=" + TABLE4_NAME +"." + T4COL2 + " WHERE " +
+                TABLE4_NAME + "." + T4COL1 + "=" + userId;
+        Cursor cursor = sqLiteDatabase.rawQuery(query,null);
+        if(cursor.getCount() > 0){
+            cursor.close();
+            return true;
+        }
+        else return false;
+    }
+
+    public void removeServices(int userId, int i) {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        sqLiteDatabase.execSQL("delete from "+ TABLE4_NAME + " WHERE " +
+                T4COL1 + "=" + userId);
+
+    }
+
+
     //this will delete all records in all of the tables
     public void deleteALLRecords(){
-        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         sqLiteDatabase.execSQL("delete from "+ TABLE1_NAME);
         sqLiteDatabase.execSQL("delete from "+ TABLE2_NAME);
         sqLiteDatabase.execSQL("delete from "+ TABLE3_NAME);
@@ -487,4 +512,5 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("delete from "+ TABLE5_NAME);
         sqLiteDatabase.execSQL("delete from "+ TABLE6_NAME);
     }
+
 }

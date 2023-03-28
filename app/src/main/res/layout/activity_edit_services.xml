@@ -2,10 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/txt"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignupServicesActivity">
+    tools:context=".Edit_Services">
 
     <ImageView
         android:id="@+id/imgView3"
@@ -19,167 +18,166 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/etxtCompanyName"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:backgroundTint="#fff"
-        android:drawableLeft="@drawable/ic_company"
-        android:ems="10"
-        android:hint="Company's Name"
-        android:inputType="textPersonName"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/txtServices"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <TextView
-        android:id="@+id/txtCompanyName"
-        android:layout_width="match_parent"
+        android:id="@+id/txtServices"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="42dp"
         android:gravity="center"
-        android:text="Your "
+        android:text="Add or Remove Services you are Providing:"
         android:textColor="@color/white"
-        android:textSize="60sp"
-        app:layout_constraintBottom_toTopOf="@+id/etxtCompanyName"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/txtServices"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="360dp"
-        android:gravity="center"
-        android:text="Check out the Services you are Providing:"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imgView3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <CheckBox
         android:id="@+id/cboxService1"
-        android:layout_width="160dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="26dp"
         android:layout_marginTop="34dp"
+        android:layout_marginEnd="41dp"
+        android:onClick="hasUpdateServices"
         android:text="Electronic System Check"
         android:textColor="@color/white"
         android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/cboxService6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtServices" />
 
     <CheckBox
         android:id="@+id/cboxService3"
-        android:layout_width="160dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:layout_marginEnd="41dp"
+        android:onClick="hasUpdateServices"
         android:text="AC and Heating Repair"
         android:textColor="@color/white"
         android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/cboxService2"
+        app:layout_constraintEnd_toStartOf="@+id/cboxService8"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cboxService2" />
 
     <CheckBox
         android:id="@+id/cboxService4"
-        android:layout_width="160dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:layout_marginEnd="41dp"
+        android:onClick="hasUpdateServices"
         android:text="Brakes or Brake Repair"
         android:textColor="@color/white"
         android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/cboxService3"
+        app:layout_constraintEnd_toStartOf="@+id/cboxService9"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cboxService3" />
 
     <CheckBox
         android:id="@+id/cboxService5"
-        android:layout_width="160dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:layout_marginEnd="41dp"
+        android:onClick="hasUpdateServices"
         android:text="Lights, Wipers and Accessories"
         android:textColor="@color/white"
         android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/cboxService4"
+        app:layout_constraintEnd_toStartOf="@+id/cboxService10"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cboxService4" />
 
     <CheckBox
         android:id="@+id/cboxService2"
-        android:layout_width="160dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:layout_marginEnd="41dp"
+        android:onClick="hasUpdateServices"
         android:text="New Tires or Changing Tires"
         android:textColor="@color/white"
         android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/cboxService1"
+        app:layout_constraintEnd_toStartOf="@+id/cboxService7"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cboxService1" />
 
     <CheckBox
         android:id="@+id/cboxService7"
-        android:layout_width="160dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:onClick="hasUpdateServices"
         android:text="Fluid Changes"
         android:textColor="@color/white"
         android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/cboxService6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cboxService2"
         app:layout_constraintTop_toBottomOf="@+id/cboxService6" />
 
     <CheckBox
         android:id="@+id/cboxService8"
-        android:layout_width="160dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:onClick="hasUpdateServices"
         android:text="Exhaust System Services"
         android:textColor="@color/white"
         android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/cboxService7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cboxService3"
         app:layout_constraintTop_toBottomOf="@+id/cboxService7" />
 
     <CheckBox
         android:id="@+id/cboxService10"
-        android:layout_width="160dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:onClick="hasUpdateServices"
         android:text="Batteries and Charging"
         android:textColor="@color/white"
         android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/cboxService9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cboxService5"
         app:layout_constraintTop_toBottomOf="@+id/cboxService9" />
 
     <CheckBox
         android:id="@+id/cboxService9"
-        android:layout_width="160dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:onClick="hasUpdateServices"
         android:text="Steering and Suspension"
         android:textColor="@color/white"
         android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/cboxService8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cboxService4"
         app:layout_constraintTop_toBottomOf="@+id/cboxService8" />
 
     <CheckBox
         android:id="@+id/cboxService6"
-        android:layout_width="160dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="34dp"
         android:layout_marginEnd="24dp"
+        android:onClick="hasUpdateServices"
         android:text="Belts and Hoses"
         android:textColor="@color/white"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cboxService1"
         app:layout_constraintTop_toBottomOf="@+id/txtServices" />
 
     <Button
         android:id="@+id/btnUpdateServices"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="91dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="39dp"
         android:background="@drawable/btn_bg_design"
-        android:text="finish signing up"
+        android:text="Close"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.049"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

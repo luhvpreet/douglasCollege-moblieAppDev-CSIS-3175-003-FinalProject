@@ -16,7 +16,7 @@ import kotlin.reflect.KMutableProperty1;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     final static String DATABASE_NAME = "database.db";
-    final static int DATABASE_VERSION = 25;
+    final static int DATABASE_VERSION = 31;
     final static String TABLE1_NAME = "User_table";
     final static String T1COL1 = "Id";
     // user type, 0 for service provider, 1 for customer

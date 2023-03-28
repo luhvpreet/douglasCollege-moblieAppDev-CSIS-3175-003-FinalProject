@@ -5,18 +5,15 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import kotlin.reflect.KMutableProperty1;
-
 public class DatabaseHelper extends SQLiteOpenHelper {
     final static String DATABASE_NAME = "database.db";
-    final static int DATABASE_VERSION = 31;
+    final static int DATABASE_VERSION = 32;
     final static String TABLE1_NAME = "User_table";
     final static String T1COL1 = "Id";
     // user type, 0 for service provider, 1 for customer
@@ -76,7 +73,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(query);
 
         query = "CREATE TABLE " + TABLE3_NAME +
-                "( " + T3COL1 + " INTEGER PRIMARY KEY, " + T3COL2 + " TEXT)";
+                "( " + T3COL1 + " INTEGER PRIMARY KEY, " + T3COL2 + " TEXT," + T3COL3 + " REAL)";
         sqLiteDatabase.execSQL(query);
 
         query = "CREATE TABLE " + TABLE4_NAME +
@@ -323,11 +320,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return null;
     }
 
-    public boolean addServices(int ID, String servicesName){
+    public boolean addServices(int ID, String servicesName, double price){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(T3COL1,ID);
         values.put(T3COL2,servicesName);
+        values.put(T3COL3,price);
 
         long l = sqLiteDatabase.insert(TABLE3_NAME,null,values);
         if(l>0)
@@ -343,8 +341,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(T4COL1,ProviderID);
         values.put(T4COL2,ServicesID);
 
-        System.out.println(ProviderID+" : " +ServicesID);
-
         long l = sqLiteDatabase.insert(TABLE4_NAME,null,values);
         if(l>0)
             return true;
@@ -355,10 +351,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void removeProviderServices(int userId, int ServicesID) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
 
-        System.out.println(userId+" : " +ServicesID);
-
         sqLiteDatabase.execSQL("delete from " + TABLE4_NAME + " WHERE " +
                 T4COL1 + "=" + userId + " AND " + T4COL2 + " = " + ServicesID);
+    }
+
+    public boolean hasServices(int userId, int serviceId) {
+        //db.hasServices(userId, 1)
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        String query = "SELECT DISTINCT " + T4COL2 +
+                " FROM " + TABLE4_NAME + " WHERE " +
+                TABLE4_NAME + "." + T4COL1 + "=" + userId + " AND " + TABLE4_NAME +"."+T4COL2+ "=" + serviceId;
+        Cursor cursor = sqLiteDatabase.rawQuery(query,null);
+        if(cursor.getCount() > 0){
+            cursor.close();
+            return true;
+        }
+        else return false;
     }
 
     // Providers adapter
@@ -489,21 +497,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return -1;
     }
 
-    public boolean hasServices(int userId, int i) {
-        //db.hasServices(userId, 1)
-        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
-        String query = "SELECT DISTINCT " + T3COL2 +
-                " FROM " + TABLE3_NAME +
-                " INNER JOIN " + TABLE4_NAME +
-                " ON " + TABLE3_NAME + "." + T3COL1 + "=" + TABLE4_NAME +"." + T4COL2 + " WHERE " +
-                TABLE4_NAME + "." + T4COL1 + "=" + userId;
-        Cursor cursor = sqLiteDatabase.rawQuery(query,null);
-        if(cursor.getCount() > 0){
-            cursor.close();
-            return true;
-        }
-        else return false;
-    }
+
 
     //this will delete all records in all of the tables
     public void deleteALLRecords(){

@@ -19,7 +19,7 @@ public class LoginSignupActivity extends AppCompatActivity {
         Button btnLSSignup = findViewById(R.id.btnLSSignup);
 
         //dummy info for users, appointments, providerservices, etc:
-        // initData();
+        initData();
 
         //clicking on the Login button will go to the Login activity
         btnLSLogin.setOnClickListener(new View.OnClickListener(){
@@ -49,16 +49,16 @@ public class LoginSignupActivity extends AppCompatActivity {
         //delete all records in all database (dummy users / appointments, etc)
         db.deleteALLRecords();
 
-        db.addServices(1,"Electronic System Check");
-        db.addServices(2,"New Tires or Changing Tires");
-        db.addServices(3,"AC and Heating Repair");
-        db.addServices(4,"Brakes of Brake Repair");
-        db.addServices(5,"Lights, Wipers and Accessories");
-        db.addServices(6,"Belts and Hoses");
-        db.addServices(7,"Fluid Changes");
-        db.addServices(8,"Exhaust System Services");
-        db.addServices(9,"Steering and Suspension");
-        db.addServices(10,"Batteries and Charging");
+        db.addServices(1,"Electronic System Check", 250.99);
+        db.addServices(2,"New Tires or Changing Tires", 859.99);
+        db.addServices(3,"AC and Heating Repair", 649.99);
+        db.addServices(4,"Brakes of Brake Repair", 199.99);
+        db.addServices(5,"Lights, Wipers and Accessories", 119.99);
+        db.addServices(6,"Belts and Hoses", 299.99);
+        db.addServices(7,"Fluid Changes", 89.99);
+        db.addServices(8,"Exhaust System Services", 599.99);
+        db.addServices(9,"Steering and Suspension", 899.99);
+        db.addServices(10,"Batteries and Charging", 99.99);
 
 
         // from 0 to 5 is provider, 6 to 43 is taker
@@ -137,44 +137,44 @@ public class LoginSignupActivity extends AppCompatActivity {
         db.addProviderServices(5,9);
         db.addProviderServices(5,10);
 
-        db.addAppointment(6,1,1,"Mar 22, 10:00am",1);
-        db.addAppointment(7,1,2,"Mar 22, 2:00pm",1);
-        db.addAppointment(8,1,3,"Mar 22, 5:00pm",1);
-        db.addAppointment(9,1,4,"Mar 23, 10:00am",1);
-        db.addAppointment(10,1,5,"Mar 23, 2:00pm",0);
-        db.addAppointment(11,1,6,"Mar 23, 5:00pm",0);
-        db.addAppointment(12,1,7,"Mar 24, 10:00am",0);
-        db.addAppointment(13,1,8,"Mar 24, 2:00pm",0);
-        db.addAppointment(14,1,9,"Mar 24, 5:00pm",1);
-        db.addAppointment(15,1,10,"Mar 25, 10:00am",1);
-        db.addAppointment(16,2,11,"Mar 25, 2:00pm",0);
-        db.addAppointment(17,2,12,"Mar 25, 5:00pm",0);
-        db.addAppointment(18,2,13,"Mar 26, 10:00am",1);
-        db.addAppointment(19,2,14,"Mar 26, 2:00pm",0);
-        db.addAppointment(20,2,15,"Mar 26, 5:00pm",1);
-        db.addAppointment(21,2,16,"Mar 27, 10:00am",0);
-        db.addAppointment(22,2,17,"Mar 27, 2:00pm",1);
-        db.addAppointment(23,2,18,"Mar 27, 5:00pm",0);
-        db.addAppointment(24,2,19,"Mar 28, 10:00am",1);
-        db.addAppointment(25,2,20,"Mar 28, 2:00pm",0);
-        db.addAppointment(26,3,21,"Mar 28, 5:00pm",0);
-        db.addAppointment(27,3,22,"Mar 29, 10:00am",0);
-        db.addAppointment(28,3,23,"Mar 29, 2:00pm",0);
-        db.addAppointment(29,3,24,"Mar 29, 5:00pm",0);
-        db.addAppointment(30,3,25,"Mar 30, 10:00am",1);
-        db.addAppointment(31,4,26,"Mar 30, 2:00pm",1);
-        db.addAppointment(32,4,27,"Mar 30, 5:00pm",1);
-        db.addAppointment(33,4,28,"Mar 31, 10:00am",1);
-        db.addAppointment(34,4,29,"Mar 31, 2:00pm",0);
-        db.addAppointment(35,4,30,"Mar 31, 5:00pm",0);
-        db.addAppointment(36,5,31,"Apr 29, 10:00am",1);
-        db.addAppointment(37,5,32,"Apr 29, 2:00pm",1);
-        db.addAppointment(38,5,33,"Apr 29, 5:00pm",0);
-        db.addAppointment(39,5,34,"Apr 30, 10:00am",0);
-        db.addAppointment(40,5,35,"Apr 30, 2:00pm",1);
-        db.addAppointment(41,5,36,"Apr 30, 5:00pm",0);
-        db.addAppointment(42,5,37,"May 31, 10:00am",1);
-        db.addAppointment(43,5,38,"May 31, 2:00pm",0);
+        db.addAppointment(6,1,1,"2023-03-20 10:30",1);
+        db.addAppointment(7,1,2,"2023-03-21 13:30",1);
+        db.addAppointment(8,1,3,"2023-03-22 19:30",1);
+        db.addAppointment(9,1,4,"2023-03-23 10:30",1);
+        db.addAppointment(10,1,5,"2023-03-24 14:15",0);
+        db.addAppointment(11,1,6,"2023-03-25 17:15",0);
+        db.addAppointment(12,1,7,"2023-03-26 10:15",0);
+        db.addAppointment(13,1,8,"2023-03-27 13:45",0);
+        db.addAppointment(14,1,9,"2023-03-28 19:45",1);
+        db.addAppointment(15,1,10,"2023-03-29 10:00",1);
+        db.addAppointment(16,2,11,"2023-03-30 14:00",0);
+        db.addAppointment(17,2,12,"2023-03-31 17:00",0);
+        db.addAppointment(18,2,13,"2023-03-01 10:30",1);
+        db.addAppointment(19,2,14,"2023-03-02 13:30",0);
+        db.addAppointment(20,2,15,"2023-03-03 19:30",1);
+        db.addAppointment(21,2,16,"2023-03-04 10:30",0);
+        db.addAppointment(22,2,17,"2023-04-05 14:15",1);
+        db.addAppointment(23,2,18,"2023-04-06 17:15",0);
+        db.addAppointment(24,2,19,"2023-04-07 10:15",1);
+        db.addAppointment(25,2,20,"2023-04-08 13:45",0);
+        db.addAppointment(26,3,21,"2023-04-09 19:45",0);
+        db.addAppointment(27,3,22,"2023-04-10 10:00",0);
+        db.addAppointment(28,3,23,"2023-04-11 14:00",0);
+        db.addAppointment(29,3,24,"2023-04-12 17:00",0);
+        db.addAppointment(30,3,25,"2023-04-13 10:30",1);
+        db.addAppointment(31,4,26,"2023-04-14 13:30",1);
+        db.addAppointment(32,4,27,"2023-04-15 19:30",1);
+        db.addAppointment(33,4,28,"2023-04-16 10:30",1);
+        db.addAppointment(34,4,29,"2023-04-17 14:15",0);
+        db.addAppointment(35,4,30,"2023-04-18 17:15",0);
+        db.addAppointment(36,5,31,"2023-04-19 10:15",1);
+        db.addAppointment(37,5,32,"2023-04-20 13:45",1);
+        db.addAppointment(38,5,33,"2023-04-21 19:45",0);
+        db.addAppointment(39,5,34,"2023-04-22 10:00",0);
+        db.addAppointment(40,5,35,"2023-04-23 14:00",1);
+        db.addAppointment(41,5,36,"2023-04-24 17:00",0);
+        db.addAppointment(42,5,37,"2023-04-25 10:30",1);
+        db.addAppointment(43,5,38,"2023-04-26 13:30",0);
 
         db.addAppointmentServices(1,1);
         db.addAppointmentServices(1,2);

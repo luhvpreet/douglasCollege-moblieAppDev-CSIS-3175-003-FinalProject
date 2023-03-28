@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Edit_Services">
+    tools:context=".EditServicesActivity">
 
     <ImageView
         android:id="@+id/imgView3"
@@ -38,6 +38,7 @@
         android:layout_marginStart="26dp"
         android:layout_marginTop="34dp"
         android:layout_marginEnd="41dp"
+        android:checked="false"
         android:onClick="hasUpdateServices"
         android:text="Electronic System Check"
         android:textColor="@color/white"

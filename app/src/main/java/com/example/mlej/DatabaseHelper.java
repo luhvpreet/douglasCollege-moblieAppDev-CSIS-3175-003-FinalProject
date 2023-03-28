@@ -343,11 +343,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(T4COL1,ProviderID);
         values.put(T4COL2,ServicesID);
 
+        System.out.println(ProviderID+" : " +ServicesID);
+
         long l = sqLiteDatabase.insert(TABLE4_NAME,null,values);
         if(l>0)
             return true;
         else
             return false;
+    }
+
+    public void removeProviderServices(int userId, int ServicesID) {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+
+        System.out.println(userId+" : " +ServicesID);
+
+        sqLiteDatabase.execSQL("delete from " + TABLE4_NAME + " WHERE " +
+                T4COL1 + "=" + userId + " AND " + T4COL2 + " = " + ServicesID);
     }
 
     // Providers adapter
@@ -493,14 +504,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         else return false;
     }
-
-    public void removeServices(int userId, int i) {
-        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
-        sqLiteDatabase.execSQL("delete from "+ TABLE4_NAME + " WHERE " +
-                T4COL1 + "=" + userId);
-
-    }
-
 
     //this will delete all records in all of the tables
     public void deleteALLRecords(){

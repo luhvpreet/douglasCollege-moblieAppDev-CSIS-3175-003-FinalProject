@@ -10,13 +10,13 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Toast;
 
-public class Edit_Services extends AppCompatActivity {
+public class EditServicesActivity extends AppCompatActivity {
 
     DatabaseHelper db;
     SharedPreferences preferences;
     int userId;
-
     boolean hasUpdated =false;
+    Button btnUpdateServices;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +39,7 @@ public class Edit_Services extends AppCompatActivity {
         CheckBox cboxServices8 = findViewById(R.id.cboxService8);
         CheckBox cboxServices9 = findViewById(R.id.cboxService9);
         CheckBox cboxServices10 = findViewById(R.id.cboxService10);
-        Button btnUpdateServices = findViewById(R.id.btnUpdateServices);
+        btnUpdateServices = findViewById(R.id.btnUpdateServices);
 
         if (db.hasServices(userId, 1)) cboxServices1.setChecked(true);
         if (db.hasServices(userId, 2)) cboxServices2.setChecked(true);
@@ -55,25 +55,33 @@ public class Edit_Services extends AppCompatActivity {
         btnUpdateServices.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                for( int i=1; i<11; i++) db.removeServices(userId, i);
-                if(cboxServices1.isChecked()) db.addProviderServices(userId, 1);
-                if(cboxServices2.isChecked()) db.addProviderServices(userId, 2);
-                if(cboxServices3.isChecked()) db.addProviderServices(userId, 3);
-                if(cboxServices4.isChecked()) db.addProviderServices(userId, 4);
-                if(cboxServices5.isChecked()) db.addProviderServices(userId, 5);
-                if(cboxServices6.isChecked()) db.addProviderServices(userId, 6);
-                if(cboxServices7.isChecked()) db.addProviderServices(userId, 7);
-                if(cboxServices8.isChecked()) db.addProviderServices(userId, 8);
-                if(cboxServices9.isChecked()) db.addProviderServices(userId, 9);
-                if(cboxServices10.isChecked()) db.addProviderServices(userId, 10);
 
-                Toast.makeText(Edit_Services.this, "Services updated successfully", Toast.LENGTH_SHORT).show();
+                if(!hasUpdated) finish();
+                else {
+
+                    for (int i = 1; i < 11; i++) db.removeProviderServices(userId, i);
+                    if (cboxServices1.isChecked()) db.addProviderServices(userId, 1);
+                    if (cboxServices2.isChecked()) db.addProviderServices(userId, 2);
+                    if (cboxServices3.isChecked()) db.addProviderServices(userId, 3);
+                    if (cboxServices4.isChecked()) db.addProviderServices(userId, 4);
+                    if (cboxServices5.isChecked()) db.addProviderServices(userId, 5);
+                    if (cboxServices6.isChecked()) db.addProviderServices(userId, 6);
+                    if (cboxServices7.isChecked()) db.addProviderServices(userId, 7);
+                    if (cboxServices8.isChecked()) db.addProviderServices(userId, 8);
+                    if (cboxServices9.isChecked()) db.addProviderServices(userId, 9);
+                    if (cboxServices10.isChecked()) db.addProviderServices(userId, 10);
+
+                    Toast.makeText(EditServicesActivity.this, "Services updated successfully", Toast.LENGTH_SHORT).show();
+
+                    hasUpdated = false;
+                    btnUpdateServices.setText("Close");
+                }
             }
         });
-
     }
 
     public void hasUpdateServices(View v){
         hasUpdated = true;
+        btnUpdateServices.setText("Update Services...");
     }
 }

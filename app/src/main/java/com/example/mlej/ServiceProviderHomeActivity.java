@@ -80,7 +80,8 @@ public class ServiceProviderHomeActivity extends AppCompatActivity {
         btnSPHEditServices.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(ServiceProviderHomeActivity.this, EditServicesActivity.class);
+                startActivity(intent);
             }
         });
     }

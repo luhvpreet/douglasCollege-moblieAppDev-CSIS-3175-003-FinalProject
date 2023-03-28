@@ -12,7 +12,7 @@
         android:theme="@style/Theme.MLEJ"
         tools:targetApi="31" >
         <activity
-            android:name=".Edit_Services"
+            android:name=".EditServicesActivity"
             android:exported="false" />
         <activity
             android:name=".AppointmentBook4"

@@ -3,7 +3,10 @@ package com.example.mlej;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.DecimalFormat;
 
@@ -11,7 +14,6 @@ public class AppointmentBook4 extends AppCompatActivity {
 
     DatabaseHelper db;
     String serviceOption;
-
     DecimalFormat currency;
 
     //Intent intent;
@@ -23,6 +25,8 @@ public class AppointmentBook4 extends AppCompatActivity {
         setTitle("Book an Appointment");
         db = new DatabaseHelper(this);
         currency = new DecimalFormat("$###,###.##");
+
+        Button btnAB4ConfirmAndBook = findViewById(R.id.btnAB4ConfirmAndBook);
 
         String txtServices = "";
 
@@ -37,7 +41,6 @@ public class AppointmentBook4 extends AppCompatActivity {
 
         // GET serviceID#1 to #10
         for (int i=0; i<s.length; i++){
-
 
             if(s[i]!=0){
                 System.out.println("2nd: s[i]" + s[i]);
@@ -67,8 +70,25 @@ public class AppointmentBook4 extends AppCompatActivity {
                 + "Service Provider Name : "+db.getUserNameById(pID)+"\n"
                 + "Service Center Address : "+db.getUserAddress(pID)+"\n\n"
                 + "Services Requested :\n"
-                + txtServices + "\n\n"
+                + txtServices + "\n"
                 + "Estimated total is " + currency.format(priceEstimates));
+
+
+        btnAB4ConfirmAndBook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int appointmentId = (int)db.addAppointment(cID, pID, 0, date+" "+time, Integer.parseInt(pickordrop));
+                for(int i=0; i<s.length; i++){
+                    if(s[i] != 0) db.addAppointmentServices(appointmentId, s[i+1]);
+                }
+
+                if (appointmentId!=-1) Toast.makeText(AppointmentBook4.this, "Appointment is confirmed!", Toast.LENGTH_SHORT).show();
+                else {
+                    Toast.makeText(AppointmentBook4.this, "System error! Please try again later!", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
 
     }
 }

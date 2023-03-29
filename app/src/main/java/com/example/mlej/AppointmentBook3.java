@@ -124,6 +124,7 @@ public class AppointmentBook3 extends AppCompatActivity {
                         Intent intent = new Intent(AppointmentBook3.this, AppointmentBook4.class);
                         intent.putExtra("cID", cID);
                         intent.putExtra("pID", pID);
+                        System.out.println("AB3: " + priceEstimates);
                         intent.putExtra("priceEstimates", priceEstimates);
                         intent.putExtra("pickordrop", pickupordropoff);
                         intent.putExtra("date", appointmentDate);

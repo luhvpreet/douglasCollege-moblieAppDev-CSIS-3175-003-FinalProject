@@ -309,7 +309,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return sqLiteDatabase.update(TABLE1_NAME, values, T1COL1 + " = " + userId, null) > 0;
     }
 
-    public boolean addAppointment(int Customer_Id, int Provider_Id, int Vehicle_Id, String DateTime, int DropOffOrPickUp){
+    public long addAppointment(int Customer_Id, int Provider_Id, int Vehicle_Id, String DateTime, int DropOffOrPickUp){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(T2COL2,Customer_Id);
@@ -320,9 +320,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         long l = sqLiteDatabase.insert(TABLE2_NAME,null,values);
         if(l>0)
-            return true;
+            return l;
         else
-            return false;
+            return -1;
     }
 
     public AppointmentItemModel getAppointment(int appointmentId){
@@ -412,7 +412,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             cursor.close();
             return null;
         }
-
     }
 
     public boolean addProviderServices(int ProviderID, int ServicesID){
@@ -510,13 +509,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public String getCompanyNameByAppointmentId(int appointmentId){
+        String companyName;
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
         String query = "SELECT " + T1COL9 + " FROM " + TABLE1_NAME + " WHERE " + T1COL1 + " = " +
                 "(SELECT " + T2COL3 + " FROM " + TABLE2_NAME + " WHERE " + T2COL1 + " = " + appointmentId + ")";
         Cursor cursor = sqLiteDatabase.rawQuery(query,null);
         if(cursor.getCount() > 0){
             cursor.moveToFirst();
-            return cursor.getString(0);
+            companyName = cursor.getString(0);
+            cursor.close();
+            return companyName;
         }
         else
             return null;
@@ -658,6 +660,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                             cursor.getString(1),
                             cursor.getString(2)));
                 }
+                cursor.close();
                 return appList;
             }
             else

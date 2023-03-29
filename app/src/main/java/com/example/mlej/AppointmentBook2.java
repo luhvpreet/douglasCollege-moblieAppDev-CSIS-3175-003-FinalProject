@@ -83,6 +83,7 @@ public class AppointmentBook2 extends AppCompatActivity implements SelectService
 
     @Override
     public void onSelectedPriceChange(double priceEstimates) {
+        this.priceEstimates = priceEstimates;
         if(numberOfServicesSelected==0){
             txtOutput = "Please select the services you want.";
             btnNext.setClickable(false);

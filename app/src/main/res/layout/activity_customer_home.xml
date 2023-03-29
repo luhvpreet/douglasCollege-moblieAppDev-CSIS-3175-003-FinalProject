@@ -25,27 +25,28 @@
 
     <Button
         android:id="@+id/btnCHEditProfile"
-        android:layout_width="110dp"
-        android:layout_height="110dp"
-        android:layout_marginTop="36dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:background="@drawable/btn_bg_design_2"
         android:contentDescription="profile"
-        android:foreground="@drawable/ic_profile"
+        android:foreground="@drawable/ic_profile_edit"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.77"
+        app:layout_constraintHorizontal_bias="0.951"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.791" />
 
     <Button
         android:id="@+id/btnCHViewProfile"
         android:layout_width="110dp"
         android:layout_height="110dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/btn_bg_design_2"
         android:contentDescription="profile"
-        android:foreground="@drawable/ic_profile"
+        android:foreground="@drawable/ic_profile_view"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.242"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -59,7 +60,7 @@
         android:textSize="15sp"
         android:textStyle="normal|bold"
         app:layout_constraintEnd_toEndOf="@+id/btnCHEditProfile"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.9"
         app:layout_constraintStart_toStartOf="@+id/btnCHEditProfile"
         app:layout_constraintTop_toBottomOf="@+id/btnCHEditProfile" />
 
@@ -144,7 +145,7 @@
         app:layout_constraintHorizontal_bias="0.561"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.634" />
+        app:layout_constraintVertical_bias="0.52" />
 
     <Button
         android:id="@+id/btnCHReminder"
@@ -156,10 +157,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.051"
+        app:layout_constraintHorizontal_bias="0.057"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.926" />
+        app:layout_constraintVertical_bias="0.793" />
 
     <Button
         android:id="@+id/btnCHViewServiceHistory"
@@ -171,10 +172,10 @@
         app:icon="@drawable/ic_history"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.954"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.856" />
+        app:layout_constraintVertical_bias="0.758" />
 
     <Button
         android:id="@+id/btnCHLogout"
@@ -185,10 +186,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.906"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.967" />
+        app:layout_constraintVertical_bias="0.971" />
 
     <Button
         android:id="@+id/btnCHBookAppointment"
@@ -202,10 +203,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.054"
+        app:layout_constraintHorizontal_bias="0.057"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.634" />
+        app:layout_constraintVertical_bias="0.522" />
 
     <Button
         android:id="@+id/btnCHSearch"
@@ -221,33 +222,31 @@
         app:layout_constraintHorizontal_bias="0.948"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.634" />
+        app:layout_constraintVertical_bias="0.52" />
 
     <TextView
         android:id="@+id/txtCHServiceHistory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
         android:text="View Service History"
         android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="normal"
-        app:layout_constraintBottom_toBottomOf="@+id/btnCHViewServiceHistory"
-        app:layout_constraintEnd_toStartOf="@+id/btnCHViewServiceHistory"
-        app:layout_constraintTop_toTopOf="@+id/btnCHViewServiceHistory"
-        app:layout_constraintVertical_bias="0.545" />
+        android:textSize="15sp"
+        android:textStyle="normal|bold"
+        app:layout_constraintEnd_toEndOf="@+id/btnCHViewServiceHistory"
+        app:layout_constraintStart_toStartOf="@+id/btnCHViewServiceHistory"
+        app:layout_constraintTop_toBottomOf="@+id/btnCHViewServiceHistory" />
 
     <TextView
         android:id="@+id/txtCHUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="184dp"
+        android:layout_marginTop="156dp"
         android:gravity="center"
         android:text="Welcome (username)!"
         android:textColor="@color/white"
         android:textSize="35sp"
-        app:layout_constraintEnd_toEndOf="@+id/btnCHEditProfile"
-        app:layout_constraintHorizontal_bias="0.527"
+        app:layout_constraintEnd_toEndOf="@+id/btnCHViewProfile"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="@+id/btnCHViewProfile"
         app:layout_constraintTop_toTopOf="@+id/imgView1" />
 </androidx.constraintlayout.widget.ConstraintLayout>

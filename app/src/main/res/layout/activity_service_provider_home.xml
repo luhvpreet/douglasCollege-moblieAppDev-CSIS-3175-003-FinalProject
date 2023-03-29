@@ -12,34 +12,38 @@
         android:layout_height="match_parent"
         android:foreground="@drawable/foreground_design"
         android:scaleType="centerCrop"
-        app:srcCompat="@drawable/background" />
+        app:srcCompat="@drawable/background"
+        tools:layout_editor_absoluteX="42dp"
+        tools:layout_editor_absoluteY="-55dp" />
 
     <TextView
         android:id="@+id/txtSPHUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="184dp"
+        android:layout_marginTop="156dp"
         android:gravity="center"
         android:text="Welcome (username)!"
         android:textColor="@color/white"
         android:textSize="35sp"
-        app:layout_constraintEnd_toEndOf="@+id/btnSPHEditProfile"
-        app:layout_constraintHorizontal_bias="0.527"
+        app:layout_constraintEnd_toEndOf="@+id/btnSPHViewProfile"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="@+id/btnSPHViewProfile"
         app:layout_constraintTop_toTopOf="@+id/imgView1" />
 
     <Button
         android:id="@+id/btnSPHEditProfile"
-        android:layout_width="110dp"
-        android:layout_height="110dp"
-        android:layout_marginTop="36dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:background="@drawable/btn_bg_design_2"
         android:contentDescription="profile"
-        android:foreground="@drawable/ic_profile"
+        android:foreground="@drawable/ic_profile_edit"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.77"
+        app:layout_constraintHorizontal_bias="0.948"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.791" />
+
     <TextView
         android:id="@+id/txtSPHEditProfile"
         android:layout_width="110dp"
@@ -50,7 +54,6 @@
         android:textSize="15sp"
         android:textStyle="normal|bold"
         app:layout_constraintEnd_toEndOf="@+id/btnSPHEditProfile"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/btnSPHEditProfile"
         app:layout_constraintTop_toBottomOf="@+id/btnSPHEditProfile" />
 
@@ -58,14 +61,15 @@
         android:id="@+id/btnSPHViewProfile"
         android:layout_width="110dp"
         android:layout_height="110dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/btn_bg_design_2"
         android:contentDescription="profile"
-        android:foreground="@drawable/ic_profile"
+        android:foreground="@drawable/ic_profile_view"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.242"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/txtSPHViewProfile"
         android:layout_width="110dp"
@@ -85,7 +89,7 @@
         android:layout_height="100dp"
         android:layout_marginEnd="35dp"
         android:background="@drawable/btn_bg_design_2"
-        android:foreground="@drawable/ic_viewservices"
+        android:foreground="@drawable/ic_services_view"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/imgView1"
@@ -93,7 +97,7 @@
         app:layout_constraintHorizontal_bias="0.057"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.497" />
+        app:layout_constraintVertical_bias="0.522" />
 
     <TextView
         android:id="@+id/txtSPHViewServices"
@@ -114,7 +118,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:background="@drawable/btn_bg_design_2"
-        android:foreground="@drawable/ic_editservices"
+        android:foreground="@drawable/ic_services_edit"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/imgView1"
@@ -122,7 +126,7 @@
         app:layout_constraintHorizontal_bias="0.948"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+        app:layout_constraintVertical_bias="0.52" />
 
     <TextView
         android:id="@+id/txtSPHEditServices"
@@ -152,7 +156,7 @@
         app:layout_constraintHorizontal_bias="0.561"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.497" />
+        app:layout_constraintVertical_bias="0.52" />
 
     <TextView
         android:id="@+id/txtSPHAppointmentsView"
@@ -177,44 +181,65 @@
         app:icon="@drawable/ic_history"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.954"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.856" />
+        app:layout_constraintVertical_bias="0.758" />
+
     <TextView
         android:id="@+id/txtSPHServiceHistory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:text="View Service History"
+        android:text="Service History"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="15sp"
         android:textStyle="normal"
-        app:layout_constraintBottom_toBottomOf="@+id/btnSPHViewServiceHistory"
-        app:layout_constraintEnd_toStartOf="@+id/btnSPHViewServiceHistory"
-        app:layout_constraintTop_toTopOf="@+id/btnSPHViewServiceHistory"
-        app:layout_constraintVertical_bias="0.545" />
+        app:layout_constraintEnd_toEndOf="@+id/btnSPHViewServiceHistory"
+        app:layout_constraintStart_toStartOf="@+id/btnSPHViewServiceHistory"
+        app:layout_constraintTop_toBottomOf="@+id/btnSPHViewServiceHistory" />
 
     <Button
         android:id="@+id/btnSPHLogout"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
         android:background="@drawable/btn_bg_design"
         android:text="Logout"
-        app:layout_constraintBottom_toBottomOf="@+id/imgView1"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.971" />
 
     <Button
         android:id="@+id/btnReports"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/btn_bg_design"
-        android:text="Generate Reports"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="35dp"
+        android:background="@drawable/btn_bg_design_2"
+        android:foreground="@drawable/ic_reports"
+        android:textSize="14sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/imgView1"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.057"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.793" />
+
+    <TextView
+        android:id="@+id/txtReports"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Reports"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:textStyle="normal|bold"
+        app:layout_constraintEnd_toEndOf="@+id/btnReports"
+        app:layout_constraintStart_toStartOf="@+id/btnReports"
+        app:layout_constraintTop_toBottomOf="@+id/btnReports" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

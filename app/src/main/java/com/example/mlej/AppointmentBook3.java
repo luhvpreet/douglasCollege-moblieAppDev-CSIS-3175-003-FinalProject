@@ -33,6 +33,23 @@ public class AppointmentBook3 extends AppCompatActivity {
         int cID = getIntent().getIntExtra("cID",0); // GET customer ID
         int pID = getIntent().getIntExtra("pID",0); // GET provider ID
 
+        int[] s = new int[10];
+        s[0] =  getIntent().getIntExtra("1",0); // GET serviceID#1
+        s[1] =  getIntent().getIntExtra("2",0); // GET serviceID#2
+        s[2] =  getIntent().getIntExtra("3",0); // GET serviceID#3
+        s[3] =  getIntent().getIntExtra("4",0); // GET serviceID#4
+        s[4] =  getIntent().getIntExtra("5",0); // GET serviceID#5
+        s[5] =  getIntent().getIntExtra("6",0); // GET serviceID#6
+        s[6] =  getIntent().getIntExtra("7",0); // GET serviceID#7
+        s[7] =  getIntent().getIntExtra("8",0); // GET serviceID#8
+        s[8] =  getIntent().getIntExtra("9",0); // GET serviceID#9
+        s[9] =  getIntent().getIntExtra("10",0); // GET serviceID#10
+
+        for (int i=0; i<s.length; i++){
+            System.out.println("Intent: " + (i+1) + " : value is: " + s[i]);
+        }
+
+
         // display customer & service provider location
         TextView txtPLocation = findViewById(R.id.txtAB3DropoffLocation);
         TextView txtCLocation = findViewById(R.id.txtAB3PickupLocation);

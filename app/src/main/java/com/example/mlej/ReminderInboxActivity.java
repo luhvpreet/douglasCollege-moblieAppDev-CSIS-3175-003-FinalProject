@@ -26,6 +26,7 @@ public class ReminderInboxActivity extends AppCompatActivity {
         reminders = db.getReminders(preferences.getInt("USERID", 0), this);
 
         String[] reminderTitles;
+        setTitle("Reminders");
 
         if (reminders == null) {
             reminderTitles = new String[]{"No reminders"};

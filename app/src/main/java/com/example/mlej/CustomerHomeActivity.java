@@ -43,7 +43,7 @@ public class CustomerHomeActivity extends AppCompatActivity {
         });
 
         Button btnEditProfile = findViewById(R.id.btnCHEditProfile);
-        Button btnViewProfile = findViewById(R.id.btnCHEditProfile);
+        Button btnViewProfile = findViewById(R.id.btnCHViewProfile);
         Button btnSearchProvider = findViewById(R.id.btnCHSearch);
         Button btnViewReminders = findViewById(R.id.btnCHReminder);
         Button btnViewAppointment = findViewById(R.id.btnCHViewAppointment);
@@ -52,7 +52,8 @@ public class CustomerHomeActivity extends AppCompatActivity {
         btnSearchProvider.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(CustomerHomeActivity.this, ProviderSearchActivity.class);
+                Intent intent = new Intent(CustomerHomeActivity.this, AppointmentBook.class);
+                intent.putExtra("cID", userId);
                 startActivity(intent);
             }
         });

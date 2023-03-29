@@ -30,10 +30,10 @@ public class ServiceProviderHomeActivity extends AppCompatActivity {
         Button btnSPHViewAppointment = findViewById(R.id.btnSPHViewAppointment);
         Button btnSPHLogout = findViewById(R.id.btnSPHLogout);
 
-        TextView txtWelcome = findViewById(R.id.txtSPHServiceProviderName);
+        TextView txtWelcome = findViewById(R.id.txtSPHUserName);
         String username = db.getUserNameById(userId);
         String companyName = db.getCompanyName(userId);
-        txtWelcome.setText(username + "!");
+        txtWelcome.setText("Welcome "+username + "!");
 
         Button btnEditProfile = findViewById(R.id.btnSPHEditProfile);
         Button btnViewProfile = findViewById(R.id.btnSPHViewProfile);

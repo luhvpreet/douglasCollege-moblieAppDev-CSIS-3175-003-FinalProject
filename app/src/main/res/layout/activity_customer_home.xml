@@ -17,22 +17,11 @@
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/background" />
-
-    <TextView
-        android:id="@+id/txtCHProfile"
-        android:layout_width="110dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Profile"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        android:textStyle="normal|bold"
-        app:layout_constraintEnd_toEndOf="@+id/btnCHEditProfile"
-        app:layout_constraintStart_toStartOf="@+id/btnCHEditProfile"
-        app:layout_constraintTop_toBottomOf="@+id/btnCHEditProfile" />
 
     <Button
         android:id="@+id/btnCHEditProfile"
@@ -43,9 +32,49 @@
         android:contentDescription="profile"
         android:foreground="@drawable/ic_profile"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.77"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnCHViewProfile"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/btn_bg_design_2"
+        android:contentDescription="profile"
+        android:foreground="@drawable/ic_profile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.242"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtCHEditProfile"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Edit Profile"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:textStyle="normal|bold"
+        app:layout_constraintEnd_toEndOf="@+id/btnCHEditProfile"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btnCHEditProfile"
+        app:layout_constraintTop_toBottomOf="@+id/btnCHEditProfile" />
+
+    <TextView
+        android:id="@+id/txtCHViewProfile"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="View Profile"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:textStyle="normal|bold"
+        app:layout_constraintEnd_toEndOf="@+id/btnCHViewProfile"
+        app:layout_constraintStart_toStartOf="@+id/btnCHViewProfile"
+        app:layout_constraintTop_toBottomOf="@+id/btnCHViewProfile" />
 
     <TextView
         android:id="@+id/txtCHSearch"
@@ -57,6 +86,7 @@
         android:textSize="15sp"
         android:textStyle="normal|bold"
         app:layout_constraintEnd_toEndOf="@+id/btnCHSearch"
+        app:layout_constraintHorizontal_bias="0.9"
         app:layout_constraintStart_toStartOf="@+id/btnCHSearch"
         app:layout_constraintTop_toBottomOf="@+id/btnCHSearch" />
 
@@ -211,13 +241,13 @@
         android:id="@+id/txtCHUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="184dp"
         android:gravity="center"
         android:text="Welcome (username)!"
         android:textColor="@color/white"
         android:textSize="35sp"
         app:layout_constraintEnd_toEndOf="@+id/btnCHEditProfile"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="@+id/btnCHEditProfile"
-        app:layout_constraintTop_toBottomOf="@+id/btnCHEditProfile" />
+        app:layout_constraintHorizontal_bias="0.527"
+        app:layout_constraintStart_toStartOf="@+id/btnCHViewProfile"
+        app:layout_constraintTop_toTopOf="@+id/imgView1" />
 </androidx.constraintlayout.widget.ConstraintLayout>

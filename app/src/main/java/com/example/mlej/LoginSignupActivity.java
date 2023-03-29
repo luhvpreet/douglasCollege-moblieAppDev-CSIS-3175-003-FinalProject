@@ -10,6 +10,9 @@ import android.widget.Button;
 public class LoginSignupActivity extends AppCompatActivity {
 
     DatabaseHelper db;
+
+    boolean notInit = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,7 +22,10 @@ public class LoginSignupActivity extends AppCompatActivity {
         Button btnLSSignup = findViewById(R.id.btnLSSignup);
 
         //dummy info for users, appointments, providerservices, etc:
-         initData();
+        if (notInit) {
+            initData();
+            notInit = false;
+        }
 
         //clicking on the Login button will go to the Login activity
         btnLSLogin.setOnClickListener(new View.OnClickListener(){

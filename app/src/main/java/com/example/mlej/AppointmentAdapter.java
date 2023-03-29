@@ -29,11 +29,12 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentViewHold
 
     @Override
     public void onBindViewHolder(@NonNull AppointmentViewHolder holder, int position) {
+        String[] dateTime = appList.get(position).getAppointDateTime().split(" ");
         holder.txtAppointItem.setText(
 //                position+1+ ". with " +
                 position + 1 + ". " +
                 appList.get(position).getCustomerName() + " on " +
-                appList.get(position).getAppointDateTime());
+                dateTime[0] + " at " + dateTime[1]);
 
         holder.btnEditAppDetails.setOnClickListener((view) -> {
             Intent intent = new Intent(holder.btnEditAppDetails.getContext(), AppointmentDetails.class);

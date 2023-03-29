@@ -37,6 +37,7 @@ public class ServiceProviderHomeActivity extends AppCompatActivity {
 
         Button btnEditProfile = findViewById(R.id.btnSPHEditProfile);
         Button btnViewProfile = findViewById(R.id.btnSPHViewProfile);
+        Button btnServiceHistory = findViewById(R.id.btnSPHViewServiceHistory);
 
         btnEditProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,6 +62,16 @@ public class ServiceProviderHomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ServiceProviderHomeActivity.this, AppointmentListActivity.class);
+                intent.putExtra("upcoming", true);
+                startActivity(intent);
+            }
+        });
+
+        btnServiceHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ServiceProviderHomeActivity.this, AppointmentListActivity.class);
+                intent.putExtra("upcoming", false);
                 startActivity(intent);
             }
         });

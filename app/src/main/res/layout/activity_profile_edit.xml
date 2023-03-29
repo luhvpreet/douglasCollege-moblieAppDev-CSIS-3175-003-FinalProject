@@ -19,7 +19,7 @@
     <EditText
         android:id="@+id/profileEditEmail"
         android:layout_width="350dp"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_marginTop="4dp"
         android:autofillHints=""
         android:backgroundTint="#fff"
@@ -53,7 +53,7 @@
     <EditText
         android:id="@+id/profileEditPhone"
         android:layout_width="350dp"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_marginTop="4dp"
         android:autofillHints=""
         android:backgroundTint="#fff"
@@ -87,7 +87,7 @@
     <EditText
         android:id="@+id/profileEditAddress"
         android:layout_width="350dp"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_marginTop="4dp"
         android:autofillHints=""
         android:backgroundTint="#fff"
@@ -121,7 +121,7 @@
     <EditText
         android:id="@+id/profileEditPostal"
         android:layout_width="350dp"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_marginTop="4dp"
         android:autofillHints=""
         android:backgroundTint="#fff"
@@ -140,7 +140,7 @@
     <EditText
         android:id="@+id/profileEditUserName"
         android:layout_width="350dp"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_marginTop="4dp"
         android:autofillHints=""
         android:backgroundTint="#fff"

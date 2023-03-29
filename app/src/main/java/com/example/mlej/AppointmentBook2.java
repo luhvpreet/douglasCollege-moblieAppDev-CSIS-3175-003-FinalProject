@@ -12,18 +12,34 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AppointmentBook2 extends AppCompatActivity {
+public class AppointmentBook2 extends AppCompatActivity implements SelectServicesListender {
 
     DatabaseHelper dbh;
+    Intent intent;
+
+    String txtOutput;
+    int numberOfServicesSelected;
+    double priceEstimates;
+
+    DecimalFormat currency;
+    TextView txtEstimates;
+    Button btnNext;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_appointment_book2);
         setTitle("Book an Appointment");
+        txtEstimates = findViewById(R.id.txtEstimates);
         dbh = new DatabaseHelper(this);
+        currency = new DecimalFormat("$###,###.##");
+        intent = new Intent(AppointmentBook2.this, AppointmentBook3.class);
+        btnNext = findViewById(R.id.btnAB2Next);
+        btnNext.setClickable(false);
 
         RecyclerView serRecyclerView;
         List<ServicesItemModel> servicesList;
@@ -44,7 +60,7 @@ public class AppointmentBook2 extends AppCompatActivity {
         if(servicesList != null) {
             serRecyclerView = findViewById(R.id.recyclerServicesView);
             serRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
-            servicesAdapter = new ServicesAdapter(this, servicesList);
+            servicesAdapter = new ServicesAdapter(this, servicesList, this);
             serRecyclerView.setAdapter(servicesAdapter);
         }
         else {
@@ -54,17 +70,40 @@ public class AppointmentBook2 extends AppCompatActivity {
         //needs work
         //ListView listView = findViewById(R.id.listViewAB2); //to display services
 
-        Button btnNext = findViewById(R.id.btnAB2Next);
+
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AppointmentBook2.this, AppointmentBook3.class);
+
                 intent.putExtra("cID", cID);
                 intent.putExtra("pID", pID);
                 // intent add services
                 startActivity(intent);
             }
         });
+    }
 
+    @Override
+    public void onSelectedPriceChange(double priceEstimates) {
+        if(numberOfServicesSelected==0){
+            txtOutput = "Please select the services you want.";
+            btnNext.setClickable(false);
+        } else {
+            txtOutput = "You have selected " + numberOfServicesSelected + " services and the estimated total is " + currency.format(priceEstimates);
+            btnNext.setClickable(true);
+        }
+        txtEstimates.setText(txtOutput);
+    }
+
+    @Override
+    public void addServices(int servicesId) {
+        numberOfServicesSelected++;
+        intent.putExtra(Integer.toString(servicesId), servicesId);
+    }
+
+    @Override
+    public void removeServices(int servicesId) {
+        numberOfServicesSelected--;
+        intent.removeExtra(Integer.toString(servicesId));
     }
 }

@@ -86,6 +86,11 @@ public class AppointmentListActivity extends AppCompatActivity{
     public void initData(int userId){
         appList = new ArrayList<>();
         dbh = new DatabaseHelper(this);
-        appList = dbh.viewAppointment(userId);
+        if (dbh.getUserTypeById(userId) == 0) {
+            appList = dbh.viewAppointment(userId);
+        }
+        else {
+            appList = dbh.viewCustomerAppointment(userId);
+        }
     }
 }

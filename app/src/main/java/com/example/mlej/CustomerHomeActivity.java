@@ -46,6 +46,8 @@ public class CustomerHomeActivity extends AppCompatActivity {
         Button btnViewProfile = findViewById(R.id.btnCHEditProfile);
         Button btnSearchProvider = findViewById(R.id.btnCHSearch);
         Button btnViewReminders = findViewById(R.id.btnCHReminder);
+        Button btnViewAppointment = findViewById(R.id.btnCHViewAppointment);
+        Button btnViewServiceHistory = findViewById(R.id.btnCHViewServiceHistory);
 
         btnSearchProvider.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,6 +80,24 @@ public class CustomerHomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(CustomerHomeActivity.this, ReminderInboxActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnViewAppointment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CustomerHomeActivity.this, AppointmentListActivity.class);
+                intent.putExtra("upcoming", true);
+                startActivity(intent);
+            }
+        });
+
+        btnViewServiceHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CustomerHomeActivity.this, AppointmentListActivity.class);
+                intent.putExtra("upcoming", false);
                 startActivity(intent);
             }
         });

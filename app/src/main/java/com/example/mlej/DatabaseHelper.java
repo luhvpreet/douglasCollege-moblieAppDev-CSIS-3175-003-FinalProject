@@ -322,6 +322,29 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return null;
     }
 
+    public List<AppointmentItemModel> viewCustomerAppointment(int UserId){
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        String query = "SELECT AppointmentId, Name, DateTime from Appointment_table " +
+                "inner join User_table " +
+                "on Appointment_table.ProviderId = User_table.Id " +
+                "WHERE CustomerId=" + UserId +
+                " ORDER BY AppointmentId";
+        Cursor cursor = sqLiteDatabase.rawQuery(query,null);
+        List<AppointmentItemModel> appList;
+        if(cursor.getCount() > 0){
+            appList = new ArrayList<>();
+            while(cursor.moveToNext()) {
+                appList.add(new AppointmentItemModel(
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getString(2)));
+            }
+            return appList;
+        }
+        else
+            return null;
+    }
+
     public boolean addServices(int ID, String servicesName){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -376,6 +399,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public String getCompanyName(int providerId){
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
         String query = "SELECT " + T1COL9 + " FROM " + TABLE1_NAME + " WHERE " + T1COL1 + " = " + providerId;
+        Cursor cursor = sqLiteDatabase.rawQuery(query,null);
+        if(cursor.getCount() > 0){
+            cursor.moveToFirst();
+            return cursor.getString(0);
+        }
+        else
+            return null;
+    }
+
+    public String getCompanyNameByAppointmentId(int appointmentId){
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        String query = "SELECT " + T1COL9 + " FROM " + TABLE1_NAME + " WHERE " + T1COL1 + " = " +
+                "(SELECT " + T2COL3 + " FROM " + TABLE2_NAME + " WHERE " + T2COL1 + " = " + appointmentId + ")";
         Cursor cursor = sqLiteDatabase.rawQuery(query,null);
         if(cursor.getCount() > 0){
             cursor.moveToFirst();

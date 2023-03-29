@@ -29,7 +29,6 @@ public class AppointmentBook3 extends AppCompatActivity {
         setTitle("Book an Appointment");
         db = new DatabaseHelper(this);
 
-
         int cID = getIntent().getIntExtra("cID",0); // GET customer ID
         int pID = getIntent().getIntExtra("pID",0); // GET provider ID
 
@@ -121,6 +120,7 @@ public class AppointmentBook3 extends AppCompatActivity {
                         } else if (radbtnDropOff.isChecked()){
                             pickupordropoff = "1";
                         }
+
                         Intent intent = new Intent(AppointmentBook3.this, AppointmentBook4.class);
                         intent.putExtra("cID", cID);
                         intent.putExtra("pID", pID);
@@ -128,6 +128,12 @@ public class AppointmentBook3 extends AppCompatActivity {
                         intent.putExtra("pickordrop", pickupordropoff);
                         intent.putExtra("date", appointmentDate);
                         intent.putExtra("time", appointmentTime);
+
+                        //insert all servicesId into the new intent
+                        for(int i=0; i<s.length; i++){
+                            if(s[i]!=0) intent.putExtra(Integer.toString(s[i]), s[i]);
+                        }
+
                         startActivity(intent);
                     }
                 }

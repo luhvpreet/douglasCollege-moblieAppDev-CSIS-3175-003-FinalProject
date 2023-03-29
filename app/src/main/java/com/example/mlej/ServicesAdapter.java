@@ -1,6 +1,7 @@
 package com.example.mlej;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -28,6 +29,12 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ServicesViewHolder holder, int position) {
         holder.cbxServices.setText(servicesList.get(position).getServicesName());
+
+        holder.cbxServices.setOnClickListener((view) -> {
+            Intent intent = new Intent(holder.cbxServices.getContext(), AppointmentBook3.class);
+            intent.putExtra("servicesId", servicesList.get(position).getServicesId());
+            holder.cbxServices.getContext().startActivity(intent);
+        });
 
     }
 

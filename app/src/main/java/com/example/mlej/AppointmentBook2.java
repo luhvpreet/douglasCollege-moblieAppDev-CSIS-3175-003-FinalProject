@@ -44,19 +44,15 @@ public class AppointmentBook2 extends AppCompatActivity {
         if(servicesList != null) {
             serRecyclerView = findViewById(R.id.recyclerServicesView);
             serRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
-            System.out.println("servicesList is null 3");
             servicesAdapter = new ServicesAdapter(this, servicesList);
-            System.out.println("servicesList is null 4");
             serRecyclerView.setAdapter(servicesAdapter);
         }
         else {
             System.out.println("servicesList is null");
         }
 
-
         //needs work
         //ListView listView = findViewById(R.id.listViewAB2); //to display services
-
 
         Button btnNext = findViewById(R.id.btnAB2Next);
         btnNext.setOnClickListener(new View.OnClickListener() {

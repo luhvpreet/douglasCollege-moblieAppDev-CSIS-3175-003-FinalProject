@@ -62,8 +62,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerServicesView"
         android:layout_width="412dp"
-        android:layout_height="319dp"
-        android:layout_marginBottom="112dp"
+        android:layout_height="275dp"
+        android:layout_marginBottom="145dp"
         android:padding="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -81,4 +81,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txtEstimates"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgView1"
+        app:layout_constraintEnd_toStartOf="@+id/imgView1"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/imgView1" />
 </androidx.constraintlayout.widget.ConstraintLayout>

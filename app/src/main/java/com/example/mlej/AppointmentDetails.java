@@ -11,6 +11,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class AppointmentDetails extends AppCompatActivity {
 
     DatabaseHelper db;
@@ -24,12 +28,28 @@ public class AppointmentDetails extends AppCompatActivity {
         db = new DatabaseHelper(this);
         Button btnRemindCustomer = findViewById(R.id.btnRemindCustomer);
         Button btnEditCustomerProfile = findViewById(R.id.btnEditCustomerProfile);
+        Button btnCancelAppointment = findViewById(R.id.btnCancelAppointment);
+        Button btnEditAppointment = findViewById(R.id.btnEditAppointment);
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         if (intent != null){
             int appointmentId = intent.getIntExtra("appointmentId", 0);
             int userId = preferences.getInt("USERID", 0);
             int customerId = db.getCustomerIdFromAppointment(appointmentId);
+
+            Calendar currentTime = Calendar.getInstance();
+            Calendar appointmentTime = Calendar.getInstance();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+            try {
+                appointmentTime.setTime(sdf.parse(db.getAppointment(appointmentId).getAppointDateTime()));
+            } catch (ParseException e) {
+                throw new RuntimeException(e);
+            }
+            if(appointmentTime.before(currentTime)) {
+                btnRemindCustomer.setVisibility(View.INVISIBLE);
+                btnCancelAppointment.setVisibility(View.INVISIBLE);
+                btnEditAppointment.setVisibility(View.INVISIBLE);
+            }
 
             if (userId == customerId) {
                 btnRemindCustomer.setVisibility(View.INVISIBLE);

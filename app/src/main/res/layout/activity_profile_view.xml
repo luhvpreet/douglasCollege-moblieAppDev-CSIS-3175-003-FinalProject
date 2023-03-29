@@ -16,60 +16,60 @@
 
     <TextView
         android:id="@+id/txtName"
-        android:layout_width="200dp"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
         android:minHeight="48dp"
         android:textColor="#FFFFFF"
-        android:textSize="20sp"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profileName" />
 
     <TextView
         android:id="@+id/txtEmail"
-        android:layout_width="200dp"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
         android:minHeight="48dp"
         android:textColor="#FFFFFF"
-        android:textSize="20sp"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profileEmail" />
 
     <TextView
         android:id="@+id/txtPhone"
-        android:layout_width="200dp"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
         android:minHeight="48dp"
         android:textColor="#FFFFFF"
-        android:textSize="20sp"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="@+id/imgView1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profilePhone" />
 
     <TextView
         android:id="@+id/txtAddress"
-        android:layout_width="200dp"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
         android:minHeight="48dp"
         android:textColor="#FFFFFF"
-        android:textSize="20sp"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profileAddress" />
 
     <TextView
         android:id="@+id/txtPostal"
-        android:layout_width="200dp"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
         android:minHeight="48dp"
         android:textColor="#FFFFFF"
-        android:textSize="20sp"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="@+id/imgView1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profilePostal" />
@@ -81,6 +81,7 @@
         android:layout_marginTop="96dp"
         android:text="@string/profileName"
         android:textColor="@color/white"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/txtName"
         app:layout_constraintTop_toTopOf="parent" />
@@ -92,6 +93,7 @@
         android:layout_marginTop="3dp"
         android:text="@string/profileEmail"
         android:textColor="@color/white"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/txtName"
         app:layout_constraintTop_toBottomOf="@+id/txtName" />
@@ -103,6 +105,7 @@
         android:layout_marginTop="3dp"
         android:text="@string/profilePhone"
         android:textColor="@color/white"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/txtEmail"
         app:layout_constraintTop_toBottomOf="@+id/txtEmail" />
@@ -114,6 +117,7 @@
         android:layout_marginTop="3dp"
         android:text="@string/profileAddress"
         android:textColor="@color/white"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/txtPhone"
         app:layout_constraintTop_toBottomOf="@+id/txtPhone" />
@@ -125,6 +129,7 @@
         android:layout_marginTop="3dp"
         android:text="@string/profilePostal"
         android:textColor="@color/white"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/txtAddress"
         app:layout_constraintTop_toBottomOf="@+id/txtAddress" />

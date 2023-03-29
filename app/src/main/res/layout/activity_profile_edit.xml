@@ -7,36 +7,20 @@
     tools:context=".ProfileEditActivity">
 
     <ImageView
-        android:foreground="@drawable/foreground_design"
         android:id="@+id/imgView1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:foreground="@drawable/foreground_design"
         android:scaleType="centerCrop"
-        app:srcCompat="@drawable/background" />
-
-    <EditText
-        android:id="@+id/profileEditPostal"
-        android:layout_width="wrap_content"
-        android:layout_height="55dp"
-        android:layout_marginTop="3dp"
-        android:autofillHints=""
-        android:backgroundTint="#fff"
-        android:ems="10"
-        android:hint="@string/profilePostal"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profilePostal" />
+        app:srcCompat="@drawable/background"
+        tools:layout_editor_absoluteX="-26dp"
+        tools:layout_editor_absoluteY="16dp" />
 
     <EditText
         android:id="@+id/profileEditEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="55dp"
-        android:layout_marginTop="3dp"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:autofillHints=""
         android:backgroundTint="#fff"
         android:ems="10"
@@ -45,28 +29,32 @@
         android:minHeight="48dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/profileEmail"
+        app:layout_constraintHorizontal_bias="0.02"
+        app:layout_constraintStart_toStartOf="@+id/profileEmail"
         app:layout_constraintTop_toBottomOf="@+id/profileEmail" />
 
     <TextView
-        android:id="@+id/profileEmail"
+        android:id="@+id/profilePhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
-        android:text="@string/profileEmail"
+        android:text="@string/profilePhone"
         android:textColor="@color/white"
-        android:textSize="16sp"
+        android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/profileEditEmail"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.105"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imgView1"
+        app:layout_constraintVertical_bias="0.371" />
 
     <EditText
         android:id="@+id/profileEditPhone"
-        android:layout_width="wrap_content"
-        android:layout_height="55dp"
-        android:layout_marginTop="3dp"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:autofillHints=""
         android:backgroundTint="#fff"
         android:ems="10"
@@ -75,28 +63,32 @@
         android:minHeight="48dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/profilePhone"
+        app:layout_constraintHorizontal_bias="0.021"
+        app:layout_constraintStart_toStartOf="@+id/profilePhone"
         app:layout_constraintTop_toBottomOf="@+id/profilePhone" />
 
     <TextView
         android:id="@+id/profileAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
         android:text="@string/profileAddress"
         android:textColor="@color/white"
-        android:textSize="16sp"
+        android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/profileEditAddress"
-        app:layout_constraintTop_toBottomOf="@+id/profileEditPhone" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.111"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.712" />
 
     <EditText
         android:id="@+id/profileEditAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="55dp"
-        android:layout_marginTop="3dp"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:autofillHints=""
         android:backgroundTint="#fff"
         android:ems="10"
@@ -105,44 +97,106 @@
         android:minHeight="48dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/profileAddress"
+        app:layout_constraintHorizontal_bias="0.022"
+        app:layout_constraintStart_toStartOf="@+id/profileAddress"
         app:layout_constraintTop_toBottomOf="@+id/profileAddress" />
 
     <TextView
         android:id="@+id/profilePostal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
         android:text="@string/profilePostal"
         android:textColor="@color/white"
-        android:textSize="16sp"
+        android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/profileEditPostal"
-        app:layout_constraintTop_toBottomOf="@+id/profileEditAddress" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.128"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.541" />
+
+    <EditText
+        android:id="@+id/profileEditPostal"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:autofillHints=""
+        android:backgroundTint="#fff"
+        android:ems="10"
+        android:hint="@string/profilePostal"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/profilePostal"
+        app:layout_constraintHorizontal_bias="0.027"
+        app:layout_constraintStart_toStartOf="@+id/profilePostal"
+        app:layout_constraintTop_toBottomOf="@+id/profilePostal" />
+
+    <EditText
+        android:id="@+id/profileEditUserName"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:autofillHints=""
+        android:backgroundTint="#fff"
+        android:ems="10"
+        android:hint="@string/profileUserName"
+        android:inputType="textEmailAddress"
+        android:minHeight="48dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/profileUserName"
+        app:layout_constraintHorizontal_bias="0.02"
+        app:layout_constraintStart_toStartOf="@+id/profileUserName"
+        app:layout_constraintTop_toBottomOf="@+id/profileUserName" />
 
     <TextView
-        android:id="@+id/profilePhone"
+        android:id="@+id/profileEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
-        android:text="@string/profilePhone"
+        android:text="@string/profileEmail"
         android:textColor="@color/white"
-        android:textSize="16sp"
+        android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/profileEditPhone"
-        app:layout_constraintTop_toBottomOf="@+id/profileEditEmail" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.102"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.197" />
+
+    <TextView
+        android:id="@+id/profileUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/profileUserName"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.103"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.028" />
 
     <Button
         android:id="@+id/btnSaveProfile"
         android:layout_width="300dp"
         android:layout_height="60dp"
-        android:layout_marginTop="36dp"
         android:background="@drawable/btn_bg_design"
         android:text="@string/btnSaveProfile"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgView1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileEditPostal" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.97" />
 </androidx.constraintlayout.widget.ConstraintLayout>

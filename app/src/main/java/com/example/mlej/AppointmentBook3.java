@@ -32,17 +32,17 @@ public class AppointmentBook3 extends AppCompatActivity {
         int cID = getIntent().getIntExtra("cID",0); // GET customer ID
         int pID = getIntent().getIntExtra("pID",0); // GET provider ID
 
+        // GET serviceID#1 to #10
         int[] s = new int[10];
-        s[0] =  getIntent().getIntExtra("1",0); // GET serviceID#1
-        s[1] =  getIntent().getIntExtra("2",0); // GET serviceID#2
-        s[2] =  getIntent().getIntExtra("3",0); // GET serviceID#3
-        s[3] =  getIntent().getIntExtra("4",0); // GET serviceID#4
-        s[4] =  getIntent().getIntExtra("5",0); // GET serviceID#5
-        s[5] =  getIntent().getIntExtra("6",0); // GET serviceID#6
-        s[6] =  getIntent().getIntExtra("7",0); // GET serviceID#7
-        s[7] =  getIntent().getIntExtra("8",0); // GET serviceID#8
-        s[8] =  getIntent().getIntExtra("9",0); // GET serviceID#9
-        s[9] =  getIntent().getIntExtra("10",0); // GET serviceID#10
+        for (int i=0; i<s.length; i++){
+            //s[0] is servicedId #1, etc.
+            s[i] = getIntent().getIntExtra(Integer.toString((i+1)),0); // GET serviceID#1 to #10
+            //s[i] = getIntent().getIntExtra(Integer.toString((s[i]+1)),0);
+            System.out.println("AB3: 1st: s[i]" + s[i]);
+        }
+
+        // Get priceEstimates and put it back into new Intent
+        double priceEstimates = getIntent().getDoubleExtra("priceEstimates", 0);
 
         for (int i=0; i<s.length; i++){
             System.out.println("Intent: " + (i+1) + " : value is: " + s[i]);
@@ -124,7 +124,7 @@ public class AppointmentBook3 extends AppCompatActivity {
                         Intent intent = new Intent(AppointmentBook3.this, AppointmentBook4.class);
                         intent.putExtra("cID", cID);
                         intent.putExtra("pID", pID);
-                        //intent add services
+                        intent.putExtra("priceEstimates", priceEstimates);
                         intent.putExtra("pickordrop", pickupordropoff);
                         intent.putExtra("date", appointmentDate);
                         intent.putExtra("time", appointmentTime);

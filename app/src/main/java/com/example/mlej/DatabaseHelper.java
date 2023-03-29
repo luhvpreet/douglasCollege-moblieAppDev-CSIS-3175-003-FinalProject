@@ -435,6 +435,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 T4COL1 + "=" + userId + " AND " + T4COL2 + " = " + ServicesID);
     }
 
+    public String getServicesName(int servicesId) {
+        String servicesName="";
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        String query = "SELECT " + T3COL2 + " FROM " + TABLE3_NAME + " WHERE " + T3COL1 + " = " + servicesId;
+        Cursor cursor = sqLiteDatabase.rawQuery(query,null);
+        if(cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            servicesName = cursor.getString(0);
+        }
+        cursor.close();
+        return servicesName;
+    }
+
     public boolean hasServices(int userId, int serviceId) {
         //db.hasServices(userId, 1)
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();

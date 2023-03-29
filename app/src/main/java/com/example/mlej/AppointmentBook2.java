@@ -67,17 +67,15 @@ public class AppointmentBook2 extends AppCompatActivity implements SelectService
             System.out.println("servicesList is null");
         }
 
-        //needs work
-        //ListView listView = findViewById(R.id.listViewAB2); //to display services
-
-
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 intent.putExtra("cID", cID);
                 intent.putExtra("pID", pID);
-                // intent add services
+
+                intent.putExtra("priceEstimates", priceEstimates);
+
                 startActivity(intent);
             }
         });
@@ -98,12 +96,14 @@ public class AppointmentBook2 extends AppCompatActivity implements SelectService
     @Override
     public void addServices(int servicesId) {
         numberOfServicesSelected++;
-        intent.putExtra(Integer.toString(servicesId), servicesId);
+        //0 means servicesId#1 , etc
+        intent.putExtra(Integer.toString( (servicesId+1) ) , servicesId );
     }
 
     @Override
     public void removeServices(int servicesId) {
         numberOfServicesSelected--;
-        intent.removeExtra(Integer.toString(servicesId));
+        //0 means servicesId#1 , etc
+        intent.removeExtra(Integer.toString((servicesId+1)));
     }
 }

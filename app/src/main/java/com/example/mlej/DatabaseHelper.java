@@ -142,114 +142,159 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // method to verify user login
     // not secure, not suitable for production
     public int verifyLogin(String email, String password) {
+        int userId;
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
         String query = "SELECT ID FROM " + TABLE1_NAME + " WHERE " + T1COL4 + " = '" + email + "' AND " + T1COL5 + " = '" + password + "'";
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
-            return cursor.getInt(0);
+            userId = cursor.getInt(0);
+            cursor.close();
+            return userId;
         }
-        else
+        else{
+            cursor.close();
             return -1;
+        }
     }
 
     public int getUserType(String email){
+        int userType;
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
         String query = "SELECT " + T1COL2 + " FROM " + TABLE1_NAME + " WHERE " + T1COL4 + " = '" + email + "'";
         Cursor cursor = sqLiteDatabase.rawQuery(query,null);
         if(cursor.getCount() > 0){
             cursor.moveToFirst();
-            return cursor.getInt(0);
+            userType = cursor.getInt(0);
+            cursor.close();
+            return userType;
         }
-        else
+        else{
+            cursor.close();
             return -1;
+        }
     }
 
     public int getUserTypeById(int userId){
+        int userType;
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
         String query = "SELECT " + T1COL2 + " FROM " + TABLE1_NAME + " WHERE " + T1COL1 + " = " + userId;
         Cursor cursor = sqLiteDatabase.rawQuery(query,null);
         if(cursor.getCount() > 0){
             cursor.moveToFirst();
-            return cursor.getInt(0);
+            userType = cursor.getInt(0);
+            cursor.close();
+            return userType;
         }
-        else
+        else{
+            cursor.close();
             return -1;
+        }
     }
 
     public String getUserName(String email){
+        String userName;
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
         String query = "SELECT " + T1COL3 + " FROM " + TABLE1_NAME + " WHERE " + T1COL4 + " = '" + email + "'";
         Cursor cursor = sqLiteDatabase.rawQuery(query,null);
         if(cursor.getCount() > 0){
             cursor.moveToFirst();
-            return cursor.getString(0);
+            userName = cursor.getString(0);
+            cursor.close();
+            return userName;
         }
-        else
+        else{
+            cursor.close();
             return null;
+        }
     }
 
     public String getUserNameById(int userId){
+        String userName;
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
         String query = "SELECT " + T1COL3 + " FROM " + TABLE1_NAME + " WHERE " + T1COL1 + " = " + userId;
         Cursor cursor = sqLiteDatabase.rawQuery(query,null);
         if(cursor.getCount() > 0){
             cursor.moveToFirst();
-            return cursor.getString(0);
+            userName = cursor.getString(0);
+            cursor.close();
+            return userName;
         }
-        else
+        else{
+            cursor.close();
             return null;
+        }
     }
 
     public String getUserPhone(int userId){
+        String userPhone;
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
         String query = "SELECT " + T1COL6 + " FROM " + TABLE1_NAME + " WHERE " + T1COL1 + " = " + userId;
         Cursor cursor = sqLiteDatabase.rawQuery(query,null);
         if(cursor.getCount() > 0){
             cursor.moveToFirst();
-            return cursor.getString(0);
+            userPhone = cursor.getString(0);
+            cursor.close();
+            return userPhone;
         }
-        else
+        else{
+            cursor.close();
             return null;
+        }
     }
 
     public String getUserAddress(int userId){
+        String userAddress;
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
         String query = "SELECT " + T1COL7 + " FROM " + TABLE1_NAME + " WHERE " + T1COL1 + " = " + userId;
         Cursor cursor = sqLiteDatabase.rawQuery(query,null);
         if(cursor.getCount() > 0){
             cursor.moveToFirst();
-            return cursor.getString(0);
+            userAddress = cursor.getString(0);
+            cursor.close();
+            return userAddress;
         }
-        else
+        else{
+            cursor.close();
             return null;
+        }
     }
 
     public String getUserPostalCode(int userId){
+        String userPostalCode;
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
         String query = "SELECT " + T1COL8 + " FROM " + TABLE1_NAME + " WHERE " + T1COL1 + " = " + userId;
         Cursor cursor = sqLiteDatabase.rawQuery(query,null);
         if(cursor.getCount() > 0){
             cursor.moveToFirst();
-            return cursor.getString(0);
+            userPostalCode = cursor.getString(0);
+            cursor.close();
+            return userPostalCode;
         }
-        else
+        else{
+            cursor.close();
             return null;
+        }
     }
 
     public String getUserEmail(int userId){
+        String userEmail;
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
         String query = "SELECT " + T1COL4 + " FROM " + TABLE1_NAME + " WHERE " + T1COL1 + " = " + userId;
         Cursor cursor = sqLiteDatabase.rawQuery(query,null);
         if(cursor.getCount() > 0){
             cursor.moveToFirst();
-            return cursor.getString(0);
+            userEmail = cursor.getString(0);
+            cursor.close();
+            return userEmail;
         }
-        else
+        else{
+            cursor.close();
             return null;
+        }
+
     }
 
-    // WIP: method to update user information
     public boolean updateUser(int userId, String name, String email, String phone, String address, String postalCode) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -291,10 +336,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             aim.setCustomerName(cursor.getString(0));
             aim.setAppointDateTime(cursor.getString(1));
             aim.setDropOffOrPickup(cursor.getInt(2));
+            cursor.close();
             return aim;
         }
-        else
+        else {
+            cursor.close();
             return null;
+        }
     }
 
     public List<AppointmentItemModel> viewAppointment(int UserId){
@@ -314,10 +362,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     cursor.getString(1),
                     cursor.getString(2)));
             }
+            cursor.close();
             return appList;
         }
-        else
+        else{
+            cursor.close();
             return null;
+        }
     }
 
     public boolean addServices(int ID, String servicesName, double price){
@@ -334,6 +385,32 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return false;
     }
 
+    public List<ServicesItemModel> getServicesFromProviderId(int providerId){
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        String query = "SELECT pst.servicesId, servicesName, price FROM Provider_Services_Table pst, Services_Table st " +
+                "WHERE pst.servicesId=st.servicesId AND pst.providerId=" + providerId;
+        Cursor cursor = sqLiteDatabase.rawQuery(query,null);
+        List<ServicesItemModel> servicesList;
+        if (cursor.getCount() > 0) {
+            servicesList = new ArrayList<>();
+            while (cursor.moveToNext()) {
+                servicesList.add(new ServicesItemModel(
+                        cursor.getInt(0),
+                        cursor.getString(1),
+                        cursor.getDouble(2)));
+            }
+
+            System.out.println("cursor.getCount(): "+cursor.getCount());
+            cursor.close();
+            return servicesList;
+        }
+        else{
+            System.out.println("returning null");
+            cursor.close();
+            return null;
+        }
+
+    }
 
     public boolean addProviderServices(int ProviderID, int ServicesID){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
@@ -366,7 +443,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             cursor.close();
             return true;
         }
-        else return false;
+        else{
+            cursor.close();
+            return false;
+        }
     }
 
     // Providers adapter
@@ -387,22 +467,30 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         cursor.getString(4),
                         cursor.getString(5)));
             }
+            cursor.close();
             return providerList;
         }
-        else
+        else{
+            cursor.close();
             return null;
+        }
     }
 
     public String getCompanyName(int providerId){
+        String companyName;
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
         String query = "SELECT " + T1COL9 + " FROM " + TABLE1_NAME + " WHERE " + T1COL1 + " = " + providerId;
         Cursor cursor = sqLiteDatabase.rawQuery(query,null);
         if(cursor.getCount() > 0){
             cursor.moveToFirst();
-            return cursor.getString(0);
+            companyName = cursor.getString(0);
+            cursor.close();
+            return companyName;
         }
-        else
+        else {
+            cursor.close();
             return null;
+        }
     }
 
     public boolean addReminder(int senderId, int receiverId, int appointmentId) {
@@ -445,20 +533,28 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         cursor.getInt(2),
                         context));
             }
+            cursor.close();
             return reminderList;
-        } else
+        } else {
+            cursor.close();
             return null;
+        }
     }
 
     public String getAppointmentDateTime(int appointmentId) {
+        String appointmentDateTime;
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
         String query = "SELECT " + T2COL5 + " FROM " + TABLE2_NAME + " WHERE " + T2COL1 + " = " + appointmentId;
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
-            return cursor.getString(0);
-        } else
+            appointmentDateTime = cursor.getString(0);
+            cursor.close();
+            return appointmentDateTime;
+        } else {
+            cursor.close();
             return null;
+        }
     }
 
     public String[] getServicesFromAppointment (int appointmentID){
@@ -481,20 +577,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             services[i] = cursor.getString(0);
             i++;
         }
-
+        cursor.close();
         return services;
     }
 
     public int getCustomerIdFromAppointment(int appointmentId){
+        int customerId;
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
         String query = "SELECT " + T2COL2 + " FROM " + TABLE2_NAME + " WHERE " + T2COL1 + " = " + appointmentId;
         Cursor cursor = sqLiteDatabase.rawQuery(query,null);
         if(cursor.getCount() > 0){
             cursor.moveToFirst();
-            return cursor.getInt(0);
+            customerId = cursor.getInt(0);
+            cursor.close();
+            return customerId;
         }
-        else
+        else{
+            cursor.close();
             return -1;
+        }
+
     }
 
 

@@ -2,6 +2,7 @@ package com.example.mlej;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -73,19 +74,32 @@ public class AppointmentBook4 extends AppCompatActivity {
                 + txtServices + "\n"
                 + "Estimated total is " + currency.format(priceEstimates));
 
-
         btnAB4ConfirmAndBook.setOnClickListener(new View.OnClickListener() {
+
+            boolean clicked =false;
             @Override
             public void onClick(View v) {
-                int appointmentId = (int)db.addAppointment(cID, pID, 0, date+" "+time, Integer.parseInt(pickordrop));
-                for(int i=0; i<s.length; i++){
-                    if(s[i] != 0) db.addAppointmentServices(appointmentId, s[i+1]);
+                if (!clicked){
+                    int appointmentId = (int)db.addAppointment(cID, pID, 0, date+" "+time, Integer.parseInt(pickordrop));
+                    for(int i=0; i<s.length; i++){
+                        if(s[i] != 0) db.addAppointmentServices(appointmentId, s[i]+1);
+                    }
+
+                    if (appointmentId!=-1) Toast.makeText(AppointmentBook4.this, "Appointment is confirmed!", Toast.LENGTH_SHORT).show();
+                    else {
+                        Toast.makeText(AppointmentBook4.this, "System error! Please try again later!", Toast.LENGTH_SHORT).show();
+                    }
+
+                    btnAB4ConfirmAndBook.setText("Back to Homepage");
+                    clicked = true;
+                }
+                else {
+
+                    Intent intent = new Intent(AppointmentBook4.this, CustomerHomeActivity.class);
+                    startActivity(intent);
+
                 }
 
-                if (appointmentId!=-1) Toast.makeText(AppointmentBook4.this, "Appointment is confirmed!", Toast.LENGTH_SHORT).show();
-                else {
-                    Toast.makeText(AppointmentBook4.this, "System error! Please try again later!", Toast.LENGTH_SHORT).show();
-                }
 
             }
         });

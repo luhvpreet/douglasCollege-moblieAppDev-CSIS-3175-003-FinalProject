@@ -30,14 +30,14 @@ public class ServiceProviderHomeActivity extends AppCompatActivity {
         Button btnSPHViewAppointment = findViewById(R.id.btnSPHViewAppointment);
         Button btnSPHLogout = findViewById(R.id.btnSPHLogout);
 
-        TextView txtWelcome = findViewById(R.id.txtSPHServiceProviderName);
+        TextView txtWelcome = findViewById(R.id.txtSPHUserName);
         String username = db.getUserNameById(userId);
         String companyName = db.getCompanyName(userId);
-        txtWelcome.setText(username + "!");
+        txtWelcome.setText("Welcome "+username + "!");
 
         Button btnEditProfile = findViewById(R.id.btnSPHEditProfile);
         Button btnViewProfile = findViewById(R.id.btnSPHViewProfile);
-        Button btnSPHEditServices = findViewById(R.id.btnSPHEditServices);
+        Button btnServiceHistory = findViewById(R.id.btnSPHViewServiceHistory);
 
         btnEditProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +62,16 @@ public class ServiceProviderHomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ServiceProviderHomeActivity.this, AppointmentListActivity.class);
+                intent.putExtra("upcoming", true);
+                startActivity(intent);
+            }
+        });
+
+        btnServiceHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ServiceProviderHomeActivity.this, AppointmentListActivity.class);
+                intent.putExtra("upcoming", false);
                 startActivity(intent);
             }
         });
@@ -73,14 +83,6 @@ public class ServiceProviderHomeActivity extends AppCompatActivity {
                 intent.putExtra("isLogout", true);
                 editor.remove("USERID");
                 editor.commit();
-                startActivity(intent);
-            }
-        });
-
-        btnSPHEditServices.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ServiceProviderHomeActivity.this, EditServicesActivity.class);
                 startActivity(intent);
             }
         });

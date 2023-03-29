@@ -2,6 +2,8 @@ package com.example.mlej;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentViewHolder> {
-
+    SharedPreferences preferences;
+    DatabaseHelper db;
     private Context context;
     private List<AppointmentItemModel> appList;
 
@@ -29,11 +32,22 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentViewHold
 
     @Override
     public void onBindViewHolder(@NonNull AppointmentViewHolder holder, int position) {
-        holder.txtAppointItem.setText(
+        preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        db = new DatabaseHelper(context);
+        int userId = preferences.getInt("USERID",0);
+        String[] dateTime = appList.get(position).getAppointDateTime().split(" ");
+        if (db.getUserTypeById(userId) == 0) {
+            holder.txtAppointItem.setText(
 //                position+1+ ". with " +
-                position + 1 + ". " +
-                appList.get(position).getCustomerName() + " on " +
-                appList.get(position).getAppointDateTime());
+                    position + 1 + ". " +
+                            appList.get(position).getCustomerName() + " on " +
+                            dateTime[0] + " at " + dateTime[1]);
+        }
+        else {
+            holder.txtAppointItem.setText(
+                    db.getCompanyNameByAppointmentId(appList.get(position).getAppointmentId()) + " on " +
+                            dateTime[0] + " at " + dateTime[1]);
+        }
 
         holder.btnEditAppDetails.setOnClickListener((view) -> {
             Intent intent = new Intent(holder.btnEditAppDetails.getContext(), AppointmentDetails.class);

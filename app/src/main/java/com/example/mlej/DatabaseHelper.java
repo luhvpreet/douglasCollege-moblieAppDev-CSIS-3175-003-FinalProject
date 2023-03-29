@@ -5,15 +5,18 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import kotlin.reflect.KMutableProperty1;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
     final static String DATABASE_NAME = "database.db";
-    final static int DATABASE_VERSION = 33;
+    final static int DATABASE_VERSION = 35;
     final static String TABLE1_NAME = "User_table";
     final static String T1COL1 = "Id";
     // user type, 0 for service provider, 1 for customer
@@ -493,6 +496,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    public String getCompanyNameByAppointmentId(int appointmentId){
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        String query = "SELECT " + T1COL9 + " FROM " + TABLE1_NAME + " WHERE " + T1COL1 + " = " +
+                "(SELECT " + T2COL3 + " FROM " + TABLE2_NAME + " WHERE " + T2COL1 + " = " + appointmentId + ")";
+        Cursor cursor = sqLiteDatabase.rawQuery(query,null);
+        if(cursor.getCount() > 0){
+            cursor.moveToFirst();
+            return cursor.getString(0);
+        }
+        else
+            return null;
+    }
+
     public boolean addReminder(int senderId, int receiverId, int appointmentId) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -612,4 +628,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("delete from "+ TABLE6_NAME);
     }
 
+    public List<AppointmentItemModel> viewCustomerAppointment(int userId) {
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        String query = "SELECT AppointmentId, Name, DateTime from Appointment_table " +
+                    "inner join User_table " +
+                    "on Appointment_table.ProviderId = User_table.Id " +
+                    "WHERE CustomerId=" + userId  +
+                    " ORDER BY AppointmentId";
+            Cursor cursor = sqLiteDatabase.rawQuery(query,null);
+            List<AppointmentItemModel> appList;
+            if(cursor.getCount() > 0){
+                appList = new ArrayList<>();
+                while(cursor.moveToNext()) {
+                    appList.add(new AppointmentItemModel(
+                            cursor.getInt(0),
+                            cursor.getString(1),
+                            cursor.getString(2)));
+                }
+                return appList;
+            }
+            else
+                return null;
+        }
 }

@@ -22,7 +22,7 @@ public class ProfileEditActivity extends AppCompatActivity {
         // Name edit has been removed because it can cause trouble for home activity
         // In real life, names generally can not be edited by the user
         // Therefore this is not a concern at the moment
-        // EditText txtName = findViewById(R.id.profileEditName);
+        EditText txtName = findViewById(R.id.profileEditUserName);
         EditText txtEmail = findViewById(R.id.profileEditEmail);
         EditText txtPhone = findViewById(R.id.profileEditPhone);
         EditText txtAddress = findViewById(R.id.profileEditAddress);
@@ -30,7 +30,7 @@ public class ProfileEditActivity extends AppCompatActivity {
 
         int userId = getIntent().getIntExtra("userId", 0);
 
-        // txtName.setText(db.getUserNameById(userId));
+        txtName.setText(db.getUserNameById(userId));
         txtEmail.setText(db.getUserEmail(userId));
         txtPhone.setText(db.getUserPhone(userId));
         txtAddress.setText(db.getUserAddress(userId));
@@ -41,7 +41,8 @@ public class ProfileEditActivity extends AppCompatActivity {
         btnSaveProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String name = db.getUserNameById(userId);
+//                String name = db.getUserNameById(userId);
+                String name = txtName.getText().toString();
                 String email = txtEmail.getText().toString();
                 String phone = txtPhone.getText().toString();
                 String address = txtAddress.getText().toString();
@@ -50,6 +51,15 @@ public class ProfileEditActivity extends AppCompatActivity {
                 db.updateUser(userId, name, email, phone, address, postal);
                 Toast.makeText(ProfileEditActivity.this, "Profile updated!", Toast.LENGTH_SHORT).show();
                 finish();
+                if (db.getUserTypeById(userId) == 0) {
+                    // if the user is a provider, go to the ProviderHome activity
+                    Intent intent = new Intent(ProfileEditActivity.this, ServiceProviderHomeActivity.class);
+                    startActivity(intent);
+                } else {
+                    // if the user is a customer, go to the CustomerHome activity
+                    Intent intent = new Intent(ProfileEditActivity.this, CustomerHomeActivity.class);
+                    startActivity(intent);
+                }
             }
         });
     }

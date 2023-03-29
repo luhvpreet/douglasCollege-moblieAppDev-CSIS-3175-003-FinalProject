@@ -2,6 +2,7 @@
     <string name="app_name">MLEJ</string>
     <string name="txtUpComingAppointment">Upcoming Appointments</string>
     <string name="profileName">Name</string>
+    <string name="profileUserName">Name</string>
     <string name="profileEmail">Email</string>
     <string name="profilePhone">Phone</string>
     <string name="profileAddress">Address</string>

@@ -69,19 +69,6 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesViewHolder> {
     public int getItemCount() {
         return servicesList.size();
     }
-
-    // method to set the checkboxes of current services to checked
-    public void setCheckedServices(List<Integer> servicesIdList) {
-        for (int i = 0; i < servicesList.size(); i++) {
-            for (int j = 0; j < servicesIdList.size(); j++) {
-                if (servicesList.get(i).getServicesId() == servicesIdList.get(j)) {
-
-                    priceEstimates += servicesList.get(i).getPrice();
-                }
-            }
-        }
-        notifyDataSetChanged();
-    }
-
+    
 }
 

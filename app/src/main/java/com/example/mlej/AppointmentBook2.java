@@ -16,7 +16,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AppointmentBook2 extends AppCompatActivity implements SelectServicesListender {
+public class AppointmentBook2 extends AppCompatActivity implements SelectServicesListener {
 
     DatabaseHelper dbh;
     Intent intent;

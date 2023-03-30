@@ -20,12 +20,12 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesViewHolder> {
 
     double priceEstimates = 0.0d;
 
-    SelectServicesListender selectServicesListender;
+    SelectServicesListener selectServicesListener;
 
-    public ServicesAdapter(Context context, List<ServicesItemModel> servicesList, SelectServicesListender selectServicesListender) {
+    public ServicesAdapter(Context context, List<ServicesItemModel> servicesList, SelectServicesListener selectServicesListener) {
         this.context = context;
         this.servicesList = servicesList;
-        this.selectServicesListender = selectServicesListender;
+        this.selectServicesListener = selectServicesListener;
     }
 
     @NonNull
@@ -45,12 +45,12 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesViewHolder> {
                 public void onClick(View v) {
                     if (holder.cbxServices.isChecked()) {
                         priceEstimates += servicesList.get(position).getPrice();
-                        selectServicesListender.addServices(servicesList.get(position).getServicesId());
+                        selectServicesListener.addServices(servicesList.get(position).getServicesId());
                     } else {
                         priceEstimates -= servicesList.get(position).getPrice();
-                        selectServicesListender.removeServices(servicesList.get(position).getServicesId());
+                        selectServicesListener.removeServices(servicesList.get(position).getServicesId());
                     }
-                    selectServicesListender.onSelectedPriceChange(priceEstimates);
+                    selectServicesListener.onSelectedPriceChange(priceEstimates);
                 }
             });
         }

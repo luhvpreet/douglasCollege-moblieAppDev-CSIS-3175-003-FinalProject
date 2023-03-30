@@ -100,6 +100,7 @@ public class AppointmentDetails extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intent = new Intent(AppointmentDetails.this, ProfileEditActivity.class);
                     intent.putExtra("userId", customerId);
+                    intent.putExtra("mainUserId", userId);
                     startActivity(intent);
                 }
             });

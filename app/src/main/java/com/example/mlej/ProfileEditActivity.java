@@ -28,7 +28,9 @@ public class ProfileEditActivity extends AppCompatActivity {
         EditText txtAddress = findViewById(R.id.profileEditAddress);
         EditText txtPostal = findViewById(R.id.profileEditPostal);
 
+        int mainUserId = getIntent().getIntExtra("mainUserId", 0);
         int userId = getIntent().getIntExtra("userId", 0);
+
 
         txtName.setText(db.getUserNameById(userId));
         txtEmail.setText(db.getUserEmail(userId));
@@ -51,7 +53,7 @@ public class ProfileEditActivity extends AppCompatActivity {
                 db.updateUser(userId, name, email, phone, address, postal);
                 Toast.makeText(ProfileEditActivity.this, "Profile updated!", Toast.LENGTH_SHORT).show();
                 finish();
-                if (db.getUserTypeById(userId) == 0) {
+                if (db.getUserTypeById(userId) == 0 || db.getUserTypeById(mainUserId) == 0) {
                     // if the user is a provider, go to the ProviderHome activity
                     Intent intent = new Intent(ProfileEditActivity.this, ServiceProviderHomeActivity.class);
                     startActivity(intent);

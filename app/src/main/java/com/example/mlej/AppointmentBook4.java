@@ -43,9 +43,9 @@ public class AppointmentBook4 extends AppCompatActivity {
         // GET serviceID#1 to #10
         for (int i=0; i<s.length; i++){
 
-            if(s[i]!=0){
+            if(s[i]==1){
                 System.out.println("2nd: s[i]" + s[i]);
-                txtServices += db.getServicesName(s[i]) + "\n";
+                txtServices += db.getServicesName(i+1) + "\n";
             }
         }
 
@@ -82,7 +82,7 @@ public class AppointmentBook4 extends AppCompatActivity {
                 if (!clicked){
                     int appointmentId = (int)db.addAppointment(cID, pID, 0, date+" "+time, Integer.parseInt(pickordrop));
                     for(int i=0; i<s.length; i++){
-                        if(s[i] != 0) db.addAppointmentServices(appointmentId, s[i]+1);
+                        if(s[i] == 1) db.addAppointmentServices(appointmentId, i+1); //if i is zero, that means servicesID=1
                     }
 
                     if (appointmentId!=-1) Toast.makeText(AppointmentBook4.this, "Appointment is confirmed!", Toast.LENGTH_SHORT).show();

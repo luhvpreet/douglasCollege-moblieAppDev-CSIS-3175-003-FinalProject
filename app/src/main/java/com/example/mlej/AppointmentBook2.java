@@ -97,14 +97,15 @@ public class AppointmentBook2 extends AppCompatActivity implements SelectService
     @Override
     public void addServices(int servicesId) {
         numberOfServicesSelected++;
-        //0 means servicesId#1 , etc
-        intent.putExtra(Integer.toString( (servicesId+1) ) , servicesId );
+        //1 means servicesId#1 , etc
+        //intent.putExtra(Integer.toString( (servicesId+1) ) , servicesId );
+        intent.putExtra(Integer.toString( servicesId ) , 1 ); //1 means YES
     }
 
     @Override
     public void removeServices(int servicesId) {
         numberOfServicesSelected--;
-        //0 means servicesId#1 , etc
-        intent.removeExtra(Integer.toString((servicesId+1)));
+        //1 means servicesId#1 , etc
+        intent.removeExtra(Integer.toString(servicesId));
     }
 }

@@ -132,7 +132,7 @@ public class AppointmentBook3 extends AppCompatActivity {
 
                         //insert all servicesId into the new intent
                         for(int i=0; i<s.length; i++){
-                            if(s[i]!=0) intent.putExtra(Integer.toString(i+1), i+1);
+                            if(s[i]==1) intent.putExtra(Integer.toString(i+1), 1);
                         }
 
                         startActivity(intent);

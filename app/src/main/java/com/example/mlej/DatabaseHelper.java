@@ -327,6 +327,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public boolean deleteAppointment(int appointmentId){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        boolean deleted = sqLiteDatabase.delete(TABLE6_NAME, T2COL1 + " = " + appointmentId, null) > 0;
         return sqLiteDatabase.delete(TABLE2_NAME, T2COL1 + " = " + appointmentId, null) > 0;
     }
 
@@ -696,9 +697,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 cursor.close();
                 return appList;
             }
-            else
+            else {
                 cursor.close();
                 return null;
+            }
     }
 
     public int getUserCount(){

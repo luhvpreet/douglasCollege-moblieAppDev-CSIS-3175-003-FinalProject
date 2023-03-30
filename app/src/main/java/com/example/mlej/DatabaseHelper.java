@@ -354,7 +354,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "inner join User_table " +
                 "on Appointment_table.CustomerId = User_table.Id " +
                 "WHERE ProviderId=" + UserId +
-                " ORDER BY AppointmentId";
+                " ORDER BY DateTime";
         Cursor cursor = sqLiteDatabase.rawQuery(query,null);
         List<AppointmentItemModel> appList;
         if(cursor.getCount() > 0){

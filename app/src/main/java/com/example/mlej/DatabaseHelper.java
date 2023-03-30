@@ -420,6 +420,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    public String getProviderNameByAppointmentId(int appointmentId){
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        String query = "SELECT CompanyName FROM User_table " +
+                "WHERE Id = (SELECT ProviderId FROM Appointment_table WHERE AppointmentId=" + appointmentId + ")";
+        Cursor cursor = sqLiteDatabase.rawQuery(query,null);
+        if(cursor.getCount() > 0){
+            cursor.moveToNext();
+            String providerName = cursor.getString(0);
+            cursor.close();
+            return providerName;
+        }
+        else{
+            cursor.close();
+            return null;
+        }
+    }
+
     public boolean addProviderServices(int ProviderID, int ServicesID){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -683,6 +700,30 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return services;
     }
 
+    public ServicesItemModel[] getServicesItemModelFromAppointment (int appointmentID){
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+
+        String query = "SELECT DISTINCT " + "st." + T3COL1 + "," + "st." + T3COL2 + "," + "st." + T3COL3 +
+                " FROM " + TABLE3_NAME + " st" +
+                " INNER JOIN " + TABLE6_NAME +
+                " ON " + "st" + "." + T3COL1 + "=" + TABLE6_NAME +"." + T3COL1 + " WHERE " +
+                TABLE6_NAME + "." + T6COL1 + "=" + appointmentID;
+        System.out.println(query);
+
+        Cursor cursor = sqLiteDatabase.rawQuery(query,null);
+
+        ServicesItemModel[] services;
+        services = new ServicesItemModel[cursor.getCount()];
+        int i=0;
+
+        while(cursor.moveToNext()) {
+            services[i] = new ServicesItemModel(cursor.getInt(0),cursor.getString(1),cursor.getDouble(2));
+            i++;
+        }
+        cursor.close();
+        return services;
+    }
+
     public int getCustomerIdFromAppointment(int appointmentId){
         int customerId;
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
@@ -700,8 +741,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
 
     }
-
-
 
     //this will delete all records in all of the tables
     public void deleteALLRecords(){

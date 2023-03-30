@@ -112,6 +112,7 @@ public class AppointmentDetails extends AppCompatActivity {
                 public void onClick(View v) {
                     if (db.deleteAppointment(appointmentId)) {
                         Toast.makeText(AppointmentDetails.this, "Appointment cancelled!", Toast.LENGTH_SHORT).show();
+                        db.removeReminderByAppointmentId(appointmentId);
                         finish();
                         if (db.getUserTypeById(userId) == 0) {
                             // if the user is a provider, go to the ProviderHome activity

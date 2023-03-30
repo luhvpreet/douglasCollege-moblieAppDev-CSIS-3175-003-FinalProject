@@ -79,7 +79,7 @@ public class AppointmentDetails extends AppCompatActivity {
             }
             else
             {
-                str.append("Customer will pickup the vehicle.");
+                str.append("Provider will pickup the vehicle.");
             }
 
             txtAppointmentDetails.setText(str);

@@ -92,7 +92,7 @@ public class AppointmentBook3 extends AppCompatActivity {
                 if (valid){
                     String[] date = appointmentDate.split("-");
                     int year = Integer.parseInt(date[0]);
-                    int month = Integer.parseInt(date[1]);
+                    int month = Integer.parseInt(date[1]) - 1;
                     int day = Integer.parseInt(date[2]);
                     String[] time = appointmentTime.split(":");
                     int hour = Integer.parseInt(time[0]);

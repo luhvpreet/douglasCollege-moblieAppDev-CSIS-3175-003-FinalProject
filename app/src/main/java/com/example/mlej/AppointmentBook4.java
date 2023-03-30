@@ -37,14 +37,12 @@ public class AppointmentBook4 extends AppCompatActivity {
         int[] s = new int[10];
         for (int i=0; i<s.length; i++){
             s[i] = getIntent().getIntExtra(Integer.toString((i+1)),0); // GET serviceID#1 to #10
-            System.out.println("1st: s[i]" + s[i]);
         }
 
         // GET serviceID#1 to #10
         for (int i=0; i<s.length; i++){
 
             if(s[i]==1){
-                System.out.println("2nd: s[i]" + s[i]);
                 txtServices += db.getServicesName(i+1) + "\n";
             }
         }
@@ -97,7 +95,6 @@ public class AppointmentBook4 extends AppCompatActivity {
 
                     Intent intent = new Intent(AppointmentBook4.this, CustomerHomeActivity.class);
                     startActivity(intent);
-
                 }
             }
         });

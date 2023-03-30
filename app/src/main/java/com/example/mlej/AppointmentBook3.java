@@ -35,19 +35,11 @@ public class AppointmentBook3 extends AppCompatActivity {
         // GET serviceID#1 to #10
         int[] s = new int[10];
         for (int i=0; i<s.length; i++){
-            //s[0] is servicedId #1, etc.
             s[i] = getIntent().getIntExtra(Integer.toString((i+1)),0); // GET serviceID#1 to #10
-            //s[i] = getIntent().getIntExtra(Integer.toString((s[i]+1)),0);
-            System.out.println("AB3: 1st: s[i]" + s[i]);
         }
 
         // Get priceEstimates and put it back into new Intent
         double priceEstimates = getIntent().getDoubleExtra("priceEstimates", 0);
-
-        for (int i=0; i<s.length; i++){
-            System.out.println("Intent: " + (i+1) + " : value is: " + s[i]);
-        }
-
 
         // display customer & service provider location
         TextView txtPLocation = findViewById(R.id.txtAB3DropoffLocation);
@@ -124,7 +116,6 @@ public class AppointmentBook3 extends AppCompatActivity {
                         Intent intent = new Intent(AppointmentBook3.this, AppointmentBook4.class);
                         intent.putExtra("cID", cID);
                         intent.putExtra("pID", pID);
-                        System.out.println("AB3: " + priceEstimates);
                         intent.putExtra("priceEstimates", priceEstimates);
                         intent.putExtra("pickordrop", pickupordropoff);
                         intent.putExtra("date", appointmentDate);

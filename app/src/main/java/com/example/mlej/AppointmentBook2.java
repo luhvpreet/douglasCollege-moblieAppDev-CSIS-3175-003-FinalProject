@@ -63,9 +63,6 @@ public class AppointmentBook2 extends AppCompatActivity implements SelectService
             servicesAdapter = new ServicesAdapter(this, servicesList, this);
             serRecyclerView.setAdapter(servicesAdapter);
         }
-        else {
-            System.out.println("servicesList is null");
-        }
 
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -28,10 +28,11 @@
 
     <Button
         android:id="@+id/btnRemindCustomer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="8dp"
         android:text="Send Reminder"
+        android:background="@drawable/btn_bg_design_2"
         app:layout_constraintBottom_toTopOf="@+id/btnEditAppointment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -39,10 +40,11 @@
 
     <Button
         android:id="@+id/btnCancelAppointment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="8dp"
         android:text="Cancel Appointment"
+        android:background="@drawable/btn_bg_design_2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -50,10 +52,11 @@
 
     <Button
         android:id="@+id/btnEditAppointment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="8dp"
         android:text="Edit Appointment"
+        android:background="@drawable/btn_bg_design_2"
         app:layout_constraintBottom_toTopOf="@+id/btnCancelAppointment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -61,10 +64,11 @@
 
     <Button
         android:id="@+id/btnEditCustomerProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="8dp"
         android:text="Edit Customer Profile"
+        android:background="@drawable/btn_bg_design_2"
         app:layout_constraintBottom_toTopOf="@+id/btnRemindCustomer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

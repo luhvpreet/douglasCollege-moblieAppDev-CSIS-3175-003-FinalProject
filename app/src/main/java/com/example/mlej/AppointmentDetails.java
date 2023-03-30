@@ -130,6 +130,17 @@ public class AppointmentDetails extends AppCompatActivity {
                 }
             });
 
+            btnEditAppointment.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(AppointmentDetails.this, AppointmentEditActivity.class);
+                    intent.putExtra("userId", customerId);
+                    intent.putExtra("mainUserId", userId);
+                    intent.putExtra("appointmentId", appointmentId);
+                    startActivity(intent);
+                }
+            });
+
         }
 
     }

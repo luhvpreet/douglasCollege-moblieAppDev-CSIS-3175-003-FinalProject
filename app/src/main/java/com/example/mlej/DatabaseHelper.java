@@ -604,6 +604,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 T5COL1 + "=" + reminderId);
     }
 
+    public String getAppointmentType(int appointmentId) {
+        String appointmentOption;
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        String query = "SELECT " + T2COL6 + " FROM " + TABLE2_NAME + " WHERE " + T2COL1 + " = " + appointmentId;
+        Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            appointmentOption = cursor.getString(0);
+            cursor.close();
+            return appointmentOption;
+        } else {
+            cursor.close();
+            return null;
+        }
+    }
     public String getAppointmentDateTime(int appointmentId) {
         String appointmentDateTime;
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();

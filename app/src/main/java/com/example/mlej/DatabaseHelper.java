@@ -606,6 +606,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 T5COL1 + "=" + reminderId);
     }
 
+    public void removeReminderByAppointmentId(int appointmentId){
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        sqLiteDatabase.execSQL("delete from " + TABLE5_NAME + " WHERE " +
+                T5COL4 + "=" + appointmentId);
+    }
+
     public String getAppointmentDateTime(int appointmentId) {
         String appointmentDateTime;
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();

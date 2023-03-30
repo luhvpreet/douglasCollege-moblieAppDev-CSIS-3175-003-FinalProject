@@ -79,6 +79,8 @@ public class SignupActivity extends AppCompatActivity {
                         txtPostalCode.setText("");
                         txtSPassword.setText("");
                         txtSConfirmPassword.setText("");
+                        Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
+                        startActivity(intent);
                     }
                     else{
                         //accountType = 0 = provider

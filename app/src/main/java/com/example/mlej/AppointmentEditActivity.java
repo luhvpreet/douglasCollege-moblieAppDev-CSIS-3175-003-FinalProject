@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class AppointmentEditActivity extends AppCompatActivity {
+public class AppointmentEditActivity extends AppCompatActivity implements SelectServicesListener {
 
     DatabaseHelper db;
     String pickupordropoff;
@@ -44,6 +44,19 @@ public class AppointmentEditActivity extends AppCompatActivity {
         int aID = getIntent().getIntExtra("appointmentId", 0); // GET company Name
 
 
+        //recycler view starts ---------------------------------------------------------------------
+        RecyclerView serRecyclerView;
+        List<ServicesItemModel> servicesList;
+        ServicesAdapter servicesAdapter;
+        servicesList = new ArrayList<>();
+        servicesList = db.getServicesFromProviderId(pID);
+        if(servicesList != null) {
+            serRecyclerView = findViewById(R.id.AAErecyclerServicesView);
+            serRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+            servicesAdapter = new ServicesAdapter(this, servicesList, this);
+            serRecyclerView.setAdapter(servicesAdapter);
+        }
+
         // check which if the option is checked
         RadioButton radbtnPickUp = findViewById(R.id.AAEradbtnPickUp);
         RadioButton radbtnDropOff = findViewById(R.id.AAEradbtnDropOff);
@@ -54,6 +67,7 @@ public class AppointmentEditActivity extends AppCompatActivity {
         else if(type.equals("1")){
             radbtnPickUp.setChecked(true);
         }
+        //recycler view ends -----------------------------------------------------------------------
 
         // pick date and time starts ---------------------------------------------------------------
         TextView oldTimeDate = findViewById(R.id.txtAAEOldDateTime);
@@ -116,4 +130,18 @@ public class AppointmentEditActivity extends AppCompatActivity {
         dialog.show();
     }
 
+    @Override
+    public void onSelectedPriceChange(double priceEstimates) {
+
+    }
+
+    @Override
+    public void addServices(int servicesId) {
+
+    }
+
+    @Override
+    public void removeServices(int servicesId) {
+
+    }
 }

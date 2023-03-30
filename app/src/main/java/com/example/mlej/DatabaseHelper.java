@@ -642,6 +642,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return null;
         }
     }
+    public boolean appointmentHasServices(int aId, int serviceId) {
+        //db.hasServices(userId, 1)
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        String query = "SELECT DISTINCT " + T6COL2 +
+                " FROM " + TABLE6_NAME + " WHERE " +
+                T6COL1 + "=" + aId;
+        Cursor cursor = sqLiteDatabase.rawQuery(query,null);
+        if(cursor.getCount() > 0){
+            cursor.close();
+            return true;
+        }
+        else{
+            cursor.close();
+            return false;
+        }
+    }
 
     public String[] getServicesFromAppointment (int appointmentID){
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();

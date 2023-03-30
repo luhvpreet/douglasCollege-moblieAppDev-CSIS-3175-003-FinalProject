@@ -61,5 +61,6 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesViewHolder> {
     public int getItemCount() {
         return servicesList.size();
     }
+
 }
 

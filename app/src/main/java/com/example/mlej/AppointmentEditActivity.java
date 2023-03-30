@@ -31,6 +31,8 @@ public class AppointmentEditActivity extends AppCompatActivity implements Select
     String pickupordropoff;
     String appointmentDate;
     String appointmentTime;
+    List<ServicesItemModel> servicesList;
+    List<Integer> selectedServices = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +48,6 @@ public class AppointmentEditActivity extends AppCompatActivity implements Select
 
         //recycler view starts ---------------------------------------------------------------------
         RecyclerView serRecyclerView;
-        List<ServicesItemModel> servicesList;
         ServicesAdapter servicesAdapter;
         servicesList = new ArrayList<>();
         servicesList = db.getServicesFromProviderId(pID);
@@ -57,7 +58,7 @@ public class AppointmentEditActivity extends AppCompatActivity implements Select
             serRecyclerView.setAdapter(servicesAdapter);
         }
 
-        // check which if the option is checked
+        // check which of the option is checked
         RadioButton radbtnPickUp = findViewById(R.id.AAEradbtnPickUp);
         RadioButton radbtnDropOff = findViewById(R.id.AAEradbtnDropOff);
         String type = db.getAppointmentType(aID);
@@ -68,6 +69,7 @@ public class AppointmentEditActivity extends AppCompatActivity implements Select
             radbtnPickUp.setChecked(true);
         }
         //recycler view ends -----------------------------------------------------------------------
+
 
         // pick date and time starts ---------------------------------------------------------------
         TextView oldTimeDate = findViewById(R.id.txtAAEOldDateTime);
@@ -97,6 +99,31 @@ public class AppointmentEditActivity extends AppCompatActivity implements Select
         btnConfirmandEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (radbtnDropOff.isChecked()) {
+                    pickupordropoff = "1";
+                } else {
+                    pickupordropoff = "0";
+                }
+                boolean dateTimeChanged = false;
+                if (appointmentDate != null && appointmentTime != null) {
+                    appointmentDate = appointmentDate + " " + appointmentTime;
+                    dateTimeChanged = true;
+                }
+                else if(appointmentDate == null && appointmentTime != null){
+                    btnPickDate.setError("Please pick a date");
+                }
+                else if(appointmentDate != null && appointmentTime == null){
+                    btnPickDate.setError("Please pick a time");
+                }
+                db.updateAppointment(aID, dateTimeChanged ? appointmentDate : db.getAppointmentDateTime(aID), pickupordropoff);
+                db.removeAllServicesFromAppointment(aID);
+                for (int i = 0; i < selectedServices.size(); i++) {
+                    db.addAppointmentServices(aID, selectedServices.get(i));
+                }
+                Toast.makeText(AppointmentEditActivity.this, "Appointment Edited", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(AppointmentEditActivity.this, AppointmentListActivity.class);
+                intent.putExtra("upcoming", true);
+                startActivity(intent);
             }
         });
 
@@ -137,11 +164,13 @@ public class AppointmentEditActivity extends AppCompatActivity implements Select
 
     @Override
     public void addServices(int servicesId) {
-
+        selectedServices.add(servicesId);
     }
 
     @Override
     public void removeServices(int servicesId) {
-
+        // get the index of the service
+        int index = selectedServices.indexOf(servicesId);
+        selectedServices.remove(index);
     }
 }

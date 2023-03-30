@@ -574,6 +574,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return false;
     }
 
+    public boolean removeAllServicesFromAppointment(int appointmentId) {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        sqLiteDatabase.execSQL("delete from " + TABLE6_NAME + " WHERE " + T6COL1 + "=" + appointmentId);
+        return true;
+    }
+
     public List<ReminderItemModel> getReminders(int userId, Context context) {
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
         String query = "SELECT ReminderId, SenderId, AppointmentId from Reminders_table where RecipientId = " + userId;
@@ -658,6 +664,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             cursor.close();
             return null;
         }
+    }
+
+    public boolean updateAppointment(int appointmentId, String appointmentDateTime, String appointmentType) {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(T2COL5, appointmentDateTime);
+        values.put(T2COL6, appointmentType);
+        long l = sqLiteDatabase.update(TABLE2_NAME, values, T2COL1 + "=" + appointmentId, null);
+        if (l > 0)
+            return true;
+        else
+            return false;
     }
     public boolean appointmentHasServices(int aId, int serviceId) {
         //db.hasServices(userId, 1)

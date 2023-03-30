@@ -119,10 +119,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(T1COL9,companyName);
 
         long l = sqLiteDatabase.insert(TABLE1_NAME,null,values);
-        if(l>0)
-            return true;
-        else
-            return false;
+        sqLiteDatabase.close();
+        if(l>0) return true;
+        else return false;
     }
 
     //method to add user to database, but this one returns the ID of the inserted row
@@ -138,7 +137,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(T1COL8,postalCode);
         values.put(T1COL9,companyName);
 
-        return sqLiteDatabase.insert(TABLE1_NAME,null,values);
+        long l = sqLiteDatabase.insert(TABLE1_NAME,null,values);
+        sqLiteDatabase.close();
+        return l;
     }
 
 
@@ -152,13 +153,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
             userId = cursor.getInt(0);
-            cursor.close();
-            return userId;
         }
-        else{
-            cursor.close();
-            return -1;
-        }
+        else userId=-1;
+
+        cursor.close();
+        sqLiteDatabase.close();
+        return userId;
     }
 
     public int getUserType(String email){
@@ -169,13 +169,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if(cursor.getCount() > 0){
             cursor.moveToFirst();
             userType = cursor.getInt(0);
-            cursor.close();
-            return userType;
         }
-        else{
-            cursor.close();
-            return -1;
-        }
+        else userType = -1;
+
+        cursor.close();
+        sqLiteDatabase.close();
+        return userType;
     }
 
     public int getUserTypeById(int userId){
@@ -186,13 +185,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if(cursor.getCount() > 0){
             cursor.moveToFirst();
             userType = cursor.getInt(0);
-            cursor.close();
-            return userType;
         }
-        else{
-            cursor.close();
-            return -1;
-        }
+        else userType = -1;
+
+        cursor.close();
+        sqLiteDatabase.close();
+        return userType;
     }
 
     public String getUserName(String email){
@@ -203,13 +201,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if(cursor.getCount() > 0){
             cursor.moveToFirst();
             userName = cursor.getString(0);
-            cursor.close();
-            return userName;
         }
-        else{
-            cursor.close();
-            return null;
-        }
+        else userName = null;
+
+        cursor.close();
+        sqLiteDatabase.close();
+        return userName;
     }
 
     public String getUserNameById(int userId){
@@ -220,13 +217,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if(cursor.getCount() > 0){
             cursor.moveToFirst();
             userName = cursor.getString(0);
-            cursor.close();
-            return userName;
         }
-        else{
-            cursor.close();
-            return null;
-        }
+        else userName = null;
+
+        cursor.close();
+        sqLiteDatabase.close();
+        return userName;
     }
 
     public String getUserPhone(int userId){
@@ -237,13 +233,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if(cursor.getCount() > 0){
             cursor.moveToFirst();
             userPhone = cursor.getString(0);
-            cursor.close();
-            return userPhone;
         }
-        else{
-            cursor.close();
-            return null;
-        }
+        else userPhone = null;
+
+        cursor.close();
+        sqLiteDatabase.close();
+        return userPhone;
     }
 
     public String getUserAddress(int userId){
@@ -254,13 +249,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if(cursor.getCount() > 0){
             cursor.moveToFirst();
             userAddress = cursor.getString(0);
-            cursor.close();
-            return userAddress;
         }
-        else{
-            cursor.close();
-            return null;
-        }
+        else userAddress = null;
+
+        cursor.close();
+        sqLiteDatabase.close();
+        return userAddress;
     }
 
     public String getUserPostalCode(int userId){
@@ -271,13 +265,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if(cursor.getCount() > 0){
             cursor.moveToFirst();
             userPostalCode = cursor.getString(0);
-            cursor.close();
-            return userPostalCode;
         }
-        else{
-            cursor.close();
-            return null;
-        }
+        else userPostalCode = null;
+
+        cursor.close();
+        sqLiteDatabase.close();
+        return userPostalCode;
     }
 
     public String getUserEmail(int userId){
@@ -288,17 +281,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if(cursor.getCount() > 0){
             cursor.moveToFirst();
             userEmail = cursor.getString(0);
-            cursor.close();
-            return userEmail;
         }
-        else{
-            cursor.close();
-            return null;
-        }
+        else userEmail = null;
 
+        cursor.close();
+        sqLiteDatabase.close();
+        return userEmail;
     }
 
     public boolean updateUser(int userId, String name, String email, String phone, String address, String postalCode) {
+        boolean updated;
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(T1COL3, name);
@@ -306,7 +298,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(T1COL6, phone);
         values.put(T1COL7, address);
         values.put(T1COL8, postalCode);
-        return sqLiteDatabase.update(TABLE1_NAME, values, T1COL1 + " = " + userId, null) > 0;
+        updated = sqLiteDatabase.update(TABLE1_NAME, values, T1COL1 + " = " + userId, null) > 0;
+        sqLiteDatabase.close();
+        return updated;
     }
 
     public long addAppointment(int Customer_Id, int Provider_Id, int Vehicle_Id, String DateTime, int DropOffOrPickUp){
@@ -319,16 +313,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(T2COL6,DropOffOrPickUp); //0 means drop off and 1 means pickup
 
         long l = sqLiteDatabase.insert(TABLE2_NAME,null,values);
-        if(l>0)
-            return l;
-        else
-            return -1;
+        sqLiteDatabase.close();
+        if(l>0) return l;
+        else return -1;
     }
 
     public boolean deleteAppointment(int appointmentId){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
-        boolean deleted = sqLiteDatabase.delete(TABLE6_NAME, T2COL1 + " = " + appointmentId, null) > 0;
-        return sqLiteDatabase.delete(TABLE2_NAME, T2COL1 + " = " + appointmentId, null) > 0;
+        boolean deleted1 = sqLiteDatabase.delete(TABLE6_NAME, T2COL1 + " = " + appointmentId, null) > 0;
+        boolean deleted2 = sqLiteDatabase.delete(TABLE2_NAME, T2COL1 + " = " + appointmentId, null) > 0;
+        sqLiteDatabase.close();
+        return (deleted1 && deleted2);
     }
 
     public AppointmentItemModel getAppointment(int appointmentId){
@@ -345,13 +340,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             aim.setCustomerName(cursor.getString(0));
             aim.setAppointDateTime(cursor.getString(1));
             aim.setDropOffOrPickup(cursor.getInt(2));
-            cursor.close();
-            return aim;
         }
-        else {
-            cursor.close();
-            return null;
-        }
+        else aim = null;
+
+        cursor.close();
+        sqLiteDatabase.close();
+        return aim;
     }
 
     public List<AppointmentItemModel> viewAppointment(int UserId){
@@ -371,13 +365,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     cursor.getString(1),
                     cursor.getString(2)));
             }
-            cursor.close();
-            return appList;
         }
-        else{
-            cursor.close();
-            return null;
-        }
+        else appList = null;
+
+        cursor.close();
+        sqLiteDatabase.close();
+        return appList;
     }
 
     public boolean addServices(int ID, String servicesName, double price){
@@ -388,10 +381,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(T3COL3,price);
 
         long l = sqLiteDatabase.insert(TABLE3_NAME,null,values);
-        if(l>0)
-            return true;
-        else
-            return false;
+        sqLiteDatabase.close();
+        if(l>0) return true;
+        else return false;
     }
 
     public List<ServicesItemModel> getServicesFromProviderId(int providerId){
@@ -408,33 +400,29 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         cursor.getString(1),
                         cursor.getDouble(2)));
             }
+        }
+        else servicesList = null;
 
-            System.out.println("cursor.getCount(): "+cursor.getCount());
-            cursor.close();
-            return servicesList;
-        }
-        else{
-            System.out.println("returning null");
-            cursor.close();
-            return null;
-        }
+        cursor.close();
+        sqLiteDatabase.close();
+        return servicesList;
     }
 
     public String getProviderNameByAppointmentId(int appointmentId){
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        String providerName;
         String query = "SELECT CompanyName FROM User_table " +
                 "WHERE Id = (SELECT ProviderId FROM Appointment_table WHERE AppointmentId=" + appointmentId + ")";
         Cursor cursor = sqLiteDatabase.rawQuery(query,null);
         if(cursor.getCount() > 0){
             cursor.moveToNext();
-            String providerName = cursor.getString(0);
-            cursor.close();
-            return providerName;
+            providerName = cursor.getString(0);
         }
-        else{
-            cursor.close();
-            return null;
-        }
+        else providerName = null;
+
+        cursor.close();
+        sqLiteDatabase.close();
+        return providerName;
     }
 
     public boolean addProviderServices(int ProviderID, int ServicesID){
@@ -444,10 +432,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(T4COL2,ServicesID);
 
         long l = sqLiteDatabase.insert(TABLE4_NAME,null,values);
-        if(l>0)
-            return true;
-        else
-            return false;
+        sqLiteDatabase.close();
+        if(l>0) return true;
+        else return false;
     }
 
     public void removeProviderServices(int userId, int ServicesID) {
@@ -455,10 +442,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         sqLiteDatabase.execSQL("delete from " + TABLE4_NAME + " WHERE " +
                 T4COL1 + "=" + userId + " AND " + T4COL2 + " = " + ServicesID);
+
+        sqLiteDatabase.close();
     }
 
     public String getServicesName(int servicesId) {
-        String servicesName="";
+        String servicesName;
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
         String query = "SELECT " + T3COL2 + " FROM " + TABLE3_NAME + " WHERE " + T3COL1 + " = " + servicesId;
         Cursor cursor = sqLiteDatabase.rawQuery(query,null);
@@ -466,25 +455,27 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             cursor.moveToFirst();
             servicesName = cursor.getString(0);
         }
+        else servicesName = null;
+
         cursor.close();
+        sqLiteDatabase.close();
         return servicesName;
     }
 
     public boolean hasServices(int userId, int serviceId) {
         //db.hasServices(userId, 1)
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        boolean hasService;
         String query = "SELECT DISTINCT " + T4COL2 +
                 " FROM " + TABLE4_NAME + " WHERE " +
                 TABLE4_NAME + "." + T4COL1 + "=" + userId + " AND " + TABLE4_NAME +"."+T4COL2+ "=" + serviceId;
         Cursor cursor = sqLiteDatabase.rawQuery(query,null);
-        if(cursor.getCount() > 0){
-            cursor.close();
-            return true;
-        }
-        else{
-            cursor.close();
-            return false;
-        }
+        if(cursor.getCount() > 0) hasService = true;
+        else hasService = false;
+
+        cursor.close();
+        sqLiteDatabase.close();
+        return hasService;
     }
 
     // Providers adapter
@@ -505,13 +496,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         cursor.getString(4),
                         cursor.getString(5)));
             }
-            cursor.close();
-            return providerList;
         }
-        else{
-            cursor.close();
-            return null;
-        }
+        else providerList = null;
+
+        cursor.close();
+        sqLiteDatabase.close();
+        return providerList;
     }
 
     public String getCompanyName(int providerId){
@@ -522,13 +512,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if(cursor.getCount() > 0){
             cursor.moveToFirst();
             companyName = cursor.getString(0);
-            cursor.close();
-            return companyName;
         }
-        else {
-            cursor.close();
-            return null;
-        }
+        else companyName = null;
+
+        cursor.close();
+        sqLiteDatabase.close();
+        return companyName;
     }
 
     public String getCompanyNameByAppointmentId(int appointmentId){
@@ -537,15 +526,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String query = "SELECT " + T1COL9 + " FROM " + TABLE1_NAME + " WHERE " + T1COL1 + " = " +
                 "(SELECT " + T2COL3 + " FROM " + TABLE2_NAME + " WHERE " + T2COL1 + " = " + appointmentId + ")";
         Cursor cursor = sqLiteDatabase.rawQuery(query,null);
-        if(cursor.getCount() > 0){
+        if(cursor.getCount() > 0) {
             cursor.moveToFirst();
             companyName = cursor.getString(0);
-            cursor.close();
-            return companyName;
         }
-        else
-            cursor.close();
-            return null;
+        else companyName = null;
+
+        cursor.close();
+        sqLiteDatabase.close();
+        return companyName;
     }
 
     public boolean addReminder(int senderId, int receiverId, int appointmentId) {
@@ -555,10 +544,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(T5COL3, receiverId);
         values.put(T5COL4, appointmentId);
         long l = sqLiteDatabase.insert(TABLE5_NAME, null, values);
-        if (l > 0)
-            return true;
-        else
-            return false;
+        sqLiteDatabase.close();
+        if (l > 0) return true;
+        else return false;
     }
     
    public boolean addAppointmentServices(int AppointmentID, int ServicesID){
@@ -568,15 +556,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(T6COL2,ServicesID);
 
         long l = sqLiteDatabase.insert(TABLE6_NAME,null,values);
-        if(l>0)
-            return true;
-        else
-            return false;
+        sqLiteDatabase.close();
+        if(l>0) return true;
+        else return false;
     }
 
     public boolean removeAllServicesFromAppointment(int appointmentId) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         sqLiteDatabase.execSQL("delete from " + TABLE6_NAME + " WHERE " + T6COL1 + "=" + appointmentId);
+        sqLiteDatabase.close();
         return true;
     }
 
@@ -594,45 +582,45 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         cursor.getInt(2),
                         context));
             }
-            cursor.close();
-            return reminderList;
-        } else {
-            cursor.close();
-            return null;
         }
+        else reminderList = null;
+
+        cursor.close();
+        sqLiteDatabase.close();
+        return reminderList;
     }
 
     public boolean hasReminders(int userId) {
-        int hasReminder;
+        int hasReminderInt;
+        boolean hasReminder;
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
         String query = "SELECT count(*) from Reminders_table where RecipientId = " + userId;
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
-            hasReminder = cursor.getInt(0);
-            if (hasReminder>0){
-                cursor.close();
-                return true;
-            } else {
-                cursor.close();
-                return false;
-            }
-        } else {
-            cursor.close();
-            return false;
+            hasReminderInt = cursor.getInt(0);
+            if (hasReminderInt>0) hasReminder = true;
+            else hasReminder = false;
         }
+        else hasReminder = false;
+
+        cursor.close();
+        sqLiteDatabase.close();
+        return hasReminder;
     }
 
     public void removeReminder(int reminderId){
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
         sqLiteDatabase.execSQL("delete from " + TABLE5_NAME + " WHERE " +
                 T5COL1 + "=" + reminderId);
+        sqLiteDatabase.close();
     }
 
     public void removeReminderByAppointmentId(int appointmentId){
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
         sqLiteDatabase.execSQL("delete from " + TABLE5_NAME + " WHERE " +
                 T5COL4 + "=" + appointmentId);
+        sqLiteDatabase.close();
     }
 
     public String getAppointmentDateTime(int appointmentId) {
@@ -643,12 +631,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
             appointmentDateTime = cursor.getString(0);
-            cursor.close();
-            return appointmentDateTime;
-        } else {
-            cursor.close();
-            return null;
         }
+        else appointmentDateTime = null;
+
+        cursor.close();
+        sqLiteDatabase.close();
+        return appointmentDateTime;
     }
     public String getAppointmentType(int appointmentId) {
         String appointmentType;
@@ -658,12 +646,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
             appointmentType = cursor.getString(0);
-            cursor.close();
-            return appointmentType;
-        } else {
-            cursor.close();
-            return null;
         }
+        else appointmentType = null;
+
+        cursor.close();
+        sqLiteDatabase.close();
+        return appointmentType;
     }
 
     public boolean updateAppointment(int appointmentId, String appointmentDateTime, String appointmentType) {
@@ -672,26 +660,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(T2COL5, appointmentDateTime);
         values.put(T2COL6, appointmentType);
         long l = sqLiteDatabase.update(TABLE2_NAME, values, T2COL1 + "=" + appointmentId, null);
-        if (l > 0)
-            return true;
-        else
-            return false;
+        sqLiteDatabase.close();
+        if (l > 0) return true;
+        else return false;
     }
     public boolean appointmentHasServices(int aId, int serviceId) {
+        boolean hasServices;
         //db.hasServices(userId, 1)
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
         String query = "SELECT DISTINCT " + T6COL2 +
                 " FROM " + TABLE6_NAME + " WHERE " +
                 T6COL1 + "=" + aId;
         Cursor cursor = sqLiteDatabase.rawQuery(query,null);
-        if(cursor.getCount() > 0){
-            cursor.close();
-            return true;
-        }
-        else{
-            cursor.close();
-            return false;
-        }
+        if(cursor.getCount() > 0) hasServices = true;
+        else hasServices = false;
+
+        cursor.close();
+        sqLiteDatabase.close();
+        return hasServices;
     }
 
     public String[] getServicesFromAppointment (int appointmentID){
@@ -715,6 +701,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             i++;
         }
         cursor.close();
+        sqLiteDatabase.close();
         return services;
     }
 
@@ -739,6 +726,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             i++;
         }
         cursor.close();
+        sqLiteDatabase.close();
         return services;
     }
 
@@ -763,6 +751,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             i++;
         }
         cursor.close();
+        sqLiteDatabase.close();
         return services;
     }
 
@@ -774,14 +763,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if(cursor.getCount() > 0){
             cursor.moveToFirst();
             customerId = cursor.getInt(0);
-            cursor.close();
-            return customerId;
         }
-        else{
-            cursor.close();
-            return -1;
-        }
+        else customerId = -1;
 
+        cursor.close();
+        sqLiteDatabase.close();
+        return customerId;
     }
 
     //this will delete all records in all of the tables
@@ -793,6 +780,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("delete from "+ TABLE4_NAME);
         sqLiteDatabase.execSQL("delete from "+ TABLE5_NAME);
         sqLiteDatabase.execSQL("delete from "+ TABLE6_NAME);
+        sqLiteDatabase.close();
     }
 
     public List<AppointmentItemModel> viewCustomerAppointment(int userId) {
@@ -802,23 +790,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     "on Appointment_table.ProviderId = User_table.Id " +
                     "WHERE CustomerId=" + userId  +
                     " ORDER BY AppointmentId";
-            Cursor cursor = sqLiteDatabase.rawQuery(query,null);
-            List<AppointmentItemModel> appList;
-            if(cursor.getCount() > 0){
-                appList = new ArrayList<>();
-                while(cursor.moveToNext()) {
-                    appList.add(new AppointmentItemModel(
+        Cursor cursor = sqLiteDatabase.rawQuery(query,null);
+        List<AppointmentItemModel> appList;
+        if(cursor.getCount() > 0){
+            appList = new ArrayList<>();
+            while(cursor.moveToNext()) {
+                appList.add(new AppointmentItemModel(
                             cursor.getInt(0),
                             cursor.getString(1),
                             cursor.getString(2)));
-                }
-                cursor.close();
-                return appList;
             }
-            else {
-                cursor.close();
-                return null;
-            }
+        }
+        else appList = null;
+
+        sqLiteDatabase.close();
+        cursor.close();
+        return appList;
     }
 
     public int getUserCount(){
@@ -829,12 +816,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if(cursor.getCount() > 0){
             cursor.moveToFirst();
             userCount = cursor.getInt(0);
-            cursor.close();
-            return userCount;
         }
-        else{
-            cursor.close();
-            return -1;
-        }
+        else userCount = 0;
+
+        sqLiteDatabase.close();
+        cursor.close();
+        return userCount;
     }
 }

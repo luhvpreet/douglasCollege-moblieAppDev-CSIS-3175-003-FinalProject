@@ -526,6 +526,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return companyName;
         }
         else
+            cursor.close();
             return null;
     }
 
@@ -696,6 +697,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 return appList;
             }
             else
+                cursor.close();
                 return null;
     }
 

@@ -104,6 +104,19 @@ public class AppointmentDetails extends AppCompatActivity {
                 }
             });
 
+            btnCancelAppointment.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (db.deleteAppointment(appointmentId)) {
+                        Toast.makeText(AppointmentDetails.this, "Appointment cancelled!", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
+                    else {
+                        Toast.makeText(AppointmentDetails.this, "Appointment cancellation failed!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+
         }
 
     }

@@ -325,6 +325,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return -1;
     }
 
+    public boolean deleteAppointment(int appointmentId){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        return sqLiteDatabase.delete(TABLE2_NAME, T2COL1 + " = " + appointmentId, null) > 0;
+    }
+
     public AppointmentItemModel getAppointment(int appointmentId){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         AppointmentItemModel aim = new AppointmentItemModel();

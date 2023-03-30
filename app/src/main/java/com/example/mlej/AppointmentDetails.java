@@ -30,6 +30,7 @@ public class AppointmentDetails extends AppCompatActivity {
         Button btnEditCustomerProfile = findViewById(R.id.btnEditCustomerProfile);
         Button btnCancelAppointment = findViewById(R.id.btnCancelAppointment);
         Button btnEditAppointment = findViewById(R.id.btnEditAppointment);
+        Button btnGenerateReport = findViewById(R.id.btnGenerateReport);
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         if (intent != null){
@@ -49,11 +50,13 @@ public class AppointmentDetails extends AppCompatActivity {
                 btnRemindCustomer.setVisibility(View.INVISIBLE);
                 btnCancelAppointment.setVisibility(View.INVISIBLE);
                 btnEditAppointment.setVisibility(View.INVISIBLE);
+                btnGenerateReport.setVisibility(View.VISIBLE);
             }
 
             if (userId == customerId) {
                 btnRemindCustomer.setVisibility(View.INVISIBLE);
                 btnEditCustomerProfile.setVisibility(View.INVISIBLE);
+                btnGenerateReport.setVisibility(View.INVISIBLE);
                 btnEditAppointment.setVisibility(View.INVISIBLE);
             }
 
@@ -129,7 +132,16 @@ public class AppointmentDetails extends AppCompatActivity {
                     }
                 }
             });
+            btnGenerateReport.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(AppointmentDetails.this, ReportActivity.class);
 
+
+                    intent.putExtra("appointmentId", appointmentId);
+                    startActivity(intent);
+                }
+            });
             btnEditAppointment.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

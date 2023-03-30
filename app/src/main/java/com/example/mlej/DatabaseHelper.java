@@ -685,7 +685,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         " INNER JOIN " + TABLE6_NAME +
                         " ON " + TABLE3_NAME + "." + T3COL1 + "=" + TABLE6_NAME +"." + T3COL1 + " WHERE " +
                         TABLE6_NAME + "." + T6COL1 + "=" + appointmentID;
-        System.out.println(query);
 
         Cursor cursor = sqLiteDatabase.rawQuery(query,null);
 
@@ -710,7 +709,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 " INNER JOIN " + TABLE6_NAME +
                 " ON " + TABLE3_NAME + "." + T3COL1 + "=" + TABLE6_NAME +"." + T3COL1 + " WHERE " +
                 TABLE6_NAME + "." + T6COL1 + "=" + appointmentID;
-        System.out.println(query);
 
         Cursor cursor = sqLiteDatabase.rawQuery(query,null);
 
@@ -735,7 +733,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 " INNER JOIN " + TABLE6_NAME +
                 " ON " + "st" + "." + T3COL1 + "=" + TABLE6_NAME +"." + T3COL1 + " WHERE " +
                 TABLE6_NAME + "." + T6COL1 + "=" + appointmentID;
-        System.out.println(query);
 
         Cursor cursor = sqLiteDatabase.rawQuery(query,null);
 

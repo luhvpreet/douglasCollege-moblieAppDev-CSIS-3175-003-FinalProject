@@ -48,7 +48,6 @@ public class LoginActivity extends AppCompatActivity {
 
                 // check if the email and password are valid, -1 means no such user, 0 or up means userId
                 int userId = db.verifyLogin(email, password);
-                System.out.println("loginActivity: "+userId);
 
                 if (userId != -1) {
                     editor.putInt("USERID",userId);

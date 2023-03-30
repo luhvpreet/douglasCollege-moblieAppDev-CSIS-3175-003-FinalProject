@@ -33,11 +33,7 @@ public class AppointmentListActivity extends AppCompatActivity{
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
         userId = preferences.getInt("USERID",0);
 
-        // setTitle("Upcoming Appointments");
-
         initData(userId);
-
-        System.out.println("AppointmentListActivity: "+userId);
 
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");

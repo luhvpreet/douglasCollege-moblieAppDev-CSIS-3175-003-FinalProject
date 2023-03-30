@@ -1,17 +1,11 @@
 package com.example.mlej;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.FileProvider;
-
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.webkit.WebView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import java.io.File;
 
 public class ReportActivity extends AppCompatActivity {
     DatabaseHelper db;

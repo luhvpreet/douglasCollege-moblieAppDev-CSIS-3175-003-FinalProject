@@ -6,9 +6,6 @@ public class ServicesItemModel {
     private String servicesName;
     private double price;
 
-    public ServicesItemModel(){
-    }
-
     public ServicesItemModel(int servicesId, String servicesName, double price) {
         this.servicesId = servicesId;
         this.servicesName = servicesName;

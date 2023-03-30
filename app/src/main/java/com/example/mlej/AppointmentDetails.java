@@ -1,5 +1,7 @@
 package com.example.mlej;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -19,6 +21,14 @@ public class AppointmentDetails extends AppCompatActivity {
 
     DatabaseHelper db;
     SharedPreferences preferences;
+    private ActivityResultLauncher<Intent> editAppointmentLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == RESULT_OK) {
+                    finish();
+                }
+            }
+    );
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -149,7 +159,7 @@ public class AppointmentDetails extends AppCompatActivity {
                     intent.putExtra("userId", customerId);
                     intent.putExtra("mainUserId", userId);
                     intent.putExtra("appointmentId", appointmentId);
-                    startActivity(intent);
+                    editAppointmentLauncher.launch(intent);
                 }
             });
 

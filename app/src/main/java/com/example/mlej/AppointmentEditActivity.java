@@ -121,9 +121,12 @@ public class AppointmentEditActivity extends AppCompatActivity implements Select
                     db.addAppointmentServices(aID, selectedServices.get(i));
                 }
                 Toast.makeText(AppointmentEditActivity.this, "Appointment Edited", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(AppointmentEditActivity.this, AppointmentListActivity.class);
-                intent.putExtra("upcoming", true);
-                startActivity(intent);
+                Intent resultIntent = new Intent();
+                setResult(RESULT_OK, resultIntent);
+                finish();
+//                Intent intent = new Intent(AppointmentEditActivity.this, AppointmentListActivity.class);
+//                intent.putExtra("upcoming", true);
+//                startActivity(intent);
             }
         });
 

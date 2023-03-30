@@ -21,6 +21,7 @@ public class ReportActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report);
+        setTitle("Service Report");
         int appointmentId = getIntent().getIntExtra("appointmentId", 0);
 
         WebView webView = findViewById(R.id.webView);

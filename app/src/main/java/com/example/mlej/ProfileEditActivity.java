@@ -17,7 +17,7 @@ public class ProfileEditActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_edit);
-
+        setTitle("Edit Profile");
         db = new DatabaseHelper(this);
         // Name edit has been removed because it can cause trouble for home activity
         // In real life, names generally can not be edited by the user

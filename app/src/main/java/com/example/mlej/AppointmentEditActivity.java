@@ -37,7 +37,7 @@ public class AppointmentEditActivity extends AppCompatActivity implements Select
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_appointment_edit);
-        setTitle("Edit the Appointment");
+        setTitle("Edit Appointment");
 
         db = new DatabaseHelper(this);
 

@@ -35,6 +35,7 @@ public class AppointmentDetails extends AppCompatActivity {
         setContentView(R.layout.activity_appointment_details);
         TextView txtAppointmentDetails = findViewById(R.id.txtAppointmentDetails);
         Intent intent = getIntent();
+        setTitle("Appointment Details");
         db = new DatabaseHelper(this);
         Button btnRemindCustomer = findViewById(R.id.btnRemindCustomer);
         Button btnEditCustomerProfile = findViewById(R.id.btnEditCustomerProfile);

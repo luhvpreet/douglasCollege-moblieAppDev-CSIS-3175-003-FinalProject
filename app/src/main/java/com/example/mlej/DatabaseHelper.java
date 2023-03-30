@@ -718,6 +718,30 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return services;
     }
 
+    public List<Integer> getServicesIdFromAppointment (int appointmentID){
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+
+        String query = "SELECT DISTINCT Services_Table." + T3COL1 +
+                " FROM " + TABLE3_NAME +
+                " INNER JOIN " + TABLE6_NAME +
+                " ON " + TABLE3_NAME + "." + T3COL1 + "=" + TABLE6_NAME +"." + T3COL1 + " WHERE " +
+                TABLE6_NAME + "." + T6COL1 + "=" + appointmentID;
+        System.out.println(query);
+
+        Cursor cursor = sqLiteDatabase.rawQuery(query,null);
+
+        List<Integer> services;
+        services = new ArrayList<>();
+        int i=0;
+
+        while(cursor.moveToNext()) {
+            services.add(cursor.getInt(0));
+            i++;
+        }
+        cursor.close();
+        return services;
+    }
+
     public ServicesItemModel[] getServicesItemModelFromAppointment (int appointmentID){
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
 

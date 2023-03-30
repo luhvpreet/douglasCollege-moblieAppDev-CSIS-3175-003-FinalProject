@@ -60,7 +60,7 @@ public class AppointmentBook2 extends AppCompatActivity implements SelectService
         if(servicesList != null) {
             serRecyclerView = findViewById(R.id.recyclerServicesView);
             serRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
-            servicesAdapter = new ServicesAdapter(this, servicesList, this);
+            servicesAdapter = new ServicesAdapter(this, servicesList, null, this);
             serRecyclerView.setAdapter(servicesAdapter);
         }
 

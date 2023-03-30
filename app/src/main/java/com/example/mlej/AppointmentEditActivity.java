@@ -45,6 +45,7 @@ public class AppointmentEditActivity extends AppCompatActivity implements Select
         int pID = getIntent().getIntExtra("mainUserId",0); // GET provider ID
         int aID = getIntent().getIntExtra("appointmentId", 0); // GET company Name
 
+        List<Integer> currentServices = db.getServicesIdFromAppointment(aID);
 
         //recycler view starts ---------------------------------------------------------------------
         RecyclerView serRecyclerView;
@@ -54,7 +55,7 @@ public class AppointmentEditActivity extends AppCompatActivity implements Select
         if(servicesList != null) {
             serRecyclerView = findViewById(R.id.AAErecyclerServicesView);
             serRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
-            servicesAdapter = new ServicesAdapter(this, servicesList, this);
+            servicesAdapter = new ServicesAdapter(this, servicesList, currentServices, this);
             serRecyclerView.setAdapter(servicesAdapter);
         }
 
@@ -69,7 +70,6 @@ public class AppointmentEditActivity extends AppCompatActivity implements Select
             radbtnPickUp.setChecked(true);
         }
         //recycler view ends -----------------------------------------------------------------------
-
 
         // pick date and time starts ---------------------------------------------------------------
         TextView oldTimeDate = findViewById(R.id.txtAAEOldDateTime);

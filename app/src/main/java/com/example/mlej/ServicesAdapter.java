@@ -17,14 +17,16 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesViewHolder> {
     View view;
     private Context context;
     private List<ServicesItemModel> servicesList;
+    private List<Integer> selectedServices;
 
     double priceEstimates = 0.0d;
 
     SelectServicesListener selectServicesListener;
 
-    public ServicesAdapter(Context context, List<ServicesItemModel> servicesList, SelectServicesListener selectServicesListener) {
+    public ServicesAdapter(Context context, List<ServicesItemModel> servicesList, List<Integer> selectedServices, SelectServicesListener selectServicesListener) {
         this.context = context;
         this.servicesList = servicesList;
+        this.selectedServices = selectedServices;
         this.selectServicesListener = selectServicesListener;
     }
 
@@ -40,6 +42,12 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesViewHolder> {
     public void onBindViewHolder(@NonNull ServicesViewHolder holder, @SuppressLint("RecyclerView") int position) {
         if(servicesList!=null && servicesList.size()>0) {
             holder.cbxServices.setText(servicesList.get(position).getServicesName());
+            if (selectedServices != null && selectedServices.contains(servicesList.get(position).getServicesId())) {
+                holder.cbxServices.setChecked(true);
+                selectServicesListener.addServices(servicesList.get(position).getServicesId());
+            } else {
+                holder.cbxServices.setChecked(false);
+            }
             holder.cbxServices.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -60,6 +68,19 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesViewHolder> {
     @Override
     public int getItemCount() {
         return servicesList.size();
+    }
+
+    // method to set the checkboxes of current services to checked
+    public void setCheckedServices(List<Integer> servicesIdList) {
+        for (int i = 0; i < servicesList.size(); i++) {
+            for (int j = 0; j < servicesIdList.size(); j++) {
+                if (servicesList.get(i).getServicesId() == servicesIdList.get(j)) {
+
+                    priceEstimates += servicesList.get(i).getPrice();
+                }
+            }
+        }
+        notifyDataSetChanged();
     }
 
 }

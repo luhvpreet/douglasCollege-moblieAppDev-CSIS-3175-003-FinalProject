@@ -99,8 +99,6 @@ public class AppointmentBook4 extends AppCompatActivity {
                     startActivity(intent);
 
                 }
-
-
             }
         });
 

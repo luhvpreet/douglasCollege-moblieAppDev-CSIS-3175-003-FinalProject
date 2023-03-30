@@ -572,6 +572,33 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    public boolean hasReminders(int userId) {
+        int hasReminder;
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        String query = "SELECT count(*) from Reminders_table where RecipientId = " + userId;
+        Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            hasReminder = cursor.getInt(0);
+            if (hasReminder>0){
+                cursor.close();
+                return true;
+            } else {
+                cursor.close();
+                return false;
+            }
+        } else {
+            cursor.close();
+            return false;
+        }
+    }
+
+    public void removeReminder(int reminderId){
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        sqLiteDatabase.execSQL("delete from " + TABLE5_NAME + " WHERE " +
+                T5COL1 + "=" + reminderId);
+    }
+
     public String getAppointmentDateTime(int appointmentId) {
         String appointmentDateTime;
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
@@ -665,5 +692,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
             else
                 return null;
+    }
+
+    public int getUserCount(){
+        int userCount;
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        String query = "SELECT COUNT(*) FROM " + TABLE1_NAME;
+        Cursor cursor = sqLiteDatabase.rawQuery(query,null);
+        if(cursor.getCount() > 0){
+            cursor.moveToFirst();
+            userCount = cursor.getInt(0);
+            cursor.close();
+            return userCount;
         }
+        else{
+            cursor.close();
+            return -1;
+        }
+    }
 }

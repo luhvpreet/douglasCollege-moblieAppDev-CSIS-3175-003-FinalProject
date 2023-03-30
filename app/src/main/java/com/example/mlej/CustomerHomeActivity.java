@@ -10,6 +10,7 @@ import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class CustomerHomeActivity extends AppCompatActivity {
     SharedPreferences preferences;
@@ -21,10 +22,12 @@ public class CustomerHomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_home);
 
-        db = new DatabaseHelper(this);
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
         editor = preferences.edit();
         int userId = preferences.getInt("USERID",0);
+
+        db = new DatabaseHelper(this);
+        if( db.hasReminders( userId ) ) Toast.makeText(CustomerHomeActivity.this, "Message in Inbox!", Toast.LENGTH_LONG).show();
 
         TextView txtWelcome = findViewById(R.id.txtCHUserName);
         String username = db.getUserNameById(userId);

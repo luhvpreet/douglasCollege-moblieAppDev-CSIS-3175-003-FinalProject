@@ -1,5 +1,6 @@
 package com.example.mlej;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -46,6 +48,22 @@ public class ReminderInboxActivity extends AppCompatActivity {
                 startActivity(new Intent(ReminderInboxActivity.this, AppointmentDetails.class)
                         .putExtra("appointmentId", reminder.getId()));
             }
+        });
+        lvReminders.setOnItemLongClickListener((parent, view, position, id) -> {
+            // a popup will appear asking if the user wants to delete the reminder
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Delete Reminder");
+            builder.setMessage("Are you sure you want to delete this reminder?");
+            builder.setPositiveButton("Yes", (dialog, which) -> {
+                ReminderItemModel reminder = reminders.get(position);
+                db.removeReminder(reminder.getReminderId());
+                finish();
+            });
+            builder.setNegativeButton("No", (dialog, which) -> {
+                // do nothing
+            });
+            builder.show();
+            return true;
         });
     }
 }

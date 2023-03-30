@@ -89,8 +89,7 @@ public class AppointmentDetails extends AppCompatActivity {
                 public void onClick(View v) {
                     if (db.addReminder(userId, customerId, appointmentId)) {
                         Toast.makeText(AppointmentDetails.this, "Reminder sent!", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(AppointmentDetails.this, ServiceProviderHomeActivity.class);
-                        startActivity(intent);
+                        finish();
                     }
                     else {
                         Toast.makeText(AppointmentDetails.this, "Reminder failed!", Toast.LENGTH_SHORT).show();

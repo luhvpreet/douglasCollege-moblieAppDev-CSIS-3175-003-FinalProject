@@ -24,4 +24,7 @@ public class ReminderItemModel {
     public int getId() {
         return appointmentId;
     }
+    public int getReminderId() {
+        return reminderId;
+    }
 }

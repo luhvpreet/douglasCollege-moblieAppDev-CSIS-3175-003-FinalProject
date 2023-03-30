@@ -84,6 +84,7 @@
         android:layout_marginBottom="8dp"
         android:text="Generate Report"
         android:visibility="invisible"
+        android:background="@drawable/btn_bg_design_2"
         app:layout_constraintBottom_toTopOf="@+id/btnEditCustomerProfile"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

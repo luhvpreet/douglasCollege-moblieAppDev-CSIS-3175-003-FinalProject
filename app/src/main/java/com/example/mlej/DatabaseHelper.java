@@ -327,6 +327,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public boolean deleteAppointment(int appointmentId){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        boolean deleted = sqLiteDatabase.delete(TABLE6_NAME, T2COL1 + " = " + appointmentId, null) > 0;
         return sqLiteDatabase.delete(TABLE2_NAME, T2COL1 + " = " + appointmentId, null) > 0;
     }
 
@@ -526,6 +527,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return companyName;
         }
         else
+            cursor.close();
             return null;
     }
 
@@ -604,21 +606,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 T5COL1 + "=" + reminderId);
     }
 
-    public String getAppointmentType(int appointmentId) {
-        String appointmentOption;
+    public void removeReminderByAppointmentId(int appointmentId){
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
-        String query = "SELECT " + T2COL6 + " FROM " + TABLE2_NAME + " WHERE " + T2COL1 + " = " + appointmentId;
-        Cursor cursor = sqLiteDatabase.rawQuery(query, null);
-        if (cursor.getCount() > 0) {
-            cursor.moveToFirst();
-            appointmentOption = cursor.getString(0);
-            cursor.close();
-            return appointmentOption;
-        } else {
-            cursor.close();
-            return null;
-        }
+        sqLiteDatabase.execSQL("delete from " + TABLE5_NAME + " WHERE " +
+                T5COL4 + "=" + appointmentId);
     }
+
     public String getAppointmentDateTime(int appointmentId) {
         String appointmentDateTime;
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
@@ -710,8 +703,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 cursor.close();
                 return appList;
             }
-            else
+            else {
+                cursor.close();
                 return null;
+            }
     }
 
     public int getUserCount(){

@@ -38,24 +38,27 @@ public class SignupServicesActivity extends AppCompatActivity {
         btnSSSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (etxtCompanyName.getText().toString().isEmpty()) {
+                    etxtCompanyName.setError("Please enter your company name");
+                } else {
+                    long l = db.addUserLong(0, intent.getStringExtra("SName"),intent.getStringExtra("SEmail"),intent.getStringExtra("SPassword"),
+                            intent.getStringExtra("SPhone"), intent.getStringExtra("SAddress"), intent.getStringExtra("PostalCode"), etxtCompanyName.getText().toString());
 
-                long l = db.addUserLong(0, intent.getStringExtra("SName"),intent.getStringExtra("SEmail"),intent.getStringExtra("SPassword"),
-                        intent.getStringExtra("SPhone"), intent.getStringExtra("SAddress"), intent.getStringExtra("PostalCode"), etxtCompanyName.getText().toString());
-
-                if (l>0){
-                    if (cboxServices1.isChecked()) db.addProviderServices((int)l, 1);
-                    if (cboxServices2.isChecked()) db.addProviderServices((int)l, 2);
-                    if (cboxServices3.isChecked()) db.addProviderServices((int)l, 3);
-                    if (cboxServices4.isChecked()) db.addProviderServices((int)l, 4);
-                    if (cboxServices5.isChecked()) db.addProviderServices((int)l, 5);
-                    if (cboxServices6.isChecked()) db.addProviderServices((int)l, 6);
-                    if (cboxServices7.isChecked()) db.addProviderServices((int)l, 7);
-                    if (cboxServices8.isChecked()) db.addProviderServices((int)l, 8);
-                    if (cboxServices9.isChecked()) db.addProviderServices((int)l, 9);
-                    if (cboxServices10.isChecked()) db.addProviderServices((int)l, 10);
-                    Toast.makeText(SignupServicesActivity.this, "Service provider account created successfully", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(SignupServicesActivity.this, LoginActivity.class);
-                    startActivity(intent);
+                    if (l>0) {
+                        if (cboxServices1.isChecked()) db.addProviderServices((int) l, 1);
+                        if (cboxServices2.isChecked()) db.addProviderServices((int) l, 2);
+                        if (cboxServices3.isChecked()) db.addProviderServices((int) l, 3);
+                        if (cboxServices4.isChecked()) db.addProviderServices((int) l, 4);
+                        if (cboxServices5.isChecked()) db.addProviderServices((int) l, 5);
+                        if (cboxServices6.isChecked()) db.addProviderServices((int) l, 6);
+                        if (cboxServices7.isChecked()) db.addProviderServices((int) l, 7);
+                        if (cboxServices8.isChecked()) db.addProviderServices((int) l, 8);
+                        if (cboxServices9.isChecked()) db.addProviderServices((int) l, 9);
+                        if (cboxServices10.isChecked()) db.addProviderServices((int) l, 10);
+                        Toast.makeText(SignupServicesActivity.this, "Service provider account created successfully", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(SignupServicesActivity.this, LoginActivity.class);
+                        startActivity(intent);
+                    }
                 }
             }
         });

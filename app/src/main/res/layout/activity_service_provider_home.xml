@@ -34,13 +34,12 @@
         android:id="@+id/btnSPHEditProfile"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:layout_marginEnd="75dp"
         android:background="@drawable/btn_bg_design_2"
         android:contentDescription="profile"
         android:foreground="@drawable/ic_profile_edit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.948"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.791" />
 
@@ -175,13 +174,12 @@
         android:id="@+id/btnSPHViewServiceHistory"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:layout_marginStart="75dp"
         android:background="@drawable/btn_bg_design_2"
         android:contentDescription="history"
         android:foreground="@drawable/ic_history"
         android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.791" />
@@ -212,35 +210,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.971" />
-
-    <Button
-        android:id="@+id/btnReports"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginEnd="35dp"
-        android:background="@drawable/btn_bg_design_2"
-        android:foreground="@drawable/ic_reports"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/imgView1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.057"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.793" />
-
-    <TextView
-        android:id="@+id/txtReports"
-        android:layout_width="110dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Reports"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        android:textStyle="normal|bold"
-        app:layout_constraintEnd_toEndOf="@+id/btnReports"
-        app:layout_constraintStart_toStartOf="@+id/btnReports"
-        app:layout_constraintTop_toBottomOf="@+id/btnReports" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

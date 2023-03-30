@@ -54,6 +54,7 @@ public class AppointmentDetails extends AppCompatActivity {
             if (userId == customerId) {
                 btnRemindCustomer.setVisibility(View.INVISIBLE);
                 btnEditCustomerProfile.setVisibility(View.INVISIBLE);
+                btnEditAppointment.setVisibility(View.INVISIBLE);
             }
 
             AppointmentItemModel aim = db.getAppointment(appointmentId);
@@ -88,6 +89,8 @@ public class AppointmentDetails extends AppCompatActivity {
                 public void onClick(View v) {
                     if (db.addReminder(userId, customerId, appointmentId)) {
                         Toast.makeText(AppointmentDetails.this, "Reminder sent!", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(AppointmentDetails.this, ServiceProviderHomeActivity.class);
+                        startActivity(intent);
                     }
                     else {
                         Toast.makeText(AppointmentDetails.this, "Reminder failed!", Toast.LENGTH_SHORT).show();
@@ -111,6 +114,15 @@ public class AppointmentDetails extends AppCompatActivity {
                     if (db.deleteAppointment(appointmentId)) {
                         Toast.makeText(AppointmentDetails.this, "Appointment cancelled!", Toast.LENGTH_SHORT).show();
                         finish();
+                        if (db.getUserTypeById(userId) == 0) {
+                            // if the user is a provider, go to the ProviderHome activity
+                            Intent intent = new Intent(AppointmentDetails.this, ServiceProviderHomeActivity.class);
+                            startActivity(intent);
+                        } else {
+                            // if the user is a customer, go to the CustomerHome activity
+                            Intent intent = new Intent(AppointmentDetails.this, CustomerHomeActivity.class);
+                            startActivity(intent);
+                        }
                     }
                     else {
                         Toast.makeText(AppointmentDetails.this, "Appointment cancellation failed!", Toast.LENGTH_SHORT).show();

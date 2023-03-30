@@ -28,7 +28,9 @@ public class ProfileEditActivity extends AppCompatActivity {
         EditText txtAddress = findViewById(R.id.profileEditAddress);
         EditText txtPostal = findViewById(R.id.profileEditPostal);
 
+        //if provider is editing customer profile from provider side
         int mainUserId = getIntent().getIntExtra("mainUserId", 0);
+        //if respective users are editing their own respective profiles
         int userId = getIntent().getIntExtra("userId", 0);
 
 

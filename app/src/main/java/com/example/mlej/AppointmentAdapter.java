@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -49,9 +50,14 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentViewHold
         }
 
         holder.btnEditAppDetails.setOnClickListener((view) -> {
-            Intent intent = new Intent(holder.btnEditAppDetails.getContext(), AppointmentDetails.class);
-            intent.putExtra("appointmentId", appList.get(position).getAppointmentId());
-            holder.btnEditAppDetails.getContext().startActivity(intent);
+            if (db.getAppointment(appList.get(position).getAppointmentId()) == null) {
+                Toast.makeText(context, "Appointment not found", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                Intent intent = new Intent(holder.btnEditAppDetails.getContext(), AppointmentDetails.class);
+                intent.putExtra("appointmentId", appList.get(position).getAppointmentId());
+                holder.btnEditAppDetails.getContext().startActivity(intent);
+            }
         });
     }
 

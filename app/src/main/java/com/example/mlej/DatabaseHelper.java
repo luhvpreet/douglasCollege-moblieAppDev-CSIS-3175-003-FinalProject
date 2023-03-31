@@ -120,6 +120,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         else return false;
     }
 
+    public boolean deleteUser(int id){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        long l = sqLiteDatabase.delete(TABLE1_NAME,T1COL1 + " = ?",new String[]{String.valueOf(id)});
+        // delete all appointments associated with this user if any
+        sqLiteDatabase.delete(TABLE2_NAME,T2COL2 + " = ?",new String[]{String.valueOf(id)});
+        // delete all reminders associated with this user
+        sqLiteDatabase.delete(TABLE5_NAME,T5COL3 + " = ?",new String[]{String.valueOf(id)});
+        sqLiteDatabase.close();
+        if(l>0) return true;
+        else return false;
+    }
+
     //method to add user to database, but this one returns the ID of the inserted row
     public long addUserLong(int type, String name, String email, String password, String phone, String address, String postalCode, String companyName){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();

@@ -29,6 +29,7 @@ public class AppointmentDetails extends AppCompatActivity {
                 }
             }
     );
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -117,7 +118,7 @@ public class AppointmentDetails extends AppCompatActivity {
                     Intent intent = new Intent(AppointmentDetails.this, ProfileEditActivity.class);
                     intent.putExtra("userId", customerId);
                     intent.putExtra("mainUserId", userId);
-                    startActivity(intent);
+                    editAppointmentLauncher.launch(intent);
                 }
             });
 

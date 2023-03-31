@@ -1,9 +1,12 @@
 package com.example.mlej;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,6 +14,7 @@ import android.widget.Toast;
 
 public class ProfileEditActivity extends AppCompatActivity {
     DatabaseHelper db;
+    SharedPreferences preferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +43,12 @@ public class ProfileEditActivity extends AppCompatActivity {
         txtPostal.setText(db.getUserPostalCode(userId));
 
         Button btnSaveProfile = findViewById(R.id.btnSaveProfile);
+        Button btnDeleteUser = findViewById(R.id.btnDeleteUser);
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+        if (db.getUserTypeById(preferences.getInt("USERID", 1)) == 1) {
+            btnDeleteUser.setVisibility(View.GONE);
+        }
 
         btnSaveProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +72,26 @@ public class ProfileEditActivity extends AppCompatActivity {
                     Intent intent = new Intent(ProfileEditActivity.this, CustomerHomeActivity.class);
                     startActivity(intent);
                 }
+            }
+        });
+
+        btnDeleteUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(ProfileEditActivity.this);
+                builder.setTitle("Delete User");
+                builder.setMessage("Are you sure you want to delete this user?");
+                builder.setPositiveButton("Yes", (dialog, which) -> {
+                    db.deleteUser(userId);
+                    Toast.makeText(ProfileEditActivity.this, "User deleted!", Toast.LENGTH_SHORT).show();
+                    Intent resultIntent = new Intent();
+                    setResult(RESULT_OK, resultIntent);
+                    finish();
+                });
+                builder.setNegativeButton("No", (dialog, which) -> {
+                    // do nothing
+                });
+                builder.show();
             }
         });
     }

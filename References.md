@@ -1,7 +1,5 @@
 # References
 
-## Generating fake names, fake address
-
 https://www.fakexy.com/fake-address-generator-ca
 
 https://www.random-name-generator.com/

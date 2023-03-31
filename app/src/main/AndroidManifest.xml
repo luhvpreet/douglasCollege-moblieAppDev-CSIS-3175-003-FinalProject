@@ -33,9 +33,6 @@
             android:name=".AppointmentBook"
             android:exported="false" />
         <activity
-            android:name=".ProviderSearchActivity"
-            android:exported="false" />
-        <activity
             android:name=".AppointmentEditActivity"
             android:exported="false" />
         <activity

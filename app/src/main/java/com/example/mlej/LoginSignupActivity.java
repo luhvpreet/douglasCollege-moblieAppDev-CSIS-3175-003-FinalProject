@@ -64,11 +64,11 @@ public class LoginSignupActivity extends AppCompatActivity {
         db.addServices(10,"Batteries and Charging", 99.99);
 
         // from 0 to 5 is provider, 6 to 43 is taker
-        db.addUser(0,"Eric Smith","a@a.com","1234","2938077342","1439 Elmwood Avenue, Vancouver, BC","G7V 6K2","WheelzRUs");
-        db.addUser(0,"Lovepreet Johnson","b@b.com","1234","7159669003","720 Pine Street, Vancouver, BC","K8P 3M6","Great Auto");
-        db.addUser(0,"Matthew Jackson","c@c.com","1234","8779027179","2084 Oak Lane, Vancouver, BC","V2L 3V1","Apex Auto Works");
-        db.addUser(0,"Jichi Davis","d@d.com","1234","1705080154","3613 Maple Street, Richmond, BC","B3H 3R3","GearUpGo");
-        db.addUser(0,"Helen Wong","e@e.com","1234","5717573963","905 Cedar Street, Richmond, BC","J5R 4W4","RideRunners");
+        db.addUser(0,"Eric Smith","a@a.com","1234","3451380427","1439 Elmwood Avenue, Vancouver, BC","G7V 6K2","WheelzRUs");
+        db.addUser(0,"Lovepreet Johnson","b@b.com","1234","6469986203","720 Pine Street, Vancouver, BC","V5K 3M6","Great Auto");
+        db.addUser(0,"Matthew Jackson","c@c.com","1234","5542756686","2084 Oak Lane, Vancouver, BC","V5K 3V1","Apex Auto Works");
+        db.addUser(0,"Jichi Davis","d@d.com","1234","3625060698","3613 Maple Street, Richmond, BC","V6V 3R3","GearUpGo");
+        db.addUser(0,"Helen Wong","e@e.com","1234","6744486716","905 Cedar Street, Richmond, BC","V6V 4W4","RideRunners");
         db.addUser(1,"Mary Causey","f@f.com","1234","6410028215","1234 Main St, Vancouver, BC","H9R 4R6","");
         db.addUser(1,"Eldred Hayden","lucasrivera994@inboxalias.com","1234","6632073434","5678 Kingsway, Burnaby, BC","V3S 6K3","");
         db.addUser(1,"Bronwyn Durant","kylejohnson746@tempinbox.com","1234","9721854038","901 Pandora Ave, Victoria, BC","R3L 1T8","");
@@ -107,13 +107,13 @@ public class LoginSignupActivity extends AppCompatActivity {
         db.addUser(1,"Olivia Peterson","rogerssamuel803@outlook.com","1234","5545312291","77777 Kirschner Rd, Kelowna, BC","V3S 6K3","");
         db.addUser(1,"William Richardson","cooperamanda250@protonmail.com","1234","5880051181","88888 Lawrence Ave, Kelowna, BC","R3L 1T8","");
         db.addUser(1,"Ava Mitchell","stewartmatthew899@gmail.com","1234","5106773749","3333 West Broadway, Vancouver, BC","V1L 6T9","");
-        db.addUser(0,"Audrey Fortin","e2@e.com","1234","5842113697","3187 Oakwood Avenue, New West, BC","R2M 1Z1","Elite Auto Care");
-        db.addUser(0,"Gabriel Gagne","e3@e.com","1234","1591430283","4821 Maple Lane, New West, BC","V4T 4R4","Motor Masters");
-        db.addUser(0,"Addison Singh","e4@e.com","1234","6638632578","1026 Cedar Drive, Burnaby, BC","M9R 3S7","Drive Care");
-        db.addUser(0,"Thomas Pelletier","e5@e.com","1234","4328400355","3365 Pine Street, Burnaby, BC","B3S 1J2","Top Gear");
-        db.addUser(0,"Mia Gagnon","e6@e.com","1234","2980744631","3800 Elmwood Lane, Burnaby, BC","V7K 3L5","Wheel Works");
-        db.addUser(0,"Lucy Bouchard","e7@e.com","1234","9292228613","2498 Ashwood Avenue, Surrey, BC","P3N 3Z5","AutoCruise");
-        db.addUser(0,"Isla Gagne","e8@e.com","1234","2844993157","4439 Laurel Drive, Vancouver, BC","J0K 3E0","GearUpGo");
+        db.addUser(0,"Audrey Fortin","e2@e.com","1234","5316222422","3187 Oakwood Avenue, New West, BC","R2M 1Z1","Elite Auto Care");
+        db.addUser(0,"Gabriel Gagne","e3@e.com","1234","4076135783","4821 Maple Lane, New West, BC","V4T 4R4","Motor Masters");
+        db.addUser(0,"Addison Singh","e4@e.com","1234","8069882483","1026 Cedar Drive, Burnaby, BC","M9R 3S7","Drive Care");
+        db.addUser(0,"Thomas Pelletier","e5@e.com","1234","7717680460","3365 Pine Street, Burnaby, BC","B3S 1J2","Top Gear");
+        db.addUser(0,"Mia Gagnon","e6@e.com","1234","1509250291","3800 Elmwood Lane, Burnaby, BC","V7K 3L5","Wheel Works");
+        db.addUser(0,"Lucy Bouchard","e7@e.com","1234","7722520894","2498 Ashwood Avenue, Surrey, BC","P3N 3Z5","AutoCruise");
+        db.addUser(0,"Isla Gagne","e8@e.com","1234","5417289741","4439 Laurel Drive, Vancouver, BC","V5K 3E0","GearUpGo");
 
         db.addProviderServices(1,1);
         db.addProviderServices(1,2);

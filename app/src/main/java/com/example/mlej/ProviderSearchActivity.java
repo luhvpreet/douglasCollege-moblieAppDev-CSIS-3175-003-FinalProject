@@ -85,7 +85,7 @@ public class ProviderSearchActivity extends AppCompatActivity {
     private List<ProviderItemModel> filterList(List<ProviderItemModel> originalList, String query) {
         List<ProviderItemModel> filteredList = new ArrayList<>();
         for (ProviderItemModel provider : originalList) {
-            if (provider.getProviderName().toLowerCase().contains(query.toLowerCase())) {
+            if (provider.getProviderPostalCode().toLowerCase().contains(query.toLowerCase())) {
                 filteredList.add(provider);
             }
         }

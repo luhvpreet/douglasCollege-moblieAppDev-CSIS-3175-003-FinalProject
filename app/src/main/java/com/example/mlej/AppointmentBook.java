@@ -23,6 +23,7 @@ public class AppointmentBook extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_appointment_book);
+
         setTitle("Book an Appointment");
         db = new DatabaseHelper(this);
 
@@ -89,7 +90,8 @@ public class AppointmentBook extends AppCompatActivity {
     private List<ProviderItemModel> filterList(List<ProviderItemModel> originalList, String query) {
         List<ProviderItemModel> filteredList = new ArrayList<>();
         for (ProviderItemModel provider : originalList) {
-            if (provider.getProviderName().toLowerCase().contains(query.toLowerCase())) {
+            if (provider.getProviderPostalCode().toLowerCase().contains(query.toLowerCase()) ||
+                    provider.getProviderName().toLowerCase().contains(query.toLowerCase())) {
                 filteredList.add(provider);
             }
         }

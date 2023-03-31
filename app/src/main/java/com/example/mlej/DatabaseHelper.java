@@ -29,7 +29,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     final static String T2COL1 = "AppointmentId";
     final static String T2COL2 = "CustomerId";
     final static String T2COL3 = "ProviderId";
-    final static String T2COL4 = "VehicleId";
     final static String T2COL5 = "DateTime";
     //0 means drop off and 1 means pickup
     final static String T2COL6 = "DropOffOrPickUp";
@@ -68,7 +67,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         query = "CREATE TABLE " + TABLE2_NAME +
                 "( " + T2COL1 + " INTEGER PRIMARY KEY, " + T2COL2 + " INTEGER,"
-                + T2COL3 + " INTEGER," + T2COL4 + " INTEGER," + T2COL5 + " TEXT,"
+                + T2COL3 + " INTEGER," + T2COL5 + " TEXT,"
                 + T2COL6 + " INTEGER)";
         sqLiteDatabase.execSQL(query);
 
@@ -300,12 +299,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return updated;
     }
 
-    public long addAppointment(int Customer_Id, int Provider_Id, int Vehicle_Id, String DateTime, int DropOffOrPickUp){
+//    public long addAppointment(int Customer_Id, int Provider_Id, int Vehicle_Id, String DateTime, int DropOffOrPickUp){
+    public long addAppointment(int Customer_Id, int Provider_Id, String DateTime, int DropOffOrPickUp){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(T2COL2,Customer_Id);
         values.put(T2COL3,Provider_Id);
-        values.put(T2COL4,Vehicle_Id);
         values.put(T2COL5,DateTime);
         values.put(T2COL6,DropOffOrPickUp); //0 means drop off and 1 means pickup
 

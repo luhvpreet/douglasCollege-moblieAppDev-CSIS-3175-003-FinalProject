@@ -17,8 +17,6 @@ public class AppointmentBook4 extends AppCompatActivity {
     String serviceOption;
     DecimalFormat currency;
 
-    //Intent intent;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,7 +76,7 @@ public class AppointmentBook4 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (!clicked){
-                    int appointmentId = (int)db.addAppointment(cID, pID, 0, date+" "+time, Integer.parseInt(pickordrop));
+                    int appointmentId = (int)db.addAppointment(cID, pID, date+" "+time, Integer.parseInt(pickordrop));
                     for(int i=0; i<s.length; i++){
                         if(s[i] == 1) db.addAppointmentServices(appointmentId, i+1); //if i is zero, that means servicesID=1
                     }

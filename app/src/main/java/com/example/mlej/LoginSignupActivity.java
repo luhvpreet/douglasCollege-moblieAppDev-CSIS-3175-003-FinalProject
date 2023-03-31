@@ -46,7 +46,6 @@ public class LoginSignupActivity extends AppCompatActivity {
 
     //dummy info for users, appointments, providerservices, etc:
     void initData(){
-//        db = new DatabaseHelper(LoginSignupActivity.this);
 
         System.out.println("Start deleting all records...");
 
@@ -63,7 +62,6 @@ public class LoginSignupActivity extends AppCompatActivity {
         db.addServices(8,"Exhaust System Services", 599.99);
         db.addServices(9,"Steering and Suspension", 899.99);
         db.addServices(10,"Batteries and Charging", 99.99);
-
 
         // from 0 to 5 is provider, 6 to 43 is taker
         db.addUser(0,"Eric Smith","a@a.com","1234","8343528833","1439 Elmwood Avenue, Brockville, ON","G7V 6K2","WheelzRUs");
@@ -145,44 +143,44 @@ public class LoginSignupActivity extends AppCompatActivity {
         db.addProviderServices(5,9);
         db.addProviderServices(5,10);
 
-        db.addAppointment(6,1,1,"2023-03-25 10:30",1);
-        db.addAppointment(7,1,2,"2023-03-26 13:30",1);
-        db.addAppointment(8,1,3,"2023-03-27 19:30",1);
-        db.addAppointment(9,1,4,"2023-03-28 10:30",1);
-        db.addAppointment(10,1,5,"2023-03-29 14:15",0);
-        db.addAppointment(11,1,6,"2023-03-30 17:15",0);
-        db.addAppointment(12,1,7,"2023-03-31 10:15",0);
-        db.addAppointment(13,1,8,"2023-04-01 13:45",0);
-        db.addAppointment(14,1,9,"2023-04-02 19:45",1);
-        db.addAppointment(15,1,10,"2023-04-03 10:00",1);
-        db.addAppointment(16,2,11,"2023-04-04 14:00",0);
-        db.addAppointment(17,2,12,"2023-04-05 17:00",0);
-        db.addAppointment(18,2,13,"2023-04-06 10:30",1);
-        db.addAppointment(19,2,14,"2023-04-07 13:30",0);
-        db.addAppointment(20,2,15,"2023-04-08 19:30",1);
-        db.addAppointment(21,2,16,"2023-04-09 10:30",0);
-        db.addAppointment(22,2,17,"2023-04-10 14:15",1);
-        db.addAppointment(23,2,18,"2023-04-11 17:15",0);
-        db.addAppointment(24,2,19,"2023-04-12 10:15",1);
-        db.addAppointment(25,2,20,"2023-04-13 13:45",0);
-        db.addAppointment(26,3,21,"2023-04-14 19:45",0);
-        db.addAppointment(27,3,22,"2023-04-15 10:00",0);
-        db.addAppointment(28,3,23,"2023-04-16 14:00",0);
-        db.addAppointment(29,3,24,"2023-04-17 17:00",0);
-        db.addAppointment(30,3,25,"2023-04-18 10:30",1);
-        db.addAppointment(31,4,26,"2023-04-19 13:30",1);
-        db.addAppointment(32,4,27,"2023-04-20 19:30",1);
-        db.addAppointment(33,4,28,"2023-04-21 10:30",1);
-        db.addAppointment(34,4,29,"2023-04-22 14:15",0);
-        db.addAppointment(35,4,30,"2023-04-23 17:15",0);
-        db.addAppointment(36,5,31,"2023-04-24 10:15",1);
-        db.addAppointment(37,5,32,"2023-04-25 13:45",1);
-        db.addAppointment(38,5,33,"2023-04-26 19:45",0);
-        db.addAppointment(39,5,34,"2023-04-27 10:00",0);
-        db.addAppointment(40,5,35,"2023-04-28 14:00",1);
-        db.addAppointment(41,1,36,"2023-04-29 17:00",0);
-        db.addAppointment(42,1,37,"2023-04-30 10:30",1);
-        db.addAppointment(43,1,38,"2023-05-01 13:30",0);
+        db.addAppointment(6,1,"2023-03-25 10:30",1);
+        db.addAppointment(7,1,"2023-03-26 13:30",1);
+        db.addAppointment(8,1,"2023-03-27 19:30",1);
+        db.addAppointment(9,1,"2023-03-28 10:30",1);
+        db.addAppointment(10,1,"2023-03-29 14:15",0);
+        db.addAppointment(11,1,"2023-03-30 17:15",0);
+        db.addAppointment(12,1,"2023-03-31 10:15",0);
+        db.addAppointment(13,1,"2023-04-01 13:45",0);
+        db.addAppointment(14,1,"2023-04-02 19:45",1);
+        db.addAppointment(15,1,"2023-04-03 10:00",1);
+        db.addAppointment(16,2,"2023-04-04 14:00",0);
+        db.addAppointment(17,2,"2023-04-05 17:00",0);
+        db.addAppointment(18,2,"2023-04-06 10:30",1);
+        db.addAppointment(19,2,"2023-04-07 13:30",0);
+        db.addAppointment(20,2,"2023-04-08 19:30",1);
+        db.addAppointment(21,2,"2023-04-09 10:30",0);
+        db.addAppointment(22,2,"2023-04-10 14:15",1);
+        db.addAppointment(23,2,"2023-04-11 17:15",0);
+        db.addAppointment(24,2,"2023-04-12 10:15",1);
+        db.addAppointment(25,2,"2023-04-13 13:45",0);
+        db.addAppointment(26,3,"2023-04-14 19:45",0);
+        db.addAppointment(27,3,"2023-04-15 10:00",0);
+        db.addAppointment(28,3,"2023-04-16 14:00",0);
+        db.addAppointment(29,3,"2023-04-17 17:00",0);
+        db.addAppointment(30,3,"2023-04-18 10:30",1);
+        db.addAppointment(31,4,"2023-04-19 13:30",1);
+        db.addAppointment(32,4,"2023-04-20 19:30",1);
+        db.addAppointment(33,4,"2023-04-21 10:30",1);
+        db.addAppointment(34,4,"2023-04-22 14:15",0);
+        db.addAppointment(35,4,"2023-04-23 17:15",0);
+        db.addAppointment(36,5,"2023-04-24 10:15",1);
+        db.addAppointment(37,5,"2023-04-25 13:45",1);
+        db.addAppointment(38,5,"2023-04-26 19:45",0);
+        db.addAppointment(39,5,"2023-04-27 10:00",0);
+        db.addAppointment(40,5,"2023-04-28 14:00",1);
+        db.addAppointment(41,1,"2023-04-29 17:00",0);
+        db.addAppointment(42,1,"2023-04-30 10:30",1);
+        db.addAppointment(43,1,"2023-05-01 13:30",0);
 
         db.addAppointmentServices(1,1);
         db.addAppointmentServices(2,2);
@@ -269,7 +267,6 @@ public class LoginSignupActivity extends AppCompatActivity {
         db.addAppointmentServices(7,10);
         db.addAppointmentServices(8,7);
         db.addAppointmentServices(9,6);
-
 
         System.out.println("Finish inserting all the new dummy records.");
     }
